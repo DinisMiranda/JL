@@ -41,12 +41,8 @@ if (form && formMessage && submitBtn) {
     };
 
     try {
-      // Email de destino - altere aqui para o email onde quer receber as mensagens
-      // Por padrão, usando um email falso de teste como solicitado
-      const emailDestino = 'teste.inexistente@exemplo-falso.com';
-      // Para receber emails reais, descomente e use um dos emails abaixo:
-      // const emailDestino = 'joaolobo68925p@adv.oa.pt';
-      // const emailDestino = 'joaojlobo@hotmail.com';
+      // Email de destino
+      const emailDestino = 'joaojlobo@hotmail.com';
       
       // Enviar email
       await sendEmail(formData, emailDestino);
@@ -73,57 +69,71 @@ if (form && formMessage && submitBtn) {
   });
 }
 
-// Função para enviar email
+// Função para enviar email usando EmailJS (já incluído no HTML)
 async function sendEmail(data, toEmail) {
-  // Método 1: Tentar usar EmailJS se estiver configurado
-  const serviceID = 'YOUR_SERVICE_ID';
-  const templateID = 'YOUR_TEMPLATE_ID';
-  const publicKey = 'YOUR_PUBLIC_KEY';
+  // EmailJS - serviço confiável e gratuito
+  // IMPORTANTE: Configure o EmailJS seguindo estes passos:
+  // 1. Acesse https://www.emailjs.com e crie uma conta gratuita
+  // 2. Vá em "Email Services" e adicione Gmail (ou outro)
+  // 3. Vá em "Email Templates" e crie um template com estas variáveis:
+  //    - {{from_name}} (nome do remetente)
+  //    - {{from_email}} (email do remetente)
+  //    - {{subject}} (assunto)
+  //    - {{message}} (mensagem)
+  // 4. Vá em "Integration" e copie:
+  //    - Public Key
+  //    - Service ID
+  //    - Template ID
+  // 5. Substitua os valores abaixo:
   
-  if (serviceID !== 'YOUR_SERVICE_ID' && templateID !== 'YOUR_TEMPLATE_ID' && publicKey !== 'YOUR_PUBLIC_KEY') {
-    emailjs.init(publicKey);
-    return emailjs.send(serviceID, templateID, {
-      to_email: toEmail,
-      from_name: data.nome,
-      from_email: data.email,
-      subject: data.assunto,
-      message: data.mensagem,
-      reply_to: data.email
-    });
-  }
+  const EMAILJS_SERVICE_ID = 'service_7qyix2h'; // Service ID do Gmail
+  const EMAILJS_TEMPLATE_ID = 'out15ba'; // Template ID do Contact Us
+  const EMAILJS_PUBLIC_KEY = 'mnMtNP24K1Fi5ZIC6'; // Public Key do EmailJS
   
-  // Método 2: Usar FormSubmit (funciona imediatamente, gratuito)
-  // Substitua 'seu-email@exemplo.com' pelo email onde quer receber as mensagens
-  const emailReceber = toEmail; // ou use um email real aqui: 'seu-email@exemplo.com'
-  
-  // FormSubmit permite enviar para qualquer email (incluindo o falso de teste)
-  // Mas para receber emails reais, use um email válido
-  const formData = new FormData();
-  formData.append('email', emailReceber);
-  formData.append('subject', `Contacto do site: ${data.assunto}`);
-  formData.append('message', `Nome: ${data.nome}\nEmail: ${data.email}\nAssunto: ${data.assunto}\n\nMensagem:\n${data.mensagem}`);
-  formData.append('_replyto', data.email);
-  formData.append('_captcha', 'false');
-  
-  // Usar o endpoint do FormSubmit
-  // Nota: FormSubmit requer um email válido para funcionar corretamente
-  // Para teste, você pode usar: https://formsubmit.co/teste@exemplo.com
-  const response = await fetch(`https://formsubmit.co/ajax/${emailReceber}`, {
-    method: 'POST',
-    body: formData
-  });
-  
-  if (!response.ok) {
-    // Se falhar, usar mailto como fallback
-    const subject = encodeURIComponent(data.assunto);
+  // Verificar se EmailJS está configurado
+  if (EMAILJS_PUBLIC_KEY === 'YOUR_PUBLIC_KEY') {
+    // Se não estiver configurado, usar mailto como fallback
+    const subject = encodeURIComponent(`Contacto do site: ${data.assunto}`);
     const body = encodeURIComponent(
       `Nome: ${data.nome}\nEmail: ${data.email}\n\nMensagem:\n${data.mensagem}`
     );
     window.location.href = `mailto:${toEmail}?subject=${subject}&body=${body}`;
     await new Promise(resolve => setTimeout(resolve, 500));
-    return { success: true };
+    return { 
+      success: true, 
+      message: 'EmailJS não configurado. Cliente de email aberto. Por favor, envie manualmente.' 
+    };
   }
   
-  return await response.json();
+  // Inicializar e enviar via EmailJS
+  try {
+    if (typeof emailjs === 'undefined') {
+      throw new Error('EmailJS não carregado');
+    }
+    
+    emailjs.init(EMAILJS_PUBLIC_KEY);
+    
+    const templateParams = {
+      from_name: data.nome,
+      from_email: data.email,
+      subject: data.assunto,
+      message: data.mensagem,
+      reply_to: data.email
+    };
+    
+    const result = await emailjs.send(EMAILJS_SERVICE_ID, EMAILJS_TEMPLATE_ID, templateParams);
+    return { success: true };
+    
+  } catch (error) {
+    console.error('Erro ao enviar via EmailJS:', error);
+    // Fallback para mailto
+    const subject = encodeURIComponent(`Contacto do site: ${data.assunto}`);
+    const body = encodeURIComponent(
+      `Nome: ${data.nome}\nEmail: ${data.email}\n\nMensagem:\n${data.mensagem}`
+    );
+    window.location.href = `mailto:${toEmail}?subject=${subject}&body=${body}`;
+    await new Promise(resolve => setTimeout(resolve, 500));
+    throw new Error('Erro ao enviar. Cliente de email aberto como alternativa.');
+  }
 }
 
