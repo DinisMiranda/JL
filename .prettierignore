@@ -1,0 +1,21 @@
+# Dependencies
+node_modules/
+
+# Build outputs
+dist/
+build/
+
+# Logs
+*.log
+
+# Cache
+.cache/
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Config files that should not be formatted
+package-lock.json
+yarn.lock
+pnpm-lock.yaml
