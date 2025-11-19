@@ -1,829 +1,139 @@
-// ========================================
-// ACCESSIBILITY: Keyboard Navigation Detection
-// ========================================
-let isUsingKeyboard = false;
-
-document.addEventListener('keydown', (e) => {
-  if (e.key === 'Tab') {
-    isUsingKeyboard = true;
-    document.body.classList.add('user-is-tabbing');
-  }
-});
-
-document.addEventListener('mousedown', () => {
-  isUsingKeyboard = false;
-  document.body.classList.remove('user-is-tabbing');
-});
-
-// ========================================
-// ACCESSIBILITY: Screen Reader Announcements
-// ========================================
-function announceToScreenReader(message, priority = 'polite') {
-  const announcement = document.createElement('div');
-  announcement.setAttribute('role', 'status');
-  announcement.setAttribute('aria-live', priority);
-  announcement.setAttribute('aria-atomic', 'true');
-  announcement.className = 'sr-only';
-  announcement.textContent = message;
-  document.body.appendChild(announcement);
-
-  setTimeout(() => {
-    document.body.removeChild(announcement);
-  }, 1000);
-}
-
-// ========================================
-// JavaScript para Menu Mobile (Enhanced for Accessibility & Touch)
-// ========================================
+// JavaScript para Menu Mobile
 const mobileMenuButton = document.getElementById('mobile-menu-button');
 const mobileNav = document.getElementById('mobile-nav');
 
 if (mobileMenuButton && mobileNav) {
-  // Toggle menu with proper ARIA attributes and animations
   mobileMenuButton.addEventListener('click', () => {
-    const isHidden = mobileNav.classList.toggle('hidden');
-    const isExpanded = !isHidden;
-
-    // Toggle hamburger animation
-    mobileMenuButton.classList.toggle('active', isExpanded);
-
-    mobileMenuButton.setAttribute('aria-expanded', isExpanded);
-    mobileMenuButton.setAttribute('aria-label', isExpanded ? 'Fechar menu de navegação' : 'Abrir menu de navegação');
-
-    // Announce to screen readers
-    announceToScreenReader(isExpanded ? 'Menu aberto' : 'Menu fechado');
-
-    // Focus first link when opening
-    if (isExpanded) {
-      const firstLink = mobileNav.querySelector('a');
-      if (firstLink) {
-        setTimeout(() => firstLink.focus(), 100);
-      }
-    }
+    mobileNav.classList.toggle('hidden');
   });
-
+  
   // Close mobile menu when clicking on a link
   const mobileLinks = mobileNav.querySelectorAll('a');
   mobileLinks.forEach(link => {
     link.addEventListener('click', () => {
       mobileNav.classList.add('hidden');
-      mobileMenuButton.classList.remove('active');
-      mobileMenuButton.setAttribute('aria-expanded', 'false');
-      mobileMenuButton.setAttribute('aria-label', 'Abrir menu de navegação');
-      announceToScreenReader('Menu fechado');
     });
   });
-
-  // Close menu with Escape key
-  mobileNav.addEventListener('keydown', (e) => {
-    if (e.key === 'Escape') {
-      mobileNav.classList.add('hidden');
-      mobileMenuButton.classList.remove('active');
-      mobileMenuButton.setAttribute('aria-expanded', 'false');
-      mobileMenuButton.setAttribute('aria-label', 'Abrir menu de navegação');
-      mobileMenuButton.focus();
-      announceToScreenReader('Menu fechado');
-    }
-  });
 }
 
-// ========================================
-// MOBILE: Swipe Gestures for Menu
-// ========================================
-let touchStartX = 0;
-let touchStartY = 0;
-let touchEndX = 0;
-let touchEndY = 0;
-
-const minSwipeDistance = 50;
-
-function handleSwipeGesture() {
-  const diffX = touchEndX - touchStartX;
-  const diffY = touchEndY - touchStartY;
-
-  // Check if horizontal swipe is more significant than vertical
-  if (Math.abs(diffX) > Math.abs(diffY)) {
-    // Swipe right to open menu (from left edge)
-    if (diffX > minSwipeDistance && touchStartX < 50) {
-      if (mobileNav && mobileNav.classList.contains('hidden')) {
-        mobileMenuButton.click();
-      }
-    }
-    // Swipe left to close menu
-    else if (diffX < -minSwipeDistance) {
-      if (mobileNav && !mobileNav.classList.contains('hidden')) {
-        mobileMenuButton.click();
-      }
-    }
-  }
-}
-
-// Add touch event listeners for swipe gestures
-document.addEventListener('touchstart', (e) => {
-  touchStartX = e.changedTouches[0].screenX;
-  touchStartY = e.changedTouches[0].screenY;
-}, { passive: true });
-
-document.addEventListener('touchend', (e) => {
-  touchEndX = e.changedTouches[0].screenX;
-  touchEndY = e.changedTouches[0].screenY;
-  handleSwipeGesture();
-}, { passive: true });
-
-// ========================================
-// MOBILE: Pull-to-Refresh Indicator
-// ========================================
-let touchStartYPosition = 0;
-let isPulling = false;
-
-function createPullToRefreshIndicator() {
-  if (document.getElementById('pull-to-refresh-indicator')) return;
-
-  const indicator = document.createElement('div');
-  indicator.id = 'pull-to-refresh-indicator';
-  indicator.className = 'pull-to-refresh';
-  indicator.textContent = '↓ Puxe para atualizar';
-  document.body.appendChild(indicator);
-  return indicator;
-}
-
-// Only enable pull-to-refresh on mobile devices
-if ('ontouchstart' in window) {
-  document.addEventListener('touchstart', (e) => {
-    if (window.scrollY === 0) {
-      touchStartYPosition = e.touches[0].clientY;
-      isPulling = true;
-    }
-  }, { passive: true });
-
-  document.addEventListener('touchmove', (e) => {
-    if (!isPulling) return;
-
-    const touchY = e.touches[0].clientY;
-    const pullDistance = touchY - touchStartYPosition;
-
-    if (pullDistance > 80 && window.scrollY === 0) {
-      const indicator = createPullToRefreshIndicator();
-      indicator.classList.add('active');
-      indicator.textContent = '↻ Solte para atualizar';
-    }
-  }, { passive: true });
-
-  document.addEventListener('touchend', (e) => {
-    if (!isPulling) return;
-
-    const indicator = document.getElementById('pull-to-refresh-indicator');
-    if (indicator && indicator.classList.contains('active')) {
-      indicator.textContent = '⟳ Atualizando...';
-
-      // Simulate refresh (reload page after short delay)
-      setTimeout(() => {
-        window.location.reload();
-      }, 500);
-    }
-
-    isPulling = false;
-
-    // Hide indicator after delay
-    if (indicator) {
-      setTimeout(() => {
-        indicator.classList.remove('active');
-      }, 1000);
-    }
-  }, { passive: true });
-}
-
-// ========================================
-// MOBILE: Smooth Scroll Enhancement
-// ========================================
-document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-  anchor.addEventListener('click', function (e) {
-    const targetId = this.getAttribute('href');
-    if (targetId === '#') return;
-
-    const targetElement = document.querySelector(targetId);
-    if (targetElement) {
-      e.preventDefault();
-
-      // Close mobile menu if open
-      if (mobileNav && !mobileNav.classList.contains('hidden')) {
-        mobileMenuButton.click();
-      }
-
-      // Smooth scroll with offset for sticky header
-      const headerHeight = document.querySelector('header')?.offsetHeight || 0;
-      const targetPosition = targetElement.offsetTop - headerHeight - 20;
-
-      window.scrollTo({
-        top: targetPosition,
-        behavior: 'smooth'
-      });
-
-      // Update URL without jumping
-      if (history.pushState) {
-        history.pushState(null, null, targetId);
-      }
-
-      // Focus target for accessibility
-      targetElement.setAttribute('tabindex', '-1');
-      targetElement.focus();
-      setTimeout(() => targetElement.removeAttribute('tabindex'), 1000);
-    }
-  });
-});
-
-// ========================================
-// MOBILE: Viewport Height Fix (iOS Safari)
-// ========================================
-function setVH() {
-  const vh = window.innerHeight * 0.01;
-  document.documentElement.style.setProperty('--vh', `${vh}px`);
-}
-
-// Set initial value
-setVH();
-
-// Update on resize and orientation change
-window.addEventListener('resize', setVH);
-window.addEventListener('orientationchange', () => {
-  setTimeout(setVH, 100);
-});
-
-// ========================================
-// MOBILE: Performance Monitoring
-// ========================================
-if ('performance' in window && 'PerformanceObserver' in window) {
-  // Monitor First Contentful Paint
-  const perfObserver = new PerformanceObserver((list) => {
-    for (const entry of list.getEntries()) {
-      if (entry.name === 'first-contentful-paint') {
-        console.log('FCP:', entry.startTime);
-        trackFormEvent('performance_fcp', { time: entry.startTime });
-      }
-    }
-  });
-
-  try {
-    perfObserver.observe({ entryTypes: ['paint'] });
-  } catch (e) {
-    console.log('Performance monitoring not supported');
-  }
-}
-
-// ========================================
-// JavaScript para Formulário de Contacto (Enhanced for Accessibility & Security)
-// ========================================
+// JavaScript para Formulário de Contacto
 const form = document.getElementById('contact-form');
 const formMessage = document.getElementById('form-message');
 const submitBtn = document.getElementById('submit-btn');
-const submitText = document.getElementById('submit-text');
-const submitSpinner = document.getElementById('submit-spinner');
 
-// ========================================
-// INPUT SANITIZATION
-// ========================================
-function sanitizeInput(input) {
-  // Remove potentially dangerous characters and scripts
-  const map = {
-    '&': '&amp;',
-    '<': '&lt;',
-    '>': '&gt;',
-    '"': '&quot;',
-    "'": '&#x27;',
-    '/': '&#x2F;',
-  };
-  const reg = /[&<>"'/]/gi;
-  return input.replace(reg, (match) => map[match]);
-}
-
-function sanitizeEmail(email) {
-  // Basic email sanitization
-  return email.trim().toLowerCase();
-}
-
-// ========================================
-// RATE LIMITING
-// ========================================
-const RATE_LIMIT = {
-  maxAttempts: 3,
-  windowMs: 15 * 60 * 1000, // 15 minutes
-  storageKey: 'form_submissions'
-};
-
-function getRateLimitData() {
-  const stored = localStorage.getItem(RATE_LIMIT.storageKey);
-  if (!stored) return { attempts: [], blocked: false };
-
-  const data = JSON.parse(stored);
-  const now = Date.now();
-
-  // Filter out old attempts
-  data.attempts = data.attempts.filter(
-    timestamp => now - timestamp < RATE_LIMIT.windowMs
-  );
-
-  return data;
-}
-
-function checkRateLimit() {
-  const data = getRateLimitData();
-
-  if (data.blocked && Date.now() - data.blockedUntil < 0) {
-    const minutesLeft = Math.ceil((data.blockedUntil - Date.now()) / 60000);
-    return {
-      allowed: false,
-      message: `Demasiadas tentativas. Por favor, aguarde ${minutesLeft} minutos.`
-    };
-  }
-
-  if (data.attempts.length >= RATE_LIMIT.maxAttempts) {
-    const oldestAttempt = Math.min(...data.attempts);
-    const timeToWait = RATE_LIMIT.windowMs - (Date.now() - oldestAttempt);
-    const minutesLeft = Math.ceil(timeToWait / 60000);
-
-    // Block for remaining time
-    localStorage.setItem(RATE_LIMIT.storageKey, JSON.stringify({
-      attempts: data.attempts,
-      blocked: true,
-      blockedUntil: Date.now() + timeToWait
-    }));
-
-    return {
-      allowed: false,
-      message: `Limite de envios atingido. Por favor, aguarde ${minutesLeft} minutos.`
-    };
-  }
-
-  return { allowed: true };
-}
-
-function recordSubmission() {
-  const data = getRateLimitData();
-  data.attempts.push(Date.now());
-  localStorage.setItem(RATE_LIMIT.storageKey, JSON.stringify(data));
-}
-
-// ========================================
-// HONEYPOT SPAM PROTECTION
-// ========================================
-function checkHoneypot() {
-  const honeypot = document.getElementById('website');
-  if (honeypot && honeypot.value !== '') {
-    console.warn('Honeypot triggered - potential spam detected');
-    return false;
-  }
-  return true;
-}
-
-// ========================================
-// CHARACTER COUNTER
-// ========================================
-function setupCharacterCounter() {
-  const textarea = document.getElementById('mensagem');
-  const currentCounter = document.getElementById('mensagem-current');
-  const maxCounter = document.getElementById('mensagem-max');
-
-  if (!textarea || !currentCounter) return;
-
-  const maxLength = parseInt(textarea.getAttribute('maxlength')) || 1000;
-  maxCounter.textContent = maxLength;
-
-  textarea.addEventListener('input', () => {
-    const currentLength = textarea.value.length;
-    currentCounter.textContent = currentLength;
-
-    // Visual feedback when approaching limit
-    if (currentLength > maxLength * 0.9) {
-      currentCounter.classList.add('text-orange-600', 'font-semibold');
-    } else {
-      currentCounter.classList.remove('text-orange-600', 'font-semibold');
-    }
-
-    if (currentLength === maxLength) {
-      currentCounter.classList.add('text-red-600', 'font-bold');
-      currentCounter.classList.remove('text-orange-600');
-    }
-  });
-}
-
-// ========================================
-// ENHANCED VALIDATION
-// ========================================
-function validateField(fieldId, errorId, validationFn, errorMessage) {
-  const field = document.getElementById(fieldId);
-  const errorSpan = document.getElementById(errorId);
-
-  if (!validationFn(field.value)) {
-    field.setAttribute('aria-invalid', 'true');
-    field.classList.add('border-red-500');
-    field.classList.remove('border-gray-300');
-    errorSpan.textContent = errorMessage;
-    errorSpan.classList.remove('hidden');
-    return false;
-  } else {
-    field.setAttribute('aria-invalid', 'false');
-    field.classList.remove('border-red-500');
-    field.classList.add('border-gray-300');
-    errorSpan.textContent = '';
-    errorSpan.classList.add('hidden');
-    return true;
-  }
-}
-
-function clearFieldError(fieldId, errorId) {
-  const field = document.getElementById(fieldId);
-  const errorSpan = document.getElementById(errorId);
-  field.setAttribute('aria-invalid', 'false');
-  field.classList.remove('border-red-500');
-  field.classList.add('border-gray-300');
-  errorSpan.textContent = '';
-  errorSpan.classList.add('hidden');
-}
-
-// Advanced email validation
-function isValidEmail(email) {
-  const re = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-  if (!re.test(email)) return false;
-
-  // Check for common typos in domain
-  const domain = email.split('@')[1];
-  if (!domain) return false;
-
-  // Block disposable email domains (basic list)
-  const disposableDomains = ['tempmail.com', '10minutemail.com', 'guerrillamail.com'];
-  if (disposableDomains.some(d => domain.includes(d))) {
-    return false;
-  }
-
-  return true;
-}
-
-// ========================================
-// VISUAL FEEDBACK HELPERS
-// ========================================
-function showLoading() {
-  submitBtn.disabled = true;
-  submitBtn.setAttribute('aria-busy', 'true');
-  submitText.textContent = 'A enviar...';
-  submitSpinner.classList.remove('hidden');
-  submitBtn.classList.add('opacity-75');
-}
-
-function hideLoading() {
-  submitBtn.disabled = false;
-  submitBtn.removeAttribute('aria-busy');
-  submitText.textContent = 'Enviar';
-  submitSpinner.classList.add('hidden');
-  submitBtn.classList.remove('opacity-75');
-}
-
-function showFormMessage(message, type = 'success') {
-  formMessage.classList.remove('hidden');
-  formMessage.setAttribute('tabindex', '0');
-
-  if (type === 'success') {
-    formMessage.className = 'p-4 rounded-lg mb-4 bg-green-100 text-green-800 border border-green-400 flex items-start gap-3';
-    formMessage.innerHTML = `
-      <svg class="w-5 h-5 mt-0.5 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
-        <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/>
-      </svg>
-      <span>${message}</span>
-    `;
-  } else if (type === 'error') {
-    formMessage.className = 'p-4 rounded-lg mb-4 bg-red-100 text-red-800 border border-red-400 flex items-start gap-3';
-    formMessage.innerHTML = `
-      <svg class="w-5 h-5 mt-0.5 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
-        <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zM8.707 7.293a1 1 0 00-1.414 1.414L8.586 10l-1.293 1.293a1 1 0 101.414 1.414L10 11.414l1.293 1.293a1 1 0 001.414-1.414L11.414 10l1.293-1.293a1 1 0 00-1.414-1.414L10 8.586 8.707 7.293z" clip-rule="evenodd"/>
-      </svg>
-      <span>${message}</span>
-    `;
-  } else if (type === 'warning') {
-    formMessage.className = 'p-4 rounded-lg mb-4 bg-yellow-100 text-yellow-800 border border-yellow-400 flex items-start gap-3';
-    formMessage.innerHTML = `
-      <svg class="w-5 h-5 mt-0.5 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
-        <path fill-rule="evenodd" d="M8.257 3.099c.765-1.36 2.722-1.36 3.486 0l5.58 9.92c.75 1.334-.213 2.98-1.742 2.98H4.42c-1.53 0-2.493-1.646-1.743-2.98l5.58-9.92zM11 13a1 1 0 11-2 0 1 1 0 012 0zm-1-8a1 1 0 00-1 1v3a1 1 0 002 0V6a1 1 0 00-1-1z" clip-rule="evenodd"/>
-      </svg>
-      <span>${message}</span>
-    `;
-  }
-
-  // Focus and announce
-  formMessage.focus();
-  announceToScreenReader(message, 'assertive');
-}
-
-// ========================================
-// ANALYTICS TRACKING
-// ========================================
-function trackFormEvent(eventName, data = {}) {
-  try {
-    // Google Analytics 4 (if available)
-    if (typeof gtag !== 'undefined') {
-      gtag('event', eventName, data);
-    }
-
-    // Console log for debugging
-    console.log('Form Event:', eventName, data);
-
-    // Could also send to custom analytics endpoint
-    // fetch('/api/analytics', { method: 'POST', body: JSON.stringify({ event: eventName, data }) });
-  } catch (error) {
-    console.warn('Analytics tracking failed:', error);
-  }
-}
-
-// ========================================
-// FORM INITIALIZATION AND HANDLING
-// ========================================
 if (form && formMessage && submitBtn) {
-  // Initialize character counter
-  setupCharacterCounter();
-
-  // Real-time validation on blur
-  const fields = [
-    { id: 'nome', errorId: 'nome-error', validate: (val) => val.trim().length >= 2 && val.trim().length <= 100, message: 'Por favor, insira um nome válido (2-100 caracteres)' },
-    { id: 'email', errorId: 'email-error', validate: isValidEmail, message: 'Por favor, insira um email válido' },
-    { id: 'assunto', errorId: 'assunto-error', validate: (val) => val.trim().length >= 5 && val.trim().length <= 200, message: 'Por favor, insira um assunto válido (5-200 caracteres)' },
-    { id: 'mensagem', errorId: 'mensagem-error', validate: (val) => val.trim().length >= 10 && val.trim().length <= 1000, message: 'Por favor, insira uma mensagem (10-1000 caracteres)' }
-  ];
-
-  fields.forEach(({ id, errorId, validate, message }) => {
-    const field = document.getElementById(id);
-
-    // Validate on blur
-    field.addEventListener('blur', () => {
-      if (field.value.trim()) {
-        validateField(id, errorId, validate, message);
-      }
-    });
-
-    // Clear error on input
-    field.addEventListener('input', () => {
-      if (field.getAttribute('aria-invalid') === 'true') {
-        clearFieldError(id, errorId);
-      }
-    });
-  });
-
   form.addEventListener('submit', async (e) => {
     e.preventDefault();
-
-    // Track form submission attempt
-    trackFormEvent('form_submit_attempt');
-
-    // Check honeypot
-    if (!checkHoneypot()) {
-      trackFormEvent('form_spam_detected', { method: 'honeypot' });
-      // Silently fail for bots
-      showFormMessage('Erro ao enviar mensagem. Por favor, tente novamente.', 'error');
-      return;
-    }
-
-    // Check rate limit
-    const rateCheck = checkRateLimit();
-    if (!rateCheck.allowed) {
-      trackFormEvent('form_rate_limited');
-      showFormMessage(rateCheck.message, 'warning');
-      announceToScreenReader(rateCheck.message, 'assertive');
-      return;
-    }
-
-    // Validate all fields
-    let isValid = true;
-    fields.forEach(({ id, errorId, validate, message }) => {
-      if (!validateField(id, errorId, validate, message)) {
-        isValid = false;
-      }
-    });
-
-    if (!isValid) {
-      trackFormEvent('form_validation_failed');
-      announceToScreenReader('Por favor, corrija os erros no formulário', 'assertive');
-      const firstError = form.querySelector('[aria-invalid="true"]');
-      if (firstError) firstError.focus();
-      return;
-    }
-
-    // Show loading state
-    showLoading();
-    announceToScreenReader('A enviar mensagem', 'polite');
+    
+    // Desabilitar botão durante o envio
+    submitBtn.disabled = true;
+    submitBtn.textContent = 'A enviar...';
+    
+    // Esconder mensagem anterior
     formMessage.classList.add('hidden');
-
-    // Sanitize and collect form data
+    
+    // Coletar dados do formulário
     const formData = {
-      nome: sanitizeInput(document.getElementById('nome').value.trim()),
-      email: sanitizeEmail(document.getElementById('email').value),
-      assunto: sanitizeInput(document.getElementById('assunto').value.trim()),
-      mensagem: sanitizeInput(document.getElementById('mensagem').value.trim())
+      nome: document.getElementById('nome').value,
+      email: document.getElementById('email').value,
+      assunto: document.getElementById('assunto').value,
+      mensagem: document.getElementById('mensagem').value
     };
 
     try {
+      // Email de destino
       const emailDestino = 'joaojlobo@hotmail.com';
-
-      // Attempt to send email
+      
+      // Enviar email
       await sendEmail(formData, emailDestino);
-
-      // Record successful submission for rate limiting
-      recordSubmission();
-
-      // Track success
-      trackFormEvent('form_submit_success', {
-        nome_length: formData.nome.length,
-        mensagem_length: formData.mensagem.length
-      });
-
-      // Show success message
-      showFormMessage('Mensagem enviada com sucesso! Entraremos em contacto em breve.', 'success');
-
-      // Clear form
+      
+      // Mostrar mensagem de sucesso
+      formMessage.classList.remove('hidden');
+      formMessage.className = 'p-4 rounded-lg mb-4 bg-green-100 text-green-800 border border-green-400';
+      formMessage.textContent = 'Mensagem enviada com sucesso! Entraremos em contacto em breve.';
+      
+      // Limpar formulário
       form.reset();
-      fields.forEach(({ id, errorId }) => clearFieldError(id, errorId));
-
-      // Reset character counter
-      if (document.getElementById('mensagem-current')) {
-        document.getElementById('mensagem-current').textContent = '0';
-      }
-
+      
     } catch (error) {
-      // Track error
-      trackFormEvent('form_submit_error', {
-        error_message: error.message
-      });
-
-      // Show error message
-      const errorMsg = error.message || 'Erro ao enviar mensagem. Por favor, tente novamente mais tarde.';
-      showFormMessage(errorMsg, 'error');
+      // Mostrar mensagem de erro
+      formMessage.classList.remove('hidden');
+      formMessage.className = 'p-4 rounded-lg mb-4 bg-red-100 text-red-800 border border-red-400';
+      formMessage.textContent = 'Erro ao enviar mensagem. Por favor, tente novamente mais tarde.';
       console.error('Erro ao enviar email:', error);
-
     } finally {
-      hideLoading();
+      // Reabilitar botão
+      submitBtn.disabled = false;
+      submitBtn.textContent = 'Enviar';
     }
   });
 }
 
-// ========================================
-// EmailJS Integration with Enhanced Error Handling
-// ========================================
-
-// Configuration
-const EMAIL_CONFIG = {
-  SERVICE_ID: 'service_7qyix2h',
-  TEMPLATE_ID: 'out15ba',
-  PUBLIC_KEY: 'mnMtNP24K1Fi5ZIC6',
-  MAX_RETRIES: 2,
-  RETRY_DELAY: 2000, // 2 seconds
-  TIMEOUT: 10000 // 10 seconds
-};
-
-// Retry helper with exponential backoff
-async function retryWithBackoff(fn, maxRetries = EMAIL_CONFIG.MAX_RETRIES) {
-  for (let i = 0; i <= maxRetries; i++) {
-    try {
-      return await fn();
-    } catch (error) {
-      if (i === maxRetries) throw error;
-
-      const delay = EMAIL_CONFIG.RETRY_DELAY * Math.pow(2, i);
-      console.log(`Retry attempt ${i + 1} after ${delay}ms`);
-      await new Promise(resolve => setTimeout(resolve, delay));
-    }
-  }
-}
-
-// Mailto fallback function
-function openMailtoFallback(data, toEmail) {
-  const subject = encodeURIComponent(`Contacto do site: ${data.assunto}`);
-  const body = encodeURIComponent(
-    `Nome: ${data.nome}\nEmail: ${data.email}\n\nMensagem:\n${data.mensagem}\n\n---\nEnviado através do formulário de contacto`
-  );
-  window.location.href = `mailto:${toEmail}?subject=${subject}&body=${body}`;
-}
-
-// Main email sending function
+// Função para enviar email usando EmailJS (já incluído no HTML)
 async function sendEmail(data, toEmail) {
-  // Validate EmailJS configuration
-  if (!EMAIL_CONFIG.PUBLIC_KEY || EMAIL_CONFIG.PUBLIC_KEY === 'YOUR_PUBLIC_KEY') {
-    console.warn('EmailJS not configured, falling back to mailto');
-    openMailtoFallback(data, toEmail);
-    throw new Error('EmailJS não está configurado. O seu cliente de email foi aberto.');
+  // EmailJS - serviço confiável e gratuito
+  // IMPORTANTE: Configure o EmailJS seguindo estes passos:
+  // 1. Acesse https://www.emailjs.com e crie uma conta gratuita
+  // 2. Vá em "Email Services" e adicione Gmail (ou outro)
+  // 3. Vá em "Email Templates" e crie um template com estas variáveis:
+  //    - {{from_name}} (nome do remetente)
+  //    - {{from_email}} (email do remetente)
+  //    - {{subject}} (assunto)
+  //    - {{message}} (mensagem)
+  // 4. Vá em "Integration" e copie:
+  //    - Public Key
+  //    - Service ID
+  //    - Template ID
+  // 5. Substitua os valores abaixo:
+  
+  const EMAILJS_SERVICE_ID = 'service_7qyix2h'; // Service ID do Gmail
+  const EMAILJS_TEMPLATE_ID = 'out15ba'; // Template ID do Contact Us
+  const EMAILJS_PUBLIC_KEY = 'mnMtNP24K1Fi5ZIC6'; // Public Key do EmailJS
+  
+  // Verificar se EmailJS está configurado
+  if (EMAILJS_PUBLIC_KEY === 'YOUR_PUBLIC_KEY') {
+    // Se não estiver configurado, usar mailto como fallback
+    const subject = encodeURIComponent(`Contacto do site: ${data.assunto}`);
+    const body = encodeURIComponent(
+      `Nome: ${data.nome}\nEmail: ${data.email}\n\nMensagem:\n${data.mensagem}`
+    );
+    window.location.href = `mailto:${toEmail}?subject=${subject}&body=${body}`;
+    await new Promise(resolve => setTimeout(resolve, 500));
+    return { 
+      success: true, 
+      message: 'EmailJS não configurado. Cliente de email aberto. Por favor, envie manualmente.' 
+    };
   }
-
-  // Check if EmailJS library is loaded
-  if (typeof emailjs === 'undefined') {
-    console.error('EmailJS library not loaded');
-    trackFormEvent('emailjs_library_missing');
-    openMailtoFallback(data, toEmail);
-    throw new Error('Serviço de email temporariamente indisponível. O seu cliente de email foi aberto.');
-  }
-
+  
+  // Inicializar e enviar via EmailJS
   try {
-    // Initialize EmailJS
-    emailjs.init(EMAIL_CONFIG.PUBLIC_KEY);
-
-    // Prepare template parameters
+    if (typeof emailjs === 'undefined') {
+      throw new Error('EmailJS não carregado');
+    }
+    
+    emailjs.init(EMAILJS_PUBLIC_KEY);
+    
     const templateParams = {
       from_name: data.nome,
       from_email: data.email,
       subject: data.assunto,
       message: data.mensagem,
-      reply_to: data.email,
-      to_email: toEmail,
-      timestamp: new Date().toISOString()
+      reply_to: data.email
     };
-
-    // Send with retry logic and timeout
-    const result = await Promise.race([
-      retryWithBackoff(async () => {
-        return await emailjs.send(
-          EMAIL_CONFIG.SERVICE_ID,
-          EMAIL_CONFIG.TEMPLATE_ID,
-          templateParams
-        );
-      }),
-      new Promise((_, reject) =>
-        setTimeout(() => reject(new Error('Timeout')), EMAIL_CONFIG.TIMEOUT)
-      )
-    ]);
-
-    // Track success
-    trackFormEvent('emailjs_send_success', {
-      status: result.status,
-      text: result.text
-    });
-
-    return { success: true, result };
-
+    
+    const result = await emailjs.send(EMAILJS_SERVICE_ID, EMAILJS_TEMPLATE_ID, templateParams);
+    return { success: true };
+    
   } catch (error) {
-    console.error('EmailJS error:', error);
-
-    // Track specific error types
-    if (error.message === 'Timeout') {
-      trackFormEvent('emailjs_timeout');
-    } else if (error.status) {
-      trackFormEvent('emailjs_error', {
-        status: error.status,
-        text: error.text
-      });
-    } else {
-      trackFormEvent('emailjs_unknown_error', {
-        message: error.message
-      });
-    }
-
-    // Determine error message
-    let errorMessage = 'Erro ao enviar mensagem. ';
-
-    if (error.message === 'Timeout') {
-      errorMessage += 'O serviço demorou demasiado a responder. ';
-    } else if (error.status === 400) {
-      errorMessage += 'Dados inválidos. ';
-    } else if (error.status === 403) {
-      errorMessage += 'Acesso negado. ';
-    } else if (error.status === 429) {
-      errorMessage += 'Demasiadas tentativas. ';
-    } else if (error.status >= 500) {
-      errorMessage += 'Problema no servidor. ';
-    }
-
-    // Offer mailto fallback
-    const useMailto = confirm(
-      errorMessage + 'Deseja abrir o seu cliente de email como alternativa?'
+    console.error('Erro ao enviar via EmailJS:', error);
+    // Fallback para mailto
+    const subject = encodeURIComponent(`Contacto do site: ${data.assunto}`);
+    const body = encodeURIComponent(
+      `Nome: ${data.nome}\nEmail: ${data.email}\n\nMensagem:\n${data.mensagem}`
     );
-
-    if (useMailto) {
-      openMailtoFallback(data, toEmail);
-      trackFormEvent('mailto_fallback_used');
-      throw new Error('O seu cliente de email foi aberto. Por favor, envie a mensagem manualmente.');
-    }
-
-    throw new Error(errorMessage + 'Por favor, tente novamente mais tarde.');
-  }
-}
-
-// ========================================
-// EmailJS Configuration Validator (Run on page load)
-// ========================================
-function validateEmailJSConfig() {
-  if (typeof emailjs === 'undefined') {
-    console.warn('⚠️ EmailJS library not loaded. Form will fallback to mailto.');
-    return false;
-  }
-
-  if (!EMAIL_CONFIG.PUBLIC_KEY || EMAIL_CONFIG.PUBLIC_KEY === 'YOUR_PUBLIC_KEY') {
-    console.warn('⚠️ EmailJS not configured. Please set up EmailJS credentials.');
-    return false;
-  }
-
-  console.log('✓ EmailJS configured and ready');
-  return true;
-}
-
-// Run validation on page load
-if (typeof document !== 'undefined') {
-  if (document.readyState === 'loading') {
-    document.addEventListener('DOMContentLoaded', validateEmailJSConfig);
-  } else {
-    validateEmailJSConfig();
+    window.location.href = `mailto:${toEmail}?subject=${subject}&body=${body}`;
+    await new Promise(resolve => setTimeout(resolve, 500));
+    throw new Error('Erro ao enviar. Cliente de email aberto como alternativa.');
   }
 }
 
@@ -929,70 +239,32 @@ const articles = {
   }
 };
 
-// ========================================
-// Modal Functions (Enhanced for Accessibility)
-// ========================================
-let lastFocusedElement = null;
-let focusableElements = [];
-let firstFocusableElement = null;
-let lastFocusableElement = null;
-
 function openArticle(articleId) {
   const article = articles[articleId];
   if (!article) return;
-
-  // Save currently focused element
-  lastFocusedElement = document.activeElement;
-
+  
   const modal = document.getElementById('article-modal');
   const content = document.getElementById('article-content');
-
+  
   content.innerHTML = `
     <h3 class="text-2xl md:text-3xl font-serif font-semibold text-primary mb-3">${article.title}</h3>
     <p class="text-gray-600 italic mb-6">${article.author}</p>
     ${article.content}
     <div class="mt-8 pt-4 border-t border-gray-200">
-      <button onclick="closeArticle()" class="bg-secondary hover:bg-secondary/90 focus:bg-secondary/90 text-white font-semibold py-2 px-6 rounded-lg transition-all duration-200 focus:outline-none focus:ring-4 focus:ring-secondary/50 min-h-[44px]" aria-label="Fechar artigo e voltar às publicações">
+      <button onclick="closeArticle()" class="bg-secondary hover:bg-secondary/90 text-white font-semibold py-2 px-6 rounded-lg transition-all duration-200">
         Voltar às Publicações
       </button>
     </div>
   `;
-
+  
   modal.classList.remove('hidden');
-  modal.setAttribute('aria-hidden', 'false');
   document.body.style.overflow = 'hidden';
-
-  // Get all focusable elements within modal
-  focusableElements = modal.querySelectorAll(
-    'button, [href], input, select, textarea, [tabindex]:not([tabindex="-1"])'
-  );
-  firstFocusableElement = focusableElements[0];
-  lastFocusableElement = focusableElements[focusableElements.length - 1];
-
-  // Focus first focusable element (close button)
-  setTimeout(() => {
-    if (firstFocusableElement) {
-      firstFocusableElement.focus();
-    }
-  }, 100);
-
-  // Announce to screen readers
-  announceToScreenReader(`Artigo aberto: ${article.title}`, 'polite');
 }
 
 function closeArticle() {
   const modal = document.getElementById('article-modal');
   modal.classList.add('hidden');
-  modal.setAttribute('aria-hidden', 'true');
   document.body.style.overflow = '';
-
-  // Return focus to element that opened modal
-  if (lastFocusedElement) {
-    lastFocusedElement.focus();
-  }
-
-  // Announce to screen readers
-  announceToScreenReader('Artigo fechado', 'polite');
 }
 
 function closeArticleOnBackdrop(event) {
@@ -1001,36 +273,10 @@ function closeArticleOnBackdrop(event) {
   }
 }
 
-// ========================================
-// Modal Keyboard Navigation and Focus Trap
-// ========================================
-document.addEventListener('keydown', function (event) {
-  const modal = document.getElementById('article-modal');
-  const isModalOpen = !modal.classList.contains('hidden');
-
-  // Close modal with ESC
-  if (event.key === 'Escape' && isModalOpen) {
+// Fechar modal com ESC
+document.addEventListener('keydown', function(event) {
+  if (event.key === 'Escape') {
     closeArticle();
-    return;
-  }
-
-  // Focus trap
-  if (event.key === 'Tab' && isModalOpen) {
-    if (focusableElements.length === 0) return;
-
-    if (event.shiftKey) {
-      // Shift + Tab
-      if (document.activeElement === firstFocusableElement) {
-        event.preventDefault();
-        lastFocusableElement.focus();
-      }
-    } else {
-      // Tab
-      if (document.activeElement === lastFocusableElement) {
-        event.preventDefault();
-        firstFocusableElement.focus();
-      }
-    }
   }
 });
 
