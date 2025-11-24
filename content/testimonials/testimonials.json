@@ -1,0 +1,47 @@
+[
+  {
+    "id": "testimonial-1",
+    "author": "Maria Silva",
+    "role": "Cliente de Direito da Família",
+    "quote": "O Dr. João Lobo foi excepcional no meu processo de divórcio. Sempre atento, profissional e empático. Recomendo vivamente os seus serviços.",
+    "rating": 5,
+    "date": "2024-10-15",
+    "verified": true
+  },
+  {
+    "id": "testimonial-2",
+    "author": "Carlos Mendes",
+    "role": "Empresário - Direito Comercial",
+    "quote": "Excelente assessoria jurídica na constituição da minha empresa. O escritório demonstrou grande conhecimento em direito comercial e fiscal.",
+    "rating": 5,
+    "date": "2024-09-22",
+    "verified": true
+  },
+  {
+    "id": "testimonial-3",
+    "author": "Ana Costa",
+    "role": "Cliente de Direito Imobiliário",
+    "quote": "Profissionalismo e dedicação na compra da minha casa. Todos os aspetos legais foram tratados com rigor e transparência.",
+    "rating": 5,
+    "date": "2024-11-05",
+    "verified": true
+  },
+  {
+    "id": "testimonial-4",
+    "author": "Pedro Santos",
+    "role": "Cliente de Direito Civil",
+    "quote": "Fiquei muito satisfeito com o acompanhamento do meu processo. O Dr. João Lobo é um advogado dedicado e competente.",
+    "rating": 5,
+    "date": "2024-08-30",
+    "verified": true
+  },
+  {
+    "id": "testimonial-5",
+    "author": "Rita Fernandes",
+    "role": "Cliente de Direito Penal",
+    "quote": "Representação legal impecável. Sentimo-nos sempre apoiados e bem informados durante todo o processo.",
+    "rating": 5,
+    "date": "2024-07-18",
+    "verified": true
+  }
+]
