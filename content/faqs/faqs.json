@@ -1,0 +1,72 @@
+[
+  {
+    "id": "faq-1",
+    "category": "Geral",
+    "question": "Que áreas de direito praticam?",
+    "answer": "O nosso escritório atua em diversas áreas, incluindo Direito Civil, Direito Comercial, Direito Penal, Direito da Família, Direito Imobiliário e Direito Internacional. Temos vasta experiência em cada uma destas áreas.",
+    "order": 1
+  },
+  {
+    "id": "faq-2",
+    "category": "Geral",
+    "question": "Como posso marcar uma consulta?",
+    "answer": "Pode marcar uma consulta através do nosso formulário de contacto online, por telefone (+351 915 964 547) ou por email (joaojlobo@hotmail.com). Respondemos no prazo máximo de 24 horas.",
+    "order": 2
+  },
+  {
+    "id": "faq-3",
+    "category": "Serviços",
+    "question": "Quanto custa uma consulta jurídica?",
+    "answer": "O valor da primeira consulta varia consoante a complexidade do caso. Entre em contacto connosco para um orçamento personalizado. A primeira consulta de avaliação pode ser realizada sem custos, dependendo da situação.",
+    "order": 3
+  },
+  {
+    "id": "faq-4",
+    "category": "Serviços",
+    "question": "Fazem acompanhamento de processos à distância?",
+    "answer": "Sim, fazemos acompanhamento remoto através de videoconferência, email e telefone. Mantemos os clientes sempre informados sobre a evolução dos seus processos.",
+    "order": 4
+  },
+  {
+    "id": "faq-5",
+    "category": "Processos",
+    "question": "Quanto tempo demora um processo judicial?",
+    "answer": "O tempo de duração varia conforme a natureza e complexidade do processo. Processos civis podem demorar entre 6 meses a 2 anos, enquanto processos penais variam bastante. Providenciamos sempre uma estimativa realista no início.",
+    "order": 5
+  },
+  {
+    "id": "faq-6",
+    "category": "Processos",
+    "question": "Posso acompanhar o estado do meu processo?",
+    "answer": "Sim, mantemos os nossos clientes constantemente informados. Pode contactar-nos a qualquer momento para obter atualizações sobre o seu processo.",
+    "order": 6
+  },
+  {
+    "id": "faq-7",
+    "category": "Pagamento",
+    "question": "Quais são as formas de pagamento aceites?",
+    "answer": "Aceitamos transferência bancária, MBWay e pagamento em numerário. Em casos específicos, podemos negociar planos de pagamento adaptados à situação do cliente.",
+    "order": 7
+  },
+  {
+    "id": "faq-8",
+    "category": "Pagamento",
+    "question": "Existe apoio judiciário disponível?",
+    "answer": "Sim, podemos ajudar no pedido de apoio judiciário para clientes que reúnam os requisitos legais. Este sistema permite acesso à justiça com custos reduzidos ou gratuitos.",
+    "order": 8
+  },
+  {
+    "id": "faq-9",
+    "category": "Direito da Família",
+    "question": "Como funciona um processo de divórcio?",
+    "answer": "O divórcio pode ser por mútuo consentimento (mais rápido e simples) ou litigioso. Acompanhamos todo o processo, desde a preparação da documentação até à decisão final, sempre procurando a melhor solução para o cliente.",
+    "order": 9
+  },
+  {
+    "id": "faq-10",
+    "category": "Direito Imobiliário",
+    "question": "Precisode advogado para comprar casa?",
+    "answer": "Embora não seja obrigatório, é altamente recomendável ter assessoria jurídica na compra de imóveis. Verificamos toda a documentação, asseguramos que não existem ónus ou encargos ocultos e protegemos os seus interesses na transação.",
+    "order": 10
+  }
+]
