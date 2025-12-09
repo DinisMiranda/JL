@@ -56,6 +56,53 @@
   transform: translateY(-8.75px) rotate(-45deg);
 }
 
+/* Ensure hamburger button is clickable and above other elements */
+.hamburger-button,
+#mobile-menu-button {
+  z-index: 100;
+  /* position is controlled by Tailwind classes (absolute top-4 right-4) */
+  cursor: pointer;
+  -webkit-tap-highlight-color: transparent;
+  touch-action: manipulation;
+}
+
+/* ========================================
+   DESKTOP NAVIGATION STYLES
+   ======================================== */
+
+/* Ensure navigation links don't have permanent active states */
+#main-nav a {
+  background-color: transparent !important;
+  transition: background-color 0.1s ease-in-out !important;
+  color: inherit !important;
+}
+
+#main-nav a:hover,
+#main-nav a:focus {
+  background-color: rgba(255, 255, 255, 0.2) !important;
+  color: #ffffff !important;
+}
+
+#main-nav a:active {
+  background-color: rgba(255, 255, 255, 0.3) !important;
+  color: #ffffff !important;
+}
+
+/* Remove any active states that might be applied */
+#main-nav a.active,
+#main-nav a[aria-current="page"],
+#main-nav a[aria-current] {
+  background-color: transparent !important;
+  color: inherit !important;
+}
+
+#main-nav a.active:hover,
+#main-nav a[aria-current="page"]:hover,
+#main-nav a[aria-current]:hover {
+  background-color: rgba(255, 255, 255, 0.2) !important;
+  color: #ffffff !important;
+}
+
 /* Hover effect for hamburger (non-touch devices) */
 @media (hover: hover) and (pointer: fine) {
   .hamburger-button:hover .hamburger-icon {
@@ -83,19 +130,23 @@
 }
 
 .mobile-nav:not(.hidden) {
+  display: block !important;
   max-height: 600px;
   opacity: 1;
   transform: translateY(0);
+  z-index: 50;
+  position: relative;
 }
 
 /* Enhanced stagger animation for mobile nav items with bounce */
 .mobile-nav a {
   opacity: 0;
   transform: translateX(-25px) scale(0.95);
-  transition: opacity 0.35s cubic-bezier(0.34, 1.56, 0.64, 1),
-              transform 0.35s cubic-bezier(0.34, 1.56, 0.64, 1),
-              background-color 0.2s ease;
+  transition: opacity 0.2s ease-in-out,
+              transform 0.2s ease-in-out,
+              background-color 0.1s ease-in-out !important;
   will-change: opacity, transform;
+  background-color: transparent !important;
 }
 
 .mobile-nav:not(.hidden) a {
@@ -112,10 +163,33 @@
 .mobile-nav:not(.hidden) a:nth-child(6) { transition-delay: 0.25s; }
 .mobile-nav:not(.hidden) a:nth-child(7) { transition-delay: 0.29s; }
 
-/* Active state enhancement for mobile nav links */
+/* Hover and focus states - only active on interaction */
+.mobile-nav a:hover {
+  background-color: rgba(255, 255, 255, 0.2) !important;
+}
+
+.mobile-nav a:focus {
+  background-color: rgba(255, 255, 255, 0.2) !important;
+  outline: 2px solid rgba(255, 255, 255, 0.5);
+  outline-offset: 2px;
+}
+
+/* Active state - only when actually clicking/touching */
 .mobile-nav a:active {
   transform: translateX(0) scale(0.98);
-  background-color: rgba(255, 255, 255, 0.25) !important;
+  background-color: rgba(255, 255, 255, 0.3) !important;
+}
+
+/* Remove focus after click to prevent permanent active state */
+.mobile-nav a:focus:not(:hover) {
+  background-color: transparent !important;
+}
+
+/* Ensure no permanent active states */
+.mobile-nav a.active,
+.mobile-nav a[aria-current],
+.mobile-nav a[aria-current="page"] {
+  background-color: transparent !important;
 }
 
 /* ========================================

@@ -39,27 +39,39 @@ const mobileMenuButton = document.getElementById('mobile-menu-button');
 const mobileNav = document.getElementById('mobile-nav');
 
 if (mobileMenuButton && mobileNav) {
-  // Toggle menu with proper ARIA attributes and animations
-  mobileMenuButton.addEventListener('click', () => {
-    const isHidden = mobileNav.classList.toggle('hidden');
-    const isExpanded = !isHidden;
-
-    // Toggle hamburger animation
-    mobileMenuButton.classList.toggle('active', isExpanded);
-
-    mobileMenuButton.setAttribute('aria-expanded', isExpanded);
-    mobileMenuButton.setAttribute('aria-label', isExpanded ? 'Fechar menu de navegação' : 'Abrir menu de navegação');
-
-    // Announce to screen readers
-    announceToScreenReader(isExpanded ? 'Menu aberto' : 'Menu fechado');
-
-    // Focus first link when opening
-    if (isExpanded) {
-      const firstLink = mobileNav.querySelector('a');
-      if (firstLink) {
-        setTimeout(() => firstLink.focus(), 100);
-      }
+  // Function to toggle menu
+  const toggleMenu = (e) => {
+    if (e) {
+      e.preventDefault();
+      e.stopPropagation();
     }
+    
+    const isCurrentlyHidden = mobileNav.classList.contains('hidden');
+    
+    if (isCurrentlyHidden) {
+      // Open menu
+      mobileNav.classList.remove('hidden');
+      mobileMenuButton.classList.add('active');
+      mobileMenuButton.setAttribute('aria-expanded', 'true');
+      mobileMenuButton.setAttribute('aria-label', 'Fechar menu de navegação');
+      announceToScreenReader('Menu aberto');
+      
+      // Don't auto-focus first link to avoid permanent active state
+    } else {
+      // Close menu
+      mobileNav.classList.add('hidden');
+      mobileMenuButton.classList.remove('active');
+      mobileMenuButton.setAttribute('aria-expanded', 'false');
+      mobileMenuButton.setAttribute('aria-label', 'Abrir menu de navegação');
+      announceToScreenReader('Menu fechado');
+    }
+  };
+
+  // Add multiple event listeners for better mobile support
+  mobileMenuButton.addEventListener('click', toggleMenu);
+  mobileMenuButton.addEventListener('touchend', (e) => {
+    e.preventDefault();
+    toggleMenu(e);
   });
 
   // Close mobile menu when clicking on a link

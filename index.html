@@ -292,8 +292,8 @@
     </a>
 
     <!-- Header -->
-    <header role="banner" class="bg-primary text-white sticky top-0 z-50 shadow-lg">
-      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <header role="banner" class="bg-primary text-white sticky top-0 z-50 shadow-lg relative">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative">
         <div class="flex flex-col md:flex-row md:items-center md:justify-between py-4">
           <div class="mb-4 md:mb-0">
             <div class="text-xl md:text-2xl font-bold uppercase tracking-wide">João Lobo Advogados</div>
@@ -307,6 +307,7 @@
             aria-label="Abrir menu de navegação"
             aria-expanded="false"
             aria-controls="mobile-nav"
+            style="position: absolute !important; top: 1rem !important; right: 1rem !important;"
           >
             <div class="hamburger-icon">
               <span class="hamburger-line"></span>
@@ -317,26 +318,26 @@
 
           <!-- Navigation -->
           <nav id="main-nav" role="navigation" aria-label="Navegação principal" class="hidden md:flex md:items-center md:space-x-1">
-            <a href="#sobre-nos" class="px-4 py-2 rounded-full hover:bg-white/20 transition-all duration-200 text-sm md:text-base">Sobre Nós</a>
-            <a href="#areas-pratica" class="px-4 py-2 rounded-full hover:bg-white/20 transition-all duration-200 text-sm md:text-base">Áreas de Prática</a>
-            <a href="#equipa" class="px-4 py-2 rounded-full hover:bg-white/20 transition-all duration-200 text-sm md:text-base">Equipa</a>
-            <a href="#homenagens" class="px-4 py-2 rounded-full hover:bg-white/20 transition-all duration-200 text-sm md:text-base">Homenagens</a>
-            <a href="#publicacoes" class="px-4 py-2 rounded-full hover:bg-white/20 transition-all duration-200 text-sm md:text-base">Publicações</a>
-            <a href="#legislacao" class="px-4 py-2 rounded-full hover:bg-white/20 transition-all duration-200 text-sm md:text-base">Legislação</a>
-            <a href="#contacto" class="px-4 py-2 rounded-full hover:bg-white/20 transition-all duration-200 text-sm md:text-base">Contacto</a>
+            <a href="#sobre-nos" class="px-4 py-2 rounded-full text-sm md:text-base">Sobre Nós</a>
+            <a href="#areas-pratica" class="px-4 py-2 rounded-full text-sm md:text-base">Áreas de Prática</a>
+            <a href="#equipa" class="px-4 py-2 rounded-full text-sm md:text-base">Equipa</a>
+            <a href="#homenagens" class="px-4 py-2 rounded-full text-sm md:text-base">Homenagens</a>
+            <a href="#publicacoes" class="px-4 py-2 rounded-full text-sm md:text-base">Publicações</a>
+            <a href="#legislacao" class="px-4 py-2 rounded-full text-sm md:text-base">Legislação</a>
+            <a href="#contacto" class="px-4 py-2 rounded-full text-sm md:text-base">Contacto</a>
           </nav>
         </div>
         
         <!-- Mobile Navigation -->
         <nav id="mobile-nav" role="navigation" aria-label="Navegação principal móvel" class="mobile-nav hidden md:hidden pb-4">
           <div class="flex flex-col space-y-2" role="list">
-            <a href="#sobre-nos" class="px-4 py-2 rounded-lg hover:bg-white/20 focus:bg-white/20 focus:outline-none focus:ring-2 focus:ring-white/50 transition-all duration-200 min-h-[44px] flex items-center" role="listitem">Sobre Nós</a>
-            <a href="#areas-pratica" class="px-4 py-2 rounded-lg hover:bg-white/20 focus:bg-white/20 focus:outline-none focus:ring-2 focus:ring-white/50 transition-all duration-200 min-h-[44px] flex items-center" role="listitem">Áreas de Prática</a>
-            <a href="#equipa" class="px-4 py-2 rounded-lg hover:bg-white/20 focus:bg-white/20 focus:outline-none focus:ring-2 focus:ring-white/50 transition-all duration-200 min-h-[44px] flex items-center" role="listitem">Equipa</a>
-            <a href="#homenagens" class="px-4 py-2 rounded-lg hover:bg-white/20 focus:bg-white/20 focus:outline-none focus:ring-2 focus:ring-white/50 transition-all duration-200 min-h-[44px] flex items-center" role="listitem">Homenagens</a>
-            <a href="#publicacoes" class="px-4 py-2 rounded-lg hover:bg-white/20 focus:bg-white/20 focus:outline-none focus:ring-2 focus:ring-white/50 transition-all duration-200 min-h-[44px] flex items-center" role="listitem">Publicações</a>
-            <a href="#legislacao" class="px-4 py-2 rounded-lg hover:bg-white/20 focus:bg-white/20 focus:outline-none focus:ring-2 focus:ring-white/50 transition-all duration-200 min-h-[44px] flex items-center" role="listitem">Legislação</a>
-            <a href="#contacto" class="px-4 py-2 rounded-lg hover:bg-white/20 focus:bg-white/20 focus:outline-none focus:ring-2 focus:ring-white/50 transition-all duration-200 min-h-[44px] flex items-center" role="listitem">Contacto</a>
+            <a href="#sobre-nos" class="px-4 py-2 rounded-lg min-h-[44px] flex items-center" role="listitem">Sobre Nós</a>
+            <a href="#areas-pratica" class="px-4 py-2 rounded-lg min-h-[44px] flex items-center" role="listitem">Áreas de Prática</a>
+            <a href="#equipa" class="px-4 py-2 rounded-lg min-h-[44px] flex items-center" role="listitem">Equipa</a>
+            <a href="#homenagens" class="px-4 py-2 rounded-lg min-h-[44px] flex items-center" role="listitem">Homenagens</a>
+            <a href="#publicacoes" class="px-4 py-2 rounded-lg min-h-[44px] flex items-center" role="listitem">Publicações</a>
+            <a href="#legislacao" class="px-4 py-2 rounded-lg min-h-[44px] flex items-center" role="listitem">Legislação</a>
+            <a href="#contacto" class="px-4 py-2 rounded-lg min-h-[44px] flex items-center" role="listitem">Contacto</a>
           </div>
         </nav>
       </div>
@@ -723,17 +724,17 @@
               <h2 id="contacto-heading" class="text-3xl md:text-4xl font-serif font-bold text-gray-900 mb-8">Contacte-nos</h2>
               <address class="not-italic">
                 <ul class="space-y-4">
-                  <li class="flex items-start">
-                    <strong class="text-gray-900 min-w-[100px]">Localização:</strong>
-                    <a href="https://share.google/HmW6ii9wWLrkelc5t" target="_blank" rel="noopener noreferrer" class="text-primary hover:text-secondary focus:text-secondary focus:outline-none focus:ring-2 focus:ring-primary/50 rounded font-semibold transition-colors duration-200 min-h-[44px] inline-flex items-center" aria-label="Ver localização no Google Maps (abre em nova janela)">Rua Justino Cruz, Braga, Portugal</a>
+                  <li class="flex items-center gap-4">
+                    <strong class="text-gray-900 w-[120px] flex-shrink-0">Localização:</strong>
+                    <a href="https://share.google/HmW6ii9wWLrkelc5t" target="_blank" rel="noopener noreferrer" class="text-primary hover:text-secondary focus:text-secondary focus:outline-none focus:ring-2 focus:ring-primary/50 rounded font-semibold transition-colors duration-200 min-h-[44px] flex items-center" aria-label="Ver localização no Google Maps (abre em nova janela)">Rua Justino Cruz, Braga, Portugal</a>
                   </li>
-                  <li class="flex items-start">
-                    <strong class="text-gray-900 min-w-[100px]">Telefone:</strong>
-                    <a href="tel:+351915964547" class="text-primary hover:text-secondary focus:text-secondary focus:outline-none focus:ring-2 focus:ring-primary/50 rounded font-semibold transition-colors duration-200 min-h-[44px] inline-flex items-center" aria-label="Ligar para +351 915 964 547">+351 915 964 547</a>
+                  <li class="flex items-center gap-4">
+                    <strong class="text-gray-900 w-[120px] flex-shrink-0">Telefone:</strong>
+                    <a href="tel:+351915964547" class="text-primary hover:text-secondary focus:text-secondary focus:outline-none focus:ring-2 focus:ring-primary/50 rounded font-semibold transition-colors duration-200 min-h-[44px] flex items-center" aria-label="Ligar para +351 915 964 547">+351 915 964 547</a>
                   </li>
-                  <li class="flex items-start">
-                    <strong class="text-gray-900 min-w-[100px]">Email:</strong>
-                    <a href="mailto:joaojlobo@hotmail.com" class="text-primary hover:text-secondary focus:text-secondary focus:outline-none focus:ring-2 focus:ring-primary/50 rounded font-semibold transition-colors duration-200 break-all min-h-[44px] inline-flex items-center" aria-label="Enviar email para joaojlobo@hotmail.com">joaojlobo@hotmail.com</a>
+                  <li class="flex items-center gap-4">
+                    <strong class="text-gray-900 w-[120px] flex-shrink-0">Email:</strong>
+                    <a href="mailto:joaojlobo@hotmail.com" class="text-primary hover:text-secondary focus:text-secondary focus:outline-none focus:ring-2 focus:ring-primary/50 rounded font-semibold transition-colors duration-200 break-all min-h-[44px] flex items-center" aria-label="Enviar email para joaojlobo@hotmail.com">joaojlobo@hotmail.com</a>
                   </li>
                 </ul>
               </address>
