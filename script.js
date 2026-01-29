@@ -35,31 +35,35 @@ function announceToScreenReader(message, priority = 'polite') {
 // ========================================
 // JavaScript para Menu Mobile (Enhanced for Accessibility & Touch)
 // ========================================
-const mobileMenuButton = document.getElementById('mobile-menu-button');
-const mobileNav = document.getElementById('mobile-nav');
+// Evitar que touchend + click duplo fechem o menu logo a seguir (mobile)
+let menuLastTouchEnd = 0;
+const MENU_CLICK_IGNORE_MS = 400;
 
-if (mobileMenuButton && mobileNav) {
+function initMobileMenu() {
+  const mobileMenuButton = document.getElementById('mobile-menu-button');
+  const mobileNav = document.getElementById('mobile-nav');
+
+  if (!mobileMenuButton || !mobileNav) return;
+
   // Function to toggle menu
   const toggleMenu = (e) => {
     if (e) {
       e.preventDefault();
       e.stopPropagation();
     }
-    
-    const isCurrentlyHidden = mobileNav.classList.contains('hidden');
-    
-    if (isCurrentlyHidden) {
-      // Open menu
-      mobileNav.classList.remove('hidden');
+
+    const isClosed = mobileNav.classList.contains('is-closed');
+
+    if (isClosed) {
+      // Abrir menu (transição no CSS)
+      mobileNav.classList.remove('is-closed');
       mobileMenuButton.classList.add('active');
       mobileMenuButton.setAttribute('aria-expanded', 'true');
       mobileMenuButton.setAttribute('aria-label', 'Fechar menu de navegação');
       announceToScreenReader('Menu aberto');
-      
-      // Don't auto-focus first link to avoid permanent active state
     } else {
-      // Close menu
-      mobileNav.classList.add('hidden');
+      // Fechar menu (transição no CSS)
+      mobileNav.classList.add('is-closed');
       mobileMenuButton.classList.remove('active');
       mobileMenuButton.setAttribute('aria-expanded', 'false');
       mobileMenuButton.setAttribute('aria-label', 'Abrir menu de navegação');
@@ -67,18 +71,28 @@ if (mobileMenuButton && mobileNav) {
     }
   };
 
-  // Add multiple event listeners for better mobile support
-  mobileMenuButton.addEventListener('click', toggleMenu);
-  mobileMenuButton.addEventListener('touchend', (e) => {
-    e.preventDefault();
+  mobileMenuButton.addEventListener('click', (e) => {
+    // Em dispositivos touch, o browser emite click ~300ms após touchend.
+    // Ignorar esse click para não fechar o menu logo após abrir.
+    if (Date.now() - menuLastTouchEnd < MENU_CLICK_IGNORE_MS) {
+      e.preventDefault();
+      e.stopPropagation();
+      return;
+    }
     toggleMenu(e);
   });
+
+  mobileMenuButton.addEventListener('touchend', (e) => {
+    menuLastTouchEnd = Date.now();
+    e.preventDefault();
+    toggleMenu(e);
+  }, { passive: false });
 
   // Close mobile menu when clicking on a link
   const mobileLinks = mobileNav.querySelectorAll('a');
   mobileLinks.forEach(link => {
     link.addEventListener('click', () => {
-      mobileNav.classList.add('hidden');
+      mobileNav.classList.add('is-closed');
       mobileMenuButton.classList.remove('active');
       mobileMenuButton.setAttribute('aria-expanded', 'false');
       mobileMenuButton.setAttribute('aria-label', 'Abrir menu de navegação');
@@ -89,7 +103,7 @@ if (mobileMenuButton && mobileNav) {
   // Close menu with Escape key
   mobileNav.addEventListener('keydown', (e) => {
     if (e.key === 'Escape') {
-      mobileNav.classList.add('hidden');
+      mobileNav.classList.add('is-closed');
       mobileMenuButton.classList.remove('active');
       mobileMenuButton.setAttribute('aria-expanded', 'false');
       mobileMenuButton.setAttribute('aria-label', 'Abrir menu de navegação');
@@ -97,6 +111,13 @@ if (mobileMenuButton && mobileNav) {
       announceToScreenReader('Menu fechado');
     }
   });
+}
+
+// Inicializar menu quando o DOM estiver pronto
+if (document.readyState === 'loading') {
+  document.addEventListener('DOMContentLoaded', initMobileMenu);
+} else {
+  initMobileMenu();
 }
 
 // ========================================
@@ -113,18 +134,21 @@ function handleSwipeGesture() {
   const diffX = touchEndX - touchStartX;
   const diffY = touchEndY - touchStartY;
 
+  const mobileNavEl = document.getElementById('mobile-nav');
+  const mobileMenuBtn = document.getElementById('mobile-menu-button');
+
   // Check if horizontal swipe is more significant than vertical
   if (Math.abs(diffX) > Math.abs(diffY)) {
     // Swipe right to open menu (from left edge)
     if (diffX > minSwipeDistance && touchStartX < 50) {
-      if (mobileNav && mobileNav.classList.contains('hidden')) {
-        mobileMenuButton.click();
+      if (mobileNavEl && mobileNavEl.classList.contains('is-closed') && mobileMenuBtn) {
+        mobileMenuBtn.click();
       }
     }
     // Swipe left to close menu
     else if (diffX < -minSwipeDistance) {
-      if (mobileNav && !mobileNav.classList.contains('hidden')) {
-        mobileMenuButton.click();
+      if (mobileNavEl && !mobileNavEl.classList.contains('is-closed') && mobileMenuBtn) {
+        mobileMenuBtn.click();
       }
     }
   }
@@ -218,8 +242,10 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
       e.preventDefault();
 
       // Close mobile menu if open
-      if (mobileNav && !mobileNav.classList.contains('hidden')) {
-        mobileMenuButton.click();
+      const mobileNavEl = document.getElementById('mobile-nav');
+      const mobileMenuBtn = document.getElementById('mobile-menu-button');
+      if (mobileNavEl && !mobileNavEl.classList.contains('is-closed') && mobileMenuBtn) {
+        mobileMenuBtn.click();
       }
 
       // Smooth scroll with offset for sticky header
@@ -1012,6 +1038,11 @@ function closeArticleOnBackdrop(event) {
     closeArticle();
   }
 }
+
+// Expor funções globalmente para onclick no HTML
+window.openArticle = openArticle;
+window.closeArticle = closeArticle;
+window.closeArticleOnBackdrop = closeArticleOnBackdrop;
 
 // ========================================
 // Modal Keyboard Navigation and Focus Trap

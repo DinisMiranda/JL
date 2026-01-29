@@ -119,21 +119,24 @@
    ======================================== */
 
 .mobile-nav {
+  display: block;
   max-height: 0;
   overflow: hidden;
   opacity: 0;
   transform: translateY(-10px);
+  pointer-events: none;
   transition: max-height 0.5s cubic-bezier(0.4, 0, 0.2, 1),
               opacity 0.35s ease-in-out,
               transform 0.35s cubic-bezier(0.34, 1.56, 0.64, 1);
   will-change: max-height, opacity, transform;
 }
 
-.mobile-nav:not(.hidden) {
-  display: block !important;
+/* Estado aberto: transição visível (não usar .hidden para não perder a animação) */
+.mobile-nav:not(.is-closed) {
   max-height: 600px;
   opacity: 1;
   transform: translateY(0);
+  pointer-events: auto;
   z-index: 50;
   position: relative;
 }
@@ -149,33 +152,33 @@
   background-color: transparent !important;
 }
 
-.mobile-nav:not(.hidden) a {
+.mobile-nav:not(.is-closed) a {
   opacity: 1;
   transform: translateX(0) scale(1);
 }
 
 /* Staggered delays with smooth cascade effect */
-.mobile-nav:not(.hidden) a:nth-child(1) { transition-delay: 0.05s; }
-.mobile-nav:not(.hidden) a:nth-child(2) { transition-delay: 0.09s; }
-.mobile-nav:not(.hidden) a:nth-child(3) { transition-delay: 0.13s; }
-.mobile-nav:not(.hidden) a:nth-child(4) { transition-delay: 0.17s; }
-.mobile-nav:not(.hidden) a:nth-child(5) { transition-delay: 0.21s; }
-.mobile-nav:not(.hidden) a:nth-child(6) { transition-delay: 0.25s; }
-.mobile-nav:not(.hidden) a:nth-child(7) { transition-delay: 0.29s; }
+.mobile-nav:not(.is-closed) a:nth-child(1) { transition-delay: 0.05s; }
+.mobile-nav:not(.is-closed) a:nth-child(2) { transition-delay: 0.09s; }
+.mobile-nav:not(.is-closed) a:nth-child(3) { transition-delay: 0.13s; }
+.mobile-nav:not(.is-closed) a:nth-child(4) { transition-delay: 0.17s; }
+.mobile-nav:not(.is-closed) a:nth-child(5) { transition-delay: 0.21s; }
+.mobile-nav:not(.is-closed) a:nth-child(6) { transition-delay: 0.25s; }
+.mobile-nav:not(.is-closed) a:nth-child(7) { transition-delay: 0.29s; }
 
 /* Hover and focus states - only active on interaction */
-.mobile-nav a:hover {
+.mobile-nav:not(.is-closed) a:hover {
   background-color: rgba(255, 255, 255, 0.2) !important;
 }
 
-.mobile-nav a:focus {
+.mobile-nav:not(.is-closed) a:focus {
   background-color: rgba(255, 255, 255, 0.2) !important;
   outline: 2px solid rgba(255, 255, 255, 0.5);
   outline-offset: 2px;
 }
 
 /* Active state - only when actually clicking/touching */
-.mobile-nav a:active {
+.mobile-nav:not(.is-closed) a:active {
   transform: translateX(0) scale(0.98);
   background-color: rgba(255, 255, 255, 0.3) !important;
 }

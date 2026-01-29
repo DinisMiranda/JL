@@ -328,8 +328,8 @@
           </nav>
         </div>
         
-        <!-- Mobile Navigation -->
-        <nav id="mobile-nav" role="navigation" aria-label="Navegação principal móvel" class="mobile-nav hidden md:hidden pb-4">
+        <!-- Mobile Navigation (is-closed permite transição ao abrir/fechar; md:hidden esconde em desktop) -->
+        <nav id="mobile-nav" role="navigation" aria-label="Navegação principal móvel" class="mobile-nav is-closed md:hidden pb-4">
           <div class="flex flex-col space-y-2" role="list">
             <a href="#sobre-nos" class="px-4 py-2 rounded-lg min-h-[44px] flex items-center" role="listitem">Sobre Nós</a>
             <a href="#areas-pratica" class="px-4 py-2 rounded-lg min-h-[44px] flex items-center" role="listitem">Áreas de Prática</a>
@@ -846,7 +846,7 @@
     <!-- Modal para Artigos -->
     <div
       id="article-modal"
-      class="hidden fixed inset-0 bg-black/50 z-50 flex items-center justify-center p-4"
+      class="hidden fixed inset-0 bg-black/50 z-[100] flex items-center justify-center p-4"
       role="dialog"
       aria-modal="true"
       aria-labelledby="modal-title"

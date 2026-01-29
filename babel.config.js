@@ -2,7 +2,7 @@
  * Babel Configuration for Jest
  */
 
-module.exports = {
+export default {
   presets: [
     ['@babel/preset-env', {
       targets: {

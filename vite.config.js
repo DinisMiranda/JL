@@ -68,7 +68,7 @@ export default defineConfig({
     assetsInlineLimit: 4096, // Inline assets smaller than 4kb
   },
   server: {
-    port: 3000,
+    port: 5175,
     open: true,
     host: true,
     cors: true,

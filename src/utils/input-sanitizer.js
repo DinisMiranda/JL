@@ -10,9 +10,15 @@
 export function encodeHTML(str) {
   if (typeof str !== 'string') return str;
 
-  const div = document.createElement('div');
-  div.textContent = str;
-  return div.innerHTML;
+  const htmlEntities = {
+    '&': '&amp;',
+    '<': '&lt;',
+    '>': '&gt;',
+    '"': '&quot;',
+    "'": '&#x27;',
+    '/': '&#x2F;',
+  };
+  return str.replace(/[&<>"'/]/g, (char) => htmlEntities[char]);
 }
 
 /**
@@ -28,14 +34,16 @@ export function decodeHTML(str) {
 
 /**
  * Strip HTML Tags
- * Removes all HTML tags from input
+ * Removes all HTML tags from input (including script tags and their content)
  */
 export function stripHTML(str) {
   if (typeof str !== 'string') return str;
 
-  const div = document.createElement('div');
-  div.innerHTML = str;
-  return div.textContent || div.innerText || '';
+  // Remove script tags and their content first
+  let result = str.replace(/<script\b[^<]*(?:(?!<\/script>)<[^<]*)*<\/script>/gi, '');
+  // Remove remaining HTML tags
+  result = result.replace(/<[^>]*>/g, '');
+  return result;
 }
 
 /**
@@ -205,6 +213,15 @@ export function sanitizeInput(value, options = {}) {
   if (!allowNewlines) {
     value = value.replace(/[\r\n]/g, ' ');
   }
+
+  // Remove SQL injection patterns
+  const sqlPatterns = [
+    /\b(SELECT|INSERT|UPDATE|DELETE|DROP|CREATE|ALTER|EXEC|EXECUTE|UNION|DECLARE)\b/gi,
+    /(--|;|\/\*|\*\/)/g,
+  ];
+  sqlPatterns.forEach((pattern) => {
+    value = value.replace(pattern, '');
+  });
 
   return value;
 }

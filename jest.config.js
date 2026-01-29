@@ -42,7 +42,7 @@ export default {
   ],
 
   // Coverage thresholds
-  coverageThresholds: {
+  coverageThreshold: {
     global: {
       branches: 70,
       functions: 70,
@@ -69,11 +69,12 @@ export default {
   // Reset mocks between tests
   resetMocks: true,
 
-  // Ignore patterns
+  // Ignore patterns (E2E tests run with Playwright, not Jest)
   testPathIgnorePatterns: [
     '/node_modules/',
     '/dist/',
     '/coverage/',
+    '/tests/e2e/',
   ],
 
   // Watch plugins

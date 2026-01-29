@@ -172,7 +172,15 @@ export function sanitizeString(str, options = {}) {
  * Sanitize Object (recursively sanitize all string values)
  */
 export function sanitizeObject(obj, options = {}) {
-  if (typeof obj !== 'object' || obj === null) {
+  if (obj === null || obj === undefined) {
+    return obj;
+  }
+
+  if (typeof obj === 'string') {
+    return sanitizeString(obj, options);
+  }
+
+  if (typeof obj !== 'object') {
     return obj;
   }
 

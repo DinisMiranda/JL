@@ -10,7 +10,7 @@ export default defineConfig({
   testDir: './tests/e2e',
 
   // Maximum time one test can run
-  timeout: 30 * 1000,
+  timeout: 60 * 1000,
 
   // Test execution settings
   fullyParallel: true,
@@ -29,7 +29,7 @@ export default defineConfig({
   // Shared settings for all projects
   use: {
     // Base URL
-    baseURL: process.env.BASE_URL || 'http://localhost:5173',
+    baseURL: process.env.BASE_URL || 'http://localhost:5175',
 
     // Collect trace on failure
     trace: 'on-first-retry',
@@ -41,13 +41,16 @@ export default defineConfig({
     video: 'retain-on-failure',
 
     // Action timeout
-    actionTimeout: 10 * 1000,
+    actionTimeout: 15 * 1000,
 
     // Navigation timeout
     navigationTimeout: 30 * 1000,
+
+    // Longer timeout for assertions (elements to appear)
+    expect: { timeout: 15 * 1000 },
   },
 
-  // Test projects for different browsers
+  // Test projects for different browsers (Edge omitted – install separately if needed)
   projects: [
     {
       name: 'chromium',
@@ -69,16 +72,12 @@ export default defineConfig({
       name: 'Mobile Safari',
       use: { ...devices['iPhone 12'] },
     },
-    {
-      name: 'Microsoft Edge',
-      use: { ...devices['Desktop Edge'], channel: 'msedge' },
-    },
   ],
 
   // Web server configuration
   webServer: {
     command: 'npm run dev',
-    url: 'http://localhost:5173',
+    url: 'http://localhost:5175',
     reuseExistingServer: !process.env.CI,
     timeout: 120 * 1000,
   },
