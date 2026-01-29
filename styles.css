@@ -75,40 +75,16 @@ img {
   list-style: none;
 }
 
-.main-nav a,
-#main-nav a {
+.main-nav a {
   padding: 0.5rem 0.75rem;
   border-radius: 999px;
-  transition: background-color 0.1s ease-in-out !important;
-  background-color: transparent !important;
-  color: inherit !important;
+  transition: background-color 0.2s ease, color 0.2s ease;
 }
 
 .main-nav a:hover,
-.main-nav a:focus,
-#main-nav a:hover,
-#main-nav a:focus {
-  background-color: rgba(255, 255, 255, 0.2) !important;
-  color: #ffffff !important;
-}
-
-/* Remove any active states - ensure no link is permanently active */
-.main-nav a.active,
-#main-nav a.active,
-.main-nav a[aria-current],
-#main-nav a[aria-current],
-.main-nav a:active:not(:hover),
-#main-nav a:active:not(:hover) {
-  background-color: transparent !important;
-  color: inherit !important;
-}
-
-.main-nav a.active:hover,
-#main-nav a.active:hover,
-.main-nav a[aria-current]:hover,
-#main-nav a[aria-current]:hover {
-  background-color: rgba(255, 255, 255, 0.2) !important;
-  color: #ffffff !important;
+.main-nav a:focus {
+  background-color: rgba(255, 255, 255, 0.2);
+  color: #ffffff;
 }
 
 .hero {

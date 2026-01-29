@@ -1,0 +1,542 @@
+<testsuites id="" name="" tests="255" failures="0" skipped="0" errors="0" time="70.611326">
+<testsuite name="accessibility.spec.js" timestamp="2026-01-29T22:51:06.373Z" hostname="chromium" tests="22" failures="0" skipped="0" time="15.135" errors="0">
+<testcase name="Accessibility Tests › homepage should not have any automatically detectable accessibility issues" classname="accessibility.spec.js" time="1.108">
+</testcase>
+<testcase name="Accessibility Tests › contact section should be accessible" classname="accessibility.spec.js" time="1.051">
+</testcase>
+<testcase name="Accessibility Tests › navigation should be accessible" classname="accessibility.spec.js" time="1.054">
+</testcase>
+<testcase name="Accessibility Tests › forms should have proper labels" classname="accessibility.spec.js" time="1.062">
+</testcase>
+<testcase name="Accessibility Tests › should have proper heading hierarchy" classname="accessibility.spec.js" time="0.437">
+</testcase>
+<testcase name="Accessibility Tests › should have sufficient color contrast" classname="accessibility.spec.js" time="0.958">
+</testcase>
+<testcase name="Accessibility Tests › images should have alt text" classname="accessibility.spec.js" time="0.427">
+</testcase>
+<testcase name="Accessibility Tests › links should have accessible names" classname="accessibility.spec.js" time="0.439">
+</testcase>
+<testcase name="Accessibility Tests › should have proper ARIA landmarks" classname="accessibility.spec.js" time="0.414">
+</testcase>
+<testcase name="Accessibility Tests › form inputs should have autocomplete attributes" classname="accessibility.spec.js" time="0.428">
+</testcase>
+<testcase name="Keyboard Navigation › should be able to navigate entire page with keyboard" classname="accessibility.spec.js" time="0.439">
+</testcase>
+<testcase name="Keyboard Navigation › should have visible focus indicators" classname="accessibility.spec.js" time="0.415">
+</testcase>
+<testcase name="Keyboard Navigation › should be able to submit form with keyboard" classname="accessibility.spec.js" time="1.451">
+</testcase>
+<testcase name="Keyboard Navigation › should allow closing article view with Escape key" classname="accessibility.spec.js" time="1.745">
+</testcase>
+<testcase name="Screen Reader Compatibility › should have proper document lang attribute" classname="accessibility.spec.js" time="0.412">
+</testcase>
+<testcase name="Screen Reader Compatibility › should have proper page title" classname="accessibility.spec.js" time="0.343">
+</testcase>
+<testcase name="Screen Reader Compatibility › buttons should have accessible names" classname="accessibility.spec.js" time="0.351">
+</testcase>
+<testcase name="Screen Reader Compatibility › should announce form errors to screen readers" classname="accessibility.spec.js" time="0.962">
+</testcase>
+<testcase name="Screen Reader Compatibility › dynamic content should be announced" classname="accessibility.spec.js" time="0.347">
+</testcase>
+<testcase name="Mobile Accessibility › should be accessible on mobile devices" classname="accessibility.spec.js" time="0.583">
+</testcase>
+<testcase name="Mobile Accessibility › touch targets should be large enough" classname="accessibility.spec.js" time="0.345">
+</testcase>
+<testcase name="Mobile Accessibility › should not require horizontal scrolling" classname="accessibility.spec.js" time="0.364">
+</testcase>
+</testsuite>
+<testsuite name="contact-form.spec.js" timestamp="2026-01-29T22:51:06.373Z" hostname="chromium" tests="14" failures="0" skipped="0" time="18.136" errors="0">
+<testcase name="Contact Form › should display contact form" classname="contact-form.spec.js" time="0.374">
+</testcase>
+<testcase name="Contact Form › should have all required fields" classname="contact-form.spec.js" time="0.386">
+</testcase>
+<testcase name="Contact Form › should validate required fields" classname="contact-form.spec.js" time="0.942">
+</testcase>
+<testcase name="Contact Form › should validate email format" classname="contact-form.spec.js" time="0.731">
+</testcase>
+<testcase name="Contact Form › should submit form with valid data" classname="contact-form.spec.js" time="6.096">
+</testcase>
+<testcase name="Contact Form › should sanitize input" classname="contact-form.spec.js" time="0.722">
+</testcase>
+<testcase name="Contact Form › should be accessible via keyboard" classname="contact-form.spec.js" time="0.728">
+</testcase>
+<testcase name="Contact Form › should have proper labels" classname="contact-form.spec.js" time="0.678">
+</testcase>
+<testcase name="Contact Form › should handle phone number field if present" classname="contact-form.spec.js" time="0.595">
+</testcase>
+<testcase name="Contact Form › should show loading state during submission" classname="contact-form.spec.js" time="2.698">
+</testcase>
+<testcase name="Contact Form - Error Handling › should show error for invalid email" classname="contact-form.spec.js" time="1.761">
+</testcase>
+<testcase name="Contact Form - Error Handling › should clear errors when correcting input" classname="contact-form.spec.js" time="1.661">
+</testcase>
+<testcase name="Contact Form - Mobile › should be usable on mobile" classname="contact-form.spec.js" time="0.431">
+</testcase>
+<testcase name="Contact Form - Mobile › should have appropriate input types for mobile" classname="contact-form.spec.js" time="0.333">
+</testcase>
+</testsuite>
+<testsuite name="homepage.spec.js" timestamp="2026-01-29T22:51:06.373Z" hostname="chromium" tests="15" failures="0" skipped="0" time="8.939" errors="0">
+<testcase name="Homepage › should load successfully" classname="homepage.spec.js" time="0.35">
+</testcase>
+<testcase name="Homepage › should have correct meta tags" classname="homepage.spec.js" time="0.367">
+</testcase>
+<testcase name="Homepage › should display navigation" classname="homepage.spec.js" time="0.432">
+</testcase>
+<testcase name="Homepage › should have hero section" classname="homepage.spec.js" time="0.403">
+</testcase>
+<testcase name="Homepage › should scroll to sections when clicking nav links" classname="homepage.spec.js" time="0.889">
+</testcase>
+<testcase name="Homepage › should have services section" classname="homepage.spec.js" time="0.444">
+</testcase>
+<testcase name="Homepage › should have contact section" classname="homepage.spec.js" time="0.435">
+</testcase>
+<testcase name="Homepage › should have footer" classname="homepage.spec.js" time="0.335">
+</testcase>
+<testcase name="Homepage › should be responsive on mobile" classname="homepage.spec.js" time="0.307">
+</testcase>
+<testcase name="Homepage › should load all images" classname="homepage.spec.js" time="2.465">
+</testcase>
+<testcase name="Homepage › should have no console errors" classname="homepage.spec.js" time="0.419">
+</testcase>
+<testcase name="Navigation › should navigate using keyboard" classname="homepage.spec.js" time="0.411">
+</testcase>
+<testcase name="Navigation › should have skip to main content link" classname="homepage.spec.js" time="0.453">
+</testcase>
+<testcase name="Performance › should load within acceptable time" classname="homepage.spec.js" time="0.411">
+</testcase>
+<testcase name="Performance › should have good Core Web Vitals" classname="homepage.spec.js" time="0.818">
+</testcase>
+</testsuite>
+<testsuite name="accessibility.spec.js" timestamp="2026-01-29T22:51:06.373Z" hostname="firefox" tests="22" failures="0" skipped="0" time="32.888" errors="0">
+<testcase name="Accessibility Tests › homepage should not have any automatically detectable accessibility issues" classname="accessibility.spec.js" time="2.665">
+</testcase>
+<testcase name="Accessibility Tests › contact section should be accessible" classname="accessibility.spec.js" time="2.416">
+</testcase>
+<testcase name="Accessibility Tests › navigation should be accessible" classname="accessibility.spec.js" time="3.108">
+</testcase>
+<testcase name="Accessibility Tests › forms should have proper labels" classname="accessibility.spec.js" time="3.267">
+</testcase>
+<testcase name="Accessibility Tests › should have proper heading hierarchy" classname="accessibility.spec.js" time="1.338">
+</testcase>
+<testcase name="Accessibility Tests › should have sufficient color contrast" classname="accessibility.spec.js" time="2.534">
+</testcase>
+<testcase name="Accessibility Tests › images should have alt text" classname="accessibility.spec.js" time="0.959">
+</testcase>
+<testcase name="Accessibility Tests › links should have accessible names" classname="accessibility.spec.js" time="0.954">
+</testcase>
+<testcase name="Accessibility Tests › should have proper ARIA landmarks" classname="accessibility.spec.js" time="0.841">
+</testcase>
+<testcase name="Accessibility Tests › form inputs should have autocomplete attributes" classname="accessibility.spec.js" time="0.754">
+</testcase>
+<testcase name="Keyboard Navigation › should be able to navigate entire page with keyboard" classname="accessibility.spec.js" time="0.92">
+</testcase>
+<testcase name="Keyboard Navigation › should have visible focus indicators" classname="accessibility.spec.js" time="0.709">
+</testcase>
+<testcase name="Keyboard Navigation › should be able to submit form with keyboard" classname="accessibility.spec.js" time="1.943">
+</testcase>
+<testcase name="Keyboard Navigation › should allow closing article view with Escape key" classname="accessibility.spec.js" time="2.952">
+</testcase>
+<testcase name="Screen Reader Compatibility › should have proper document lang attribute" classname="accessibility.spec.js" time="0.739">
+</testcase>
+<testcase name="Screen Reader Compatibility › should have proper page title" classname="accessibility.spec.js" time="0.64">
+</testcase>
+<testcase name="Screen Reader Compatibility › buttons should have accessible names" classname="accessibility.spec.js" time="0.567">
+</testcase>
+<testcase name="Screen Reader Compatibility › should announce form errors to screen readers" classname="accessibility.spec.js" time="1.235">
+</testcase>
+<testcase name="Screen Reader Compatibility › dynamic content should be announced" classname="accessibility.spec.js" time="0.728">
+</testcase>
+<testcase name="Mobile Accessibility › should be accessible on mobile devices" classname="accessibility.spec.js" time="2.019">
+</testcase>
+<testcase name="Mobile Accessibility › touch targets should be large enough" classname="accessibility.spec.js" time="0.854">
+</testcase>
+<testcase name="Mobile Accessibility › should not require horizontal scrolling" classname="accessibility.spec.js" time="0.746">
+</testcase>
+</testsuite>
+<testsuite name="contact-form.spec.js" timestamp="2026-01-29T22:51:06.373Z" hostname="firefox" tests="14" failures="0" skipped="0" time="20.671" errors="0">
+<testcase name="Contact Form › should display contact form" classname="contact-form.spec.js" time="1.318">
+</testcase>
+<testcase name="Contact Form › should have all required fields" classname="contact-form.spec.js" time="1.525">
+</testcase>
+<testcase name="Contact Form › should validate required fields" classname="contact-form.spec.js" time="1.716">
+</testcase>
+<testcase name="Contact Form › should validate email format" classname="contact-form.spec.js" time="1.379">
+</testcase>
+<testcase name="Contact Form › should submit form with valid data" classname="contact-form.spec.js" time="5.977">
+</testcase>
+<testcase name="Contact Form › should sanitize input" classname="contact-form.spec.js" time="1.075">
+</testcase>
+<testcase name="Contact Form › should be accessible via keyboard" classname="contact-form.spec.js" time="0.759">
+</testcase>
+<testcase name="Contact Form › should have proper labels" classname="contact-form.spec.js" time="0.698">
+</testcase>
+<testcase name="Contact Form › should handle phone number field if present" classname="contact-form.spec.js" time="0.6">
+</testcase>
+<testcase name="Contact Form › should show loading state during submission" classname="contact-form.spec.js" time="0.88">
+</testcase>
+<testcase name="Contact Form - Error Handling › should show error for invalid email" classname="contact-form.spec.js" time="1.562">
+</testcase>
+<testcase name="Contact Form - Error Handling › should clear errors when correcting input" classname="contact-form.spec.js" time="1.201">
+</testcase>
+<testcase name="Contact Form - Mobile › should be usable on mobile" classname="contact-form.spec.js" time="1.481">
+</testcase>
+<testcase name="Contact Form - Mobile › should have appropriate input types for mobile" classname="contact-form.spec.js" time="0.5">
+</testcase>
+</testsuite>
+<testsuite name="homepage.spec.js" timestamp="2026-01-29T22:51:06.373Z" hostname="firefox" tests="15" failures="0" skipped="0" time="11.92" errors="0">
+<testcase name="Homepage › should load successfully" classname="homepage.spec.js" time="0.499">
+</testcase>
+<testcase name="Homepage › should have correct meta tags" classname="homepage.spec.js" time="0.59">
+</testcase>
+<testcase name="Homepage › should display navigation" classname="homepage.spec.js" time="0.614">
+</testcase>
+<testcase name="Homepage › should have hero section" classname="homepage.spec.js" time="0.564">
+</testcase>
+<testcase name="Homepage › should scroll to sections when clicking nav links" classname="homepage.spec.js" time="1.143">
+</testcase>
+<testcase name="Homepage › should have services section" classname="homepage.spec.js" time="0.578">
+</testcase>
+<testcase name="Homepage › should have contact section" classname="homepage.spec.js" time="0.54">
+</testcase>
+<testcase name="Homepage › should have footer" classname="homepage.spec.js" time="0.54">
+</testcase>
+<testcase name="Homepage › should be responsive on mobile" classname="homepage.spec.js" time="0.498">
+</testcase>
+<testcase name="Homepage › should load all images" classname="homepage.spec.js" time="2.495">
+</testcase>
+<testcase name="Homepage › should have no console errors" classname="homepage.spec.js" time="0.832">
+</testcase>
+<testcase name="Navigation › should navigate using keyboard" classname="homepage.spec.js" time="0.722">
+</testcase>
+<testcase name="Navigation › should have skip to main content link" classname="homepage.spec.js" time="0.695">
+</testcase>
+<testcase name="Performance › should load within acceptable time" classname="homepage.spec.js" time="0.579">
+</testcase>
+<testcase name="Performance › should have good Core Web Vitals" classname="homepage.spec.js" time="1.031">
+</testcase>
+</testsuite>
+<testsuite name="accessibility.spec.js" timestamp="2026-01-29T22:51:06.373Z" hostname="webkit" tests="22" failures="0" skipped="0" time="22.95" errors="0">
+<testcase name="Accessibility Tests › homepage should not have any automatically detectable accessibility issues" classname="accessibility.spec.js" time="1.93">
+</testcase>
+<testcase name="Accessibility Tests › contact section should be accessible" classname="accessibility.spec.js" time="1.942">
+</testcase>
+<testcase name="Accessibility Tests › navigation should be accessible" classname="accessibility.spec.js" time="1.235">
+</testcase>
+<testcase name="Accessibility Tests › forms should have proper labels" classname="accessibility.spec.js" time="1.463">
+</testcase>
+<testcase name="Accessibility Tests › should have proper heading hierarchy" classname="accessibility.spec.js" time="0.77">
+</testcase>
+<testcase name="Accessibility Tests › should have sufficient color contrast" classname="accessibility.spec.js" time="1.508">
+</testcase>
+<testcase name="Accessibility Tests › images should have alt text" classname="accessibility.spec.js" time="0.761">
+</testcase>
+<testcase name="Accessibility Tests › links should have accessible names" classname="accessibility.spec.js" time="0.729">
+</testcase>
+<testcase name="Accessibility Tests › should have proper ARIA landmarks" classname="accessibility.spec.js" time="0.669">
+</testcase>
+<testcase name="Accessibility Tests › form inputs should have autocomplete attributes" classname="accessibility.spec.js" time="0.639">
+</testcase>
+<testcase name="Keyboard Navigation › should be able to navigate entire page with keyboard" classname="accessibility.spec.js" time="0.893">
+</testcase>
+<testcase name="Keyboard Navigation › should have visible focus indicators" classname="accessibility.spec.js" time="0.722">
+</testcase>
+<testcase name="Keyboard Navigation › should be able to submit form with keyboard" classname="accessibility.spec.js" time="1.838">
+</testcase>
+<testcase name="Keyboard Navigation › should allow closing article view with Escape key" classname="accessibility.spec.js" time="2.204">
+</testcase>
+<testcase name="Screen Reader Compatibility › should have proper document lang attribute" classname="accessibility.spec.js" time="0.579">
+</testcase>
+<testcase name="Screen Reader Compatibility › should have proper page title" classname="accessibility.spec.js" time="0.544">
+</testcase>
+<testcase name="Screen Reader Compatibility › buttons should have accessible names" classname="accessibility.spec.js" time="0.512">
+</testcase>
+<testcase name="Screen Reader Compatibility › should announce form errors to screen readers" classname="accessibility.spec.js" time="1.466">
+</testcase>
+<testcase name="Screen Reader Compatibility › dynamic content should be announced" classname="accessibility.spec.js" time="0.612">
+</testcase>
+<testcase name="Mobile Accessibility › should be accessible on mobile devices" classname="accessibility.spec.js" time="0.96">
+</testcase>
+<testcase name="Mobile Accessibility › touch targets should be large enough" classname="accessibility.spec.js" time="0.499">
+</testcase>
+<testcase name="Mobile Accessibility › should not require horizontal scrolling" classname="accessibility.spec.js" time="0.475">
+</testcase>
+</testsuite>
+<testsuite name="contact-form.spec.js" timestamp="2026-01-29T22:51:06.373Z" hostname="webkit" tests="14" failures="0" skipped="0" time="16.761" errors="0">
+<testcase name="Contact Form › should display contact form" classname="contact-form.spec.js" time="0.707">
+</testcase>
+<testcase name="Contact Form › should have all required fields" classname="contact-form.spec.js" time="0.697">
+</testcase>
+<testcase name="Contact Form › should validate required fields" classname="contact-form.spec.js" time="1.588">
+</testcase>
+<testcase name="Contact Form › should validate email format" classname="contact-form.spec.js" time="1.035">
+</testcase>
+<testcase name="Contact Form › should submit form with valid data" classname="contact-form.spec.js" time="5.73">
+</testcase>
+<testcase name="Contact Form › should sanitize input" classname="contact-form.spec.js" time="0.928">
+</testcase>
+<testcase name="Contact Form › should be accessible via keyboard" classname="contact-form.spec.js" time="0.602">
+</testcase>
+<testcase name="Contact Form › should have proper labels" classname="contact-form.spec.js" time="0.622">
+</testcase>
+<testcase name="Contact Form › should handle phone number field if present" classname="contact-form.spec.js" time="0.529">
+</testcase>
+<testcase name="Contact Form › should show loading state during submission" classname="contact-form.spec.js" time="0.812">
+</testcase>
+<testcase name="Contact Form - Error Handling › should show error for invalid email" classname="contact-form.spec.js" time="1.049">
+</testcase>
+<testcase name="Contact Form - Error Handling › should clear errors when correcting input" classname="contact-form.spec.js" time="1.203">
+</testcase>
+<testcase name="Contact Form - Mobile › should be usable on mobile" classname="contact-form.spec.js" time="0.817">
+</testcase>
+<testcase name="Contact Form - Mobile › should have appropriate input types for mobile" classname="contact-form.spec.js" time="0.442">
+</testcase>
+</testsuite>
+<testsuite name="homepage.spec.js" timestamp="2026-01-29T22:51:06.373Z" hostname="webkit" tests="15" failures="0" skipped="0" time="10.973" errors="0">
+<testcase name="Homepage › should load successfully" classname="homepage.spec.js" time="0.516">
+</testcase>
+<testcase name="Homepage › should have correct meta tags" classname="homepage.spec.js" time="0.522">
+</testcase>
+<testcase name="Homepage › should display navigation" classname="homepage.spec.js" time="0.567">
+</testcase>
+<testcase name="Homepage › should have hero section" classname="homepage.spec.js" time="0.537">
+</testcase>
+<testcase name="Homepage › should scroll to sections when clicking nav links" classname="homepage.spec.js" time="1.064">
+</testcase>
+<testcase name="Homepage › should have services section" classname="homepage.spec.js" time="0.521">
+</testcase>
+<testcase name="Homepage › should have contact section" classname="homepage.spec.js" time="0.502">
+</testcase>
+<testcase name="Homepage › should have footer" classname="homepage.spec.js" time="0.525">
+</testcase>
+<testcase name="Homepage › should be responsive on mobile" classname="homepage.spec.js" time="0.49">
+</testcase>
+<testcase name="Homepage › should load all images" classname="homepage.spec.js" time="2.571">
+</testcase>
+<testcase name="Homepage › should have no console errors" classname="homepage.spec.js" time="0.595">
+</testcase>
+<testcase name="Navigation › should navigate using keyboard" classname="homepage.spec.js" time="0.502">
+</testcase>
+<testcase name="Navigation › should have skip to main content link" classname="homepage.spec.js" time="0.531">
+</testcase>
+<testcase name="Performance › should load within acceptable time" classname="homepage.spec.js" time="0.51">
+</testcase>
+<testcase name="Performance › should have good Core Web Vitals" classname="homepage.spec.js" time="1.02">
+</testcase>
+</testsuite>
+<testsuite name="accessibility.spec.js" timestamp="2026-01-29T22:51:06.373Z" hostname="Mobile Chrome" tests="22" failures="0" skipped="0" time="15.978" errors="0">
+<testcase name="Accessibility Tests › homepage should not have any automatically detectable accessibility issues" classname="accessibility.spec.js" time="0.881">
+</testcase>
+<testcase name="Accessibility Tests › contact section should be accessible" classname="accessibility.spec.js" time="0.824">
+</testcase>
+<testcase name="Accessibility Tests › navigation should be accessible" classname="accessibility.spec.js" time="0.775">
+</testcase>
+<testcase name="Accessibility Tests › forms should have proper labels" classname="accessibility.spec.js" time="0.835">
+</testcase>
+<testcase name="Accessibility Tests › should have proper heading hierarchy" classname="accessibility.spec.js" time="0.557">
+</testcase>
+<testcase name="Accessibility Tests › should have sufficient color contrast" classname="accessibility.spec.js" time="1.115">
+</testcase>
+<testcase name="Accessibility Tests › images should have alt text" classname="accessibility.spec.js" time="0.492">
+</testcase>
+<testcase name="Accessibility Tests › links should have accessible names" classname="accessibility.spec.js" time="0.544">
+</testcase>
+<testcase name="Accessibility Tests › should have proper ARIA landmarks" classname="accessibility.spec.js" time="0.461">
+</testcase>
+<testcase name="Accessibility Tests › form inputs should have autocomplete attributes" classname="accessibility.spec.js" time="0.454">
+</testcase>
+<testcase name="Keyboard Navigation › should be able to navigate entire page with keyboard" classname="accessibility.spec.js" time="0.56">
+</testcase>
+<testcase name="Keyboard Navigation › should have visible focus indicators" classname="accessibility.spec.js" time="0.479">
+</testcase>
+<testcase name="Keyboard Navigation › should be able to submit form with keyboard" classname="accessibility.spec.js" time="1.471">
+</testcase>
+<testcase name="Keyboard Navigation › should allow closing article view with Escape key" classname="accessibility.spec.js" time="2.326">
+</testcase>
+<testcase name="Screen Reader Compatibility › should have proper document lang attribute" classname="accessibility.spec.js" time="0.423">
+</testcase>
+<testcase name="Screen Reader Compatibility › should have proper page title" classname="accessibility.spec.js" time="0.411">
+</testcase>
+<testcase name="Screen Reader Compatibility › buttons should have accessible names" classname="accessibility.spec.js" time="0.406">
+</testcase>
+<testcase name="Screen Reader Compatibility › should announce form errors to screen readers" classname="accessibility.spec.js" time="0.995">
+</testcase>
+<testcase name="Screen Reader Compatibility › dynamic content should be announced" classname="accessibility.spec.js" time="0.418">
+</testcase>
+<testcase name="Mobile Accessibility › should be accessible on mobile devices" classname="accessibility.spec.js" time="0.711">
+</testcase>
+<testcase name="Mobile Accessibility › touch targets should be large enough" classname="accessibility.spec.js" time="0.415">
+</testcase>
+<testcase name="Mobile Accessibility › should not require horizontal scrolling" classname="accessibility.spec.js" time="0.425">
+</testcase>
+</testsuite>
+<testsuite name="contact-form.spec.js" timestamp="2026-01-29T22:51:06.373Z" hostname="Mobile Chrome" tests="14" failures="0" skipped="0" time="17.211" errors="0">
+<testcase name="Contact Form › should display contact form" classname="contact-form.spec.js" time="0.419">
+</testcase>
+<testcase name="Contact Form › should have all required fields" classname="contact-form.spec.js" time="0.486">
+</testcase>
+<testcase name="Contact Form › should validate required fields" classname="contact-form.spec.js" time="1.047">
+</testcase>
+<testcase name="Contact Form › should validate email format" classname="contact-form.spec.js" time="0.777">
+</testcase>
+<testcase name="Contact Form › should submit form with valid data" classname="contact-form.spec.js" time="8.259">
+</testcase>
+<testcase name="Contact Form › should sanitize input" classname="contact-form.spec.js" time="0.726">
+</testcase>
+<testcase name="Contact Form › should be accessible via keyboard" classname="contact-form.spec.js" time="0.482">
+</testcase>
+<testcase name="Contact Form › should have proper labels" classname="contact-form.spec.js" time="0.389">
+</testcase>
+<testcase name="Contact Form › should handle phone number field if present" classname="contact-form.spec.js" time="0.454">
+</testcase>
+<testcase name="Contact Form › should show loading state during submission" classname="contact-form.spec.js" time="0.98">
+</testcase>
+<testcase name="Contact Form - Error Handling › should show error for invalid email" classname="contact-form.spec.js" time="1.295">
+</testcase>
+<testcase name="Contact Form - Error Handling › should clear errors when correcting input" classname="contact-form.spec.js" time="1.068">
+</testcase>
+<testcase name="Contact Form - Mobile › should be usable on mobile" classname="contact-form.spec.js" time="0.463">
+</testcase>
+<testcase name="Contact Form - Mobile › should have appropriate input types for mobile" classname="contact-form.spec.js" time="0.366">
+</testcase>
+</testsuite>
+<testsuite name="homepage.spec.js" timestamp="2026-01-29T22:51:06.373Z" hostname="Mobile Chrome" tests="15" failures="0" skipped="0" time="9.569" errors="0">
+<testcase name="Homepage › should load successfully" classname="homepage.spec.js" time="0.428">
+</testcase>
+<testcase name="Homepage › should have correct meta tags" classname="homepage.spec.js" time="0.43">
+</testcase>
+<testcase name="Homepage › should display navigation" classname="homepage.spec.js" time="0.439">
+</testcase>
+<testcase name="Homepage › should have hero section" classname="homepage.spec.js" time="0.426">
+</testcase>
+<testcase name="Homepage › should scroll to sections when clicking nav links" classname="homepage.spec.js" time="1.559">
+</testcase>
+<testcase name="Homepage › should have services section" classname="homepage.spec.js" time="0.383">
+</testcase>
+<testcase name="Homepage › should have contact section" classname="homepage.spec.js" time="0.396">
+</testcase>
+<testcase name="Homepage › should have footer" classname="homepage.spec.js" time="0.371">
+</testcase>
+<testcase name="Homepage › should be responsive on mobile" classname="homepage.spec.js" time="0.375">
+</testcase>
+<testcase name="Homepage › should load all images" classname="homepage.spec.js" time="2.373">
+</testcase>
+<testcase name="Homepage › should have no console errors" classname="homepage.spec.js" time="0.416">
+</testcase>
+<testcase name="Navigation › should navigate using keyboard" classname="homepage.spec.js" time="0.376">
+</testcase>
+<testcase name="Navigation › should have skip to main content link" classname="homepage.spec.js" time="0.394">
+</testcase>
+<testcase name="Performance › should load within acceptable time" classname="homepage.spec.js" time="0.365">
+</testcase>
+<testcase name="Performance › should have good Core Web Vitals" classname="homepage.spec.js" time="0.838">
+</testcase>
+</testsuite>
+<testsuite name="accessibility.spec.js" timestamp="2026-01-29T22:51:06.373Z" hostname="Mobile Safari" tests="22" failures="0" skipped="0" time="19.693" errors="0">
+<testcase name="Accessibility Tests › homepage should not have any automatically detectable accessibility issues" classname="accessibility.spec.js" time="1.009">
+</testcase>
+<testcase name="Accessibility Tests › contact section should be accessible" classname="accessibility.spec.js" time="1.196">
+</testcase>
+<testcase name="Accessibility Tests › navigation should be accessible" classname="accessibility.spec.js" time="1.126">
+</testcase>
+<testcase name="Accessibility Tests › forms should have proper labels" classname="accessibility.spec.js" time="0.892">
+</testcase>
+<testcase name="Accessibility Tests › should have proper heading hierarchy" classname="accessibility.spec.js" time="0.581">
+</testcase>
+<testcase name="Accessibility Tests › should have sufficient color contrast" classname="accessibility.spec.js" time="1.272">
+</testcase>
+<testcase name="Accessibility Tests › images should have alt text" classname="accessibility.spec.js" time="0.866">
+</testcase>
+<testcase name="Accessibility Tests › links should have accessible names" classname="accessibility.spec.js" time="0.661">
+</testcase>
+<testcase name="Accessibility Tests › should have proper ARIA landmarks" classname="accessibility.spec.js" time="0.612">
+</testcase>
+<testcase name="Accessibility Tests › form inputs should have autocomplete attributes" classname="accessibility.spec.js" time="0.554">
+</testcase>
+<testcase name="Keyboard Navigation › should be able to navigate entire page with keyboard" classname="accessibility.spec.js" time="0.676">
+</testcase>
+<testcase name="Keyboard Navigation › should have visible focus indicators" classname="accessibility.spec.js" time="0.549">
+</testcase>
+<testcase name="Keyboard Navigation › should be able to submit form with keyboard" classname="accessibility.spec.js" time="1.876">
+</testcase>
+<testcase name="Keyboard Navigation › should allow closing article view with Escape key" classname="accessibility.spec.js" time="2.076">
+</testcase>
+<testcase name="Screen Reader Compatibility › should have proper document lang attribute" classname="accessibility.spec.js" time="0.619">
+</testcase>
+<testcase name="Screen Reader Compatibility › should have proper page title" classname="accessibility.spec.js" time="0.459">
+</testcase>
+<testcase name="Screen Reader Compatibility › buttons should have accessible names" classname="accessibility.spec.js" time="0.475">
+</testcase>
+<testcase name="Screen Reader Compatibility › should announce form errors to screen readers" classname="accessibility.spec.js" time="1.436">
+</testcase>
+<testcase name="Screen Reader Compatibility › dynamic content should be announced" classname="accessibility.spec.js" time="0.486">
+</testcase>
+<testcase name="Mobile Accessibility › should be accessible on mobile devices" classname="accessibility.spec.js" time="1.061">
+</testcase>
+<testcase name="Mobile Accessibility › touch targets should be large enough" classname="accessibility.spec.js" time="0.556">
+</testcase>
+<testcase name="Mobile Accessibility › should not require horizontal scrolling" classname="accessibility.spec.js" time="0.655">
+</testcase>
+</testsuite>
+<testsuite name="contact-form.spec.js" timestamp="2026-01-29T22:51:06.373Z" hostname="Mobile Safari" tests="14" failures="0" skipped="0" time="17.342" errors="0">
+<testcase name="Contact Form › should display contact form" classname="contact-form.spec.js" time="0.659">
+</testcase>
+<testcase name="Contact Form › should have all required fields" classname="contact-form.spec.js" time="0.826">
+</testcase>
+<testcase name="Contact Form › should validate required fields" classname="contact-form.spec.js" time="1.582">
+</testcase>
+<testcase name="Contact Form › should validate email format" classname="contact-form.spec.js" time="1.092">
+</testcase>
+<testcase name="Contact Form › should submit form with valid data" classname="contact-form.spec.js" time="5.868">
+</testcase>
+<testcase name="Contact Form › should sanitize input" classname="contact-form.spec.js" time="0.923">
+</testcase>
+<testcase name="Contact Form › should be accessible via keyboard" classname="contact-form.spec.js" time="0.566">
+</testcase>
+<testcase name="Contact Form › should have proper labels" classname="contact-form.spec.js" time="0.722">
+</testcase>
+<testcase name="Contact Form › should handle phone number field if present" classname="contact-form.spec.js" time="0.666">
+</testcase>
+<testcase name="Contact Form › should show loading state during submission" classname="contact-form.spec.js" time="0.91">
+</testcase>
+<testcase name="Contact Form - Error Handling › should show error for invalid email" classname="contact-form.spec.js" time="1.055">
+</testcase>
+<testcase name="Contact Form - Error Handling › should clear errors when correcting input" classname="contact-form.spec.js" time="1.136">
+</testcase>
+<testcase name="Contact Form - Mobile › should be usable on mobile" classname="contact-form.spec.js" time="0.866">
+</testcase>
+<testcase name="Contact Form - Mobile › should have appropriate input types for mobile" classname="contact-form.spec.js" time="0.471">
+</testcase>
+</testsuite>
+<testsuite name="homepage.spec.js" timestamp="2026-01-29T22:51:06.373Z" hostname="Mobile Safari" tests="15" failures="0" skipped="0" time="11.053" errors="0">
+<testcase name="Homepage › should load successfully" classname="homepage.spec.js" time="0.466">
+</testcase>
+<testcase name="Homepage › should have correct meta tags" classname="homepage.spec.js" time="0.456">
+</testcase>
+<testcase name="Homepage › should display navigation" classname="homepage.spec.js" time="0.486">
+</testcase>
+<testcase name="Homepage › should have hero section" classname="homepage.spec.js" time="0.476">
+</testcase>
+<testcase name="Homepage › should scroll to sections when clicking nav links" classname="homepage.spec.js" time="1.718">
+</testcase>
+<testcase name="Homepage › should have services section" classname="homepage.spec.js" time="0.538">
+</testcase>
+<testcase name="Homepage › should have contact section" classname="homepage.spec.js" time="0.528">
+</testcase>
+<testcase name="Homepage › should have footer" classname="homepage.spec.js" time="0.503">
+</testcase>
+<testcase name="Homepage › should be responsive on mobile" classname="homepage.spec.js" time="0.513">
+</testcase>
+<testcase name="Homepage › should load all images" classname="homepage.spec.js" time="2.445">
+</testcase>
+<testcase name="Homepage › should have no console errors" classname="homepage.spec.js" time="0.524">
+</testcase>
+<testcase name="Navigation › should navigate using keyboard" classname="homepage.spec.js" time="0.429">
+</testcase>
+<testcase name="Navigation › should have skip to main content link" classname="homepage.spec.js" time="0.492">
+</testcase>
+<testcase name="Performance › should load within acceptable time" classname="homepage.spec.js" time="0.497">
+</testcase>
+<testcase name="Performance › should have good Core Web Vitals" classname="homepage.spec.js" time="0.982">
+</testcase>
+</testsuite>
+</testsuites>
