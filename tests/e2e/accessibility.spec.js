@@ -247,21 +247,25 @@ test.describe('Keyboard Navigation', () => {
     expect(true).toBe(true);
   });
 
-  test('should allow closing modals with Escape key', async ({ page }) => {
+  test('should allow closing article view with Escape key', async ({ page }) => {
     await page.goto('/');
 
-    const modalTrigger = page.locator('button:has-text("Ler artigo completo")').first();
-    if (await modalTrigger.count() > 0) {
-      await modalTrigger.click();
+    const trigger = page.locator('button:has-text("Ler artigo completo")').first();
+    if (await trigger.count() > 0) {
+      await trigger.click();
       await page.waitForTimeout(500);
 
       const modal = page.locator('#article-modal');
-      await expect(modal).toBeVisible();
+      const fullArticle = page.locator('#publications-full-article');
+      const modalVisible = await modal.isVisible();
+      const fullVisible = await fullArticle.isVisible();
+      expect(modalVisible || fullVisible).toBeTruthy();
 
       await page.keyboard.press('Escape');
       await page.waitForTimeout(500);
 
       await expect(modal).toBeHidden();
+      await expect(fullArticle).toBeHidden();
     }
   });
 });

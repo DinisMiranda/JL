@@ -968,112 +968,107 @@ const articles = {
 };
 
 // ========================================
-// Modal Functions (Enhanced for Accessibility)
+// Artigos: desktop = modal por cima; mobile = vista in-page (sem overlay)
 // ========================================
-let lastFocusedElement = null;
-let focusableElements = [];
-let firstFocusableElement = null;
-let lastFocusableElement = null;
+
+function isArticleMobile() {
+  return window.matchMedia('(max-width: 767px)').matches;
+}
 
 function openArticle(articleId) {
-  const article = articles[articleId];
+  var article = articles[articleId];
   if (!article) return;
 
-  // Save currently focused element
-  lastFocusedElement = document.activeElement;
+  if (isArticleMobile()) {
+    var cards = document.getElementById('publications-cards');
+    var fullArticle = document.getElementById('publications-full-article');
+    var titleEl = document.getElementById('article-full-title');
+    var authorEl = document.getElementById('article-full-author');
+    var contentEl = document.getElementById('article-content-mobile');
+    if (!cards || !fullArticle || !titleEl || !authorEl || !contentEl) return;
 
-  const modal = document.getElementById('article-modal');
-  const content = document.getElementById('article-content');
+    titleEl.textContent = article.title;
+    authorEl.textContent = article.author;
+    contentEl.innerHTML = article.content;
 
-  content.innerHTML = `
-    <h3 class="text-2xl md:text-3xl font-serif font-semibold text-primary mb-3">${article.title}</h3>
-    <p class="text-gray-600 italic mb-6">${article.author}</p>
-    ${article.content}
-    <div class="mt-8 pt-4 border-t border-gray-200">
-      <button onclick="closeArticle()" class="bg-secondary hover:bg-secondary/90 focus:bg-secondary/90 text-white font-semibold py-2 px-6 rounded-lg transition-all duration-200 focus:outline-none focus:ring-4 focus:ring-secondary/50 min-h-[44px]" aria-label="Fechar artigo e voltar às publicações">
-        Voltar às Publicações
-      </button>
-    </div>
-  `;
+    cards.classList.add('hidden');
+    cards.setAttribute('aria-hidden', 'true');
+    fullArticle.classList.remove('hidden');
+    fullArticle.setAttribute('aria-hidden', 'false');
 
-  modal.classList.remove('hidden');
-  modal.setAttribute('aria-hidden', 'false');
-  document.body.style.overflow = 'hidden';
+    fullArticle.scrollIntoView({ behavior: 'smooth', block: 'start' });
+  } else {
+    var modal = document.getElementById('article-modal');
+    var modalTitle = document.getElementById('article-modal-title');
+    var modalContent = document.getElementById('article-content');
+    if (!modal || !modalTitle || !modalContent) return;
 
-  // Get all focusable elements within modal
-  focusableElements = modal.querySelectorAll(
-    'button, [href], input, select, textarea, [tabindex]:not([tabindex="-1"])'
-  );
-  firstFocusableElement = focusableElements[0];
-  lastFocusableElement = focusableElements[focusableElements.length - 1];
+    modalTitle.textContent = article.title;
+    modalContent.innerHTML = '<p class="text-gray-600 italic mb-6">' + article.author + '</p>' + article.content + '<div class="mt-8 pt-4 border-t border-gray-200"><button type="button" onclick="closeArticle()" class="bg-secondary hover:bg-secondary/90 text-white font-semibold py-2 px-6 rounded-lg min-h-[44px] focus:outline-none focus:ring-4 focus:ring-secondary/50" aria-label="Voltar às publicações">Voltar às Publicações</button></div>';
 
-  // Focus first focusable element (close button)
-  setTimeout(() => {
-    if (firstFocusableElement) {
-      firstFocusableElement.focus();
-    }
-  }, 100);
+    var scrollY = window.scrollY || window.pageYOffset;
+    document.body.style.position = 'fixed';
+    document.body.style.top = '-' + scrollY + 'px';
+    document.body.style.left = '0';
+    document.body.style.right = '0';
+    document.body.style.overflow = 'hidden';
+    window._articleModalScrollY = scrollY;
 
-  // Announce to screen readers
-  announceToScreenReader(`Artigo aberto: ${article.title}`, 'polite');
+    modal.classList.remove('hidden');
+    modal.setAttribute('aria-hidden', 'false');
+
+    setTimeout(function () {
+      var closeBtn = modal.querySelector('.article-modal-close');
+      if (closeBtn) closeBtn.focus();
+    }, 80);
+  }
+
+  announceToScreenReader('Artigo aberto: ' + article.title, 'polite');
 }
 
 function closeArticle() {
-  const modal = document.getElementById('article-modal');
-  modal.classList.add('hidden');
-  modal.setAttribute('aria-hidden', 'true');
-  document.body.style.overflow = '';
+  if (isArticleMobile()) {
+    var cards = document.getElementById('publications-cards');
+    var fullArticle = document.getElementById('publications-full-article');
+    if (!cards || !fullArticle) return;
 
-  // Return focus to element that opened modal
-  if (lastFocusedElement) {
-    lastFocusedElement.focus();
+    fullArticle.classList.add('hidden');
+    fullArticle.setAttribute('aria-hidden', 'true');
+    cards.classList.remove('hidden');
+    cards.setAttribute('aria-hidden', 'false');
+  } else {
+    var modal = document.getElementById('article-modal');
+    var scrollY = window._articleModalScrollY || 0;
+    if (!modal) return;
+
+    modal.classList.add('hidden');
+    modal.setAttribute('aria-hidden', 'true');
+
+    document.body.style.position = '';
+    document.body.style.top = '';
+    document.body.style.left = '';
+    document.body.style.right = '';
+    document.body.style.overflow = '';
+    window.scrollTo(0, scrollY);
   }
 
-  // Announce to screen readers
   announceToScreenReader('Artigo fechado', 'polite');
 }
 
-function closeArticleOnBackdrop(event) {
-  if (event.target.id === 'article-modal') {
-    closeArticle();
-  }
-}
-
-// Expor funções globalmente para onclick no HTML
 window.openArticle = openArticle;
 window.closeArticle = closeArticle;
-window.closeArticleOnBackdrop = closeArticleOnBackdrop;
 
-// ========================================
-// Modal Keyboard Navigation and Focus Trap
-// ========================================
 document.addEventListener('keydown', function (event) {
-  const modal = document.getElementById('article-modal');
-  const isModalOpen = !modal.classList.contains('hidden');
-
-  // Close modal with ESC
-  if (event.key === 'Escape' && isModalOpen) {
-    closeArticle();
+  if (event.key !== 'Escape') return;
+  if (isArticleMobile()) {
+    var fullArticle = document.getElementById('publications-full-article');
+    if (fullArticle && !fullArticle.classList.contains('hidden')) {
+      closeArticle();
+    }
     return;
   }
-
-  // Focus trap
-  if (event.key === 'Tab' && isModalOpen) {
-    if (focusableElements.length === 0) return;
-
-    if (event.shiftKey) {
-      // Shift + Tab
-      if (document.activeElement === firstFocusableElement) {
-        event.preventDefault();
-        lastFocusableElement.focus();
-      }
-    } else {
-      // Tab
-      if (document.activeElement === lastFocusableElement) {
-        event.preventDefault();
-        firstFocusableElement.focus();
-      }
-    }
-  }
+  var modal = document.getElementById('article-modal');
+  if (!modal || modal.classList.contains('hidden')) return;
+  closeArticle();
 });
 
