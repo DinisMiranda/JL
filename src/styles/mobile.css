@@ -1,0 +1,1172 @@
+/* ========================================
+   MOBILE OPTIMIZATION STYLES
+   ========================================
+
+   This file contains all mobile-specific optimizations:
+   - Animated hamburger menu
+   - Touch feedback
+   - Typography scaling
+   - Scroll performance
+   - Image optimization
+   - Swipe gesture support
+
+   Created: January 2025
+   ======================================== */
+
+/* ========================================
+   1. ANIMATED HAMBURGER ICON
+   ======================================== */
+
+.hamburger-icon {
+  width: 24px;
+  height: 20px;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  cursor: pointer;
+  transition: transform 0.3s ease;
+}
+
+.hamburger-line {
+  width: 100%;
+  height: 2.5px;
+  background-color: currentColor;
+  border-radius: 2px;
+  transition: all 0.3s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+  transform-origin: center;
+  display: block;
+}
+
+/* Hamburger animation when menu is open */
+.hamburger-button.active .hamburger-icon {
+  transform: rotate(0deg);
+}
+
+.hamburger-button.active .hamburger-line:nth-child(1) {
+  transform: translateY(8.75px) rotate(45deg);
+}
+
+.hamburger-button.active .hamburger-line:nth-child(2) {
+  opacity: 0;
+  transform: translateX(-20px);
+}
+
+.hamburger-button.active .hamburger-line:nth-child(3) {
+  transform: translateY(-8.75px) rotate(-45deg);
+}
+
+/* Ensure hamburger button is clickable and above other elements */
+.hamburger-button,
+#mobile-menu-button {
+  z-index: 100;
+  /* position is controlled by Tailwind classes (absolute top-4 right-4) */
+  cursor: pointer;
+  -webkit-tap-highlight-color: transparent;
+  touch-action: manipulation;
+}
+
+/* ========================================
+   DESKTOP NAVIGATION STYLES
+   ======================================== */
+
+/* Ensure navigation links don't have permanent active states */
+#main-nav a {
+  background-color: transparent !important;
+  transition: background-color 0.1s ease-in-out !important;
+  color: inherit !important;
+}
+
+#main-nav a:hover,
+#main-nav a:focus {
+  background-color: rgba(255, 255, 255, 0.2) !important;
+  color: #ffffff !important;
+}
+
+#main-nav a:active {
+  background-color: rgba(255, 255, 255, 0.3) !important;
+  color: #ffffff !important;
+}
+
+/* Remove any active states that might be applied */
+#main-nav a.active,
+#main-nav a[aria-current="page"],
+#main-nav a[aria-current] {
+  background-color: transparent !important;
+  color: inherit !important;
+}
+
+#main-nav a.active:hover,
+#main-nav a[aria-current="page"]:hover,
+#main-nav a[aria-current]:hover {
+  background-color: rgba(255, 255, 255, 0.2) !important;
+  color: #ffffff !important;
+}
+
+/* Hover effect for hamburger (non-touch devices) */
+@media (hover: hover) and (pointer: fine) {
+  .hamburger-button:hover .hamburger-icon {
+    transform: scale(1.1);
+  }
+
+  .hamburger-button:hover .hamburger-line {
+    background-color: rgba(255, 255, 255, 0.9);
+  }
+}
+
+/* ========================================
+   2. MOBILE NAVIGATION ANIMATIONS (ENHANCED)
+   ======================================== */
+
+.mobile-nav {
+  display: block;
+  max-height: 0;
+  overflow: hidden;
+  opacity: 0;
+  transform: translateY(-10px);
+  pointer-events: none;
+  transition: max-height 0.5s cubic-bezier(0.4, 0, 0.2, 1),
+              opacity 0.35s ease-in-out,
+              transform 0.35s cubic-bezier(0.34, 1.56, 0.64, 1);
+  will-change: max-height, opacity, transform;
+}
+
+/* Estado aberto: transição visível (não usar .hidden para não perder a animação) */
+.mobile-nav:not(.is-closed) {
+  max-height: 600px;
+  opacity: 1;
+  transform: translateY(0);
+  pointer-events: auto;
+  z-index: 50;
+  position: relative;
+}
+
+/* Enhanced stagger animation for mobile nav items with bounce */
+.mobile-nav a {
+  opacity: 0;
+  transform: translateX(-25px) scale(0.95);
+  transition: opacity 0.2s ease-in-out,
+              transform 0.2s ease-in-out,
+              background-color 0.1s ease-in-out !important;
+  will-change: opacity, transform;
+  background-color: transparent !important;
+}
+
+.mobile-nav:not(.is-closed) a {
+  opacity: 1;
+  transform: translateX(0) scale(1);
+}
+
+/* Staggered delays with smooth cascade effect */
+.mobile-nav:not(.is-closed) a:nth-child(1) { transition-delay: 0.05s; }
+.mobile-nav:not(.is-closed) a:nth-child(2) { transition-delay: 0.09s; }
+.mobile-nav:not(.is-closed) a:nth-child(3) { transition-delay: 0.13s; }
+.mobile-nav:not(.is-closed) a:nth-child(4) { transition-delay: 0.17s; }
+.mobile-nav:not(.is-closed) a:nth-child(5) { transition-delay: 0.21s; }
+.mobile-nav:not(.is-closed) a:nth-child(6) { transition-delay: 0.25s; }
+.mobile-nav:not(.is-closed) a:nth-child(7) { transition-delay: 0.29s; }
+
+/* Hover and focus states - only active on interaction */
+.mobile-nav:not(.is-closed) a:hover {
+  background-color: rgba(255, 255, 255, 0.2) !important;
+}
+
+.mobile-nav:not(.is-closed) a:focus {
+  background-color: rgba(255, 255, 255, 0.2) !important;
+  outline: 2px solid rgba(255, 255, 255, 0.5);
+  outline-offset: 2px;
+}
+
+/* Active state - only when actually clicking/touching */
+.mobile-nav:not(.is-closed) a:active {
+  transform: translateX(0) scale(0.98);
+  background-color: rgba(255, 255, 255, 0.3) !important;
+}
+
+/* Remove focus after click to prevent permanent active state */
+.mobile-nav a:focus:not(:hover) {
+  background-color: transparent !important;
+}
+
+/* Ensure no permanent active states */
+.mobile-nav a.active,
+.mobile-nav a[aria-current],
+.mobile-nav a[aria-current="page"] {
+  background-color: transparent !important;
+}
+
+/* ========================================
+   3. TOUCH FEEDBACK (RIPPLE EFFECT)
+   ======================================== */
+
+.touch-feedback {
+  position: relative;
+  overflow: hidden;
+}
+
+.touch-feedback::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 0;
+  height: 0;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.3);
+  transform: translate(-50%, -50%);
+  transition: width 0.6s ease, height 0.6s ease, opacity 0.6s ease;
+  opacity: 0;
+  pointer-events: none;
+}
+
+.touch-feedback:active::after {
+  width: 200px;
+  height: 200px;
+  opacity: 1;
+  transition: width 0s, height 0s, opacity 0.3s;
+}
+
+/* Apply touch feedback to buttons and links on mobile */
+@media (hover: none) and (pointer: coarse) {
+  button,
+  a,
+  [role="button"] {
+    position: relative;
+    overflow: hidden;
+  }
+
+  button::after,
+  a::after,
+  [role="button"]::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 0;
+    height: 0;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.2);
+    transform: translate(-50%, -50%);
+    transition: width 0.5s ease, height 0.5s ease, opacity 0.5s ease;
+    opacity: 0;
+    pointer-events: none;
+  }
+
+  button:active::after,
+  a:active::after,
+  [role="button"]:active::after {
+    width: 150px;
+    height: 150px;
+    opacity: 1;
+    transition: width 0s, height 0s, opacity 0.2s;
+  }
+}
+
+/* ========================================
+   4. MOBILE TYPOGRAPHY OPTIMIZATION (ENHANCED)
+   ======================================== */
+
+/* Improve text rendering on mobile with better font loading */
+@media screen and (max-width: 768px) {
+  body {
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-rendering: optimizeLegibility;
+    font-variant-ligatures: common-ligatures;
+  }
+
+  /* Better font scaling for small screens with fluid typography */
+  html {
+    font-size: 16px; /* Base size prevents iOS zoom */
+  }
+
+  h1 {
+    font-size: clamp(1.875rem, 7vw + 0.5rem, 3.5rem);
+    line-height: 1.15;
+    letter-spacing: -0.025em;
+    font-weight: 700;
+    word-wrap: break-word;
+    hyphens: auto;
+  }
+
+  h2 {
+    font-size: clamp(1.5rem, 5.5vw + 0.5rem, 2.5rem);
+    line-height: 1.25;
+    letter-spacing: -0.015em;
+    font-weight: 700;
+    word-wrap: break-word;
+  }
+
+  h3 {
+    font-size: clamp(1.25rem, 4.5vw + 0.5rem, 2rem);
+    line-height: 1.35;
+    letter-spacing: -0.01em;
+    font-weight: 600;
+  }
+
+  h4, h5, h6 {
+    font-size: clamp(1.125rem, 4vw + 0.25rem, 1.5rem);
+    line-height: 1.4;
+    font-weight: 600;
+  }
+
+  p,
+  li,
+  span,
+  td {
+    font-size: clamp(0.9375rem, 3.5vw + 0.25rem, 1.0625rem);
+    line-height: 1.7;
+    letter-spacing: 0.01em;
+    word-break: break-word;
+  }
+
+  /* Enhanced readability for body text */
+  .text-gray-700,
+  .leading-relaxed,
+  article p {
+    line-height: 1.8;
+    max-width: 70ch; /* Optimal reading width */
+  }
+
+  /* Optimize button text with better contrast */
+  button,
+  .button,
+  a.button,
+  [role="button"] {
+    font-size: clamp(0.9375rem, 4vw, 1.0625rem);
+    font-weight: 600;
+    letter-spacing: 0.015em;
+    line-height: 1.4;
+  }
+
+  /* Better link visibility on mobile */
+  a:not([class*="button"]):not([class*="btn"]) {
+    text-decoration-thickness: 0.125em;
+    text-underline-offset: 0.15em;
+  }
+
+  /* Improve small text readability */
+  small,
+  .text-sm {
+    font-size: clamp(0.8125rem, 3vw + 0.125rem, 0.9375rem);
+    line-height: 1.5;
+  }
+}
+
+/* Extra small screens (phones in portrait) */
+@media screen and (max-width: 375px) {
+  html {
+    font-size: 15px;
+  }
+
+  /* Reduce padding for small screens to maximize content */
+  .px-4 {
+    padding-left: 0.875rem;
+    padding-right: 0.875rem;
+  }
+
+  /* Further optimize heading spacing */
+  h1, h2, h3 {
+    margin-bottom: 0.75rem;
+  }
+
+  /* Tighter spacing for compact screens */
+  p + p {
+    margin-top: 0.875rem;
+  }
+}
+
+/* Large phones and small tablets */
+@media screen and (min-width: 376px) and (max-width: 768px) {
+  html {
+    font-size: 16px;
+  }
+
+  /* Optimize for comfortable reading */
+  body {
+    max-width: 100%;
+  }
+
+  .container {
+    padding-left: 1.25rem;
+    padding-right: 1.25rem;
+  }
+}
+
+/* ========================================
+   5. SCROLL PERFORMANCE OPTIMIZATION (ENHANCED)
+   ======================================== */
+
+/* Enable hardware-accelerated smooth scrolling */
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 80px; /* Account for sticky header */
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  * {
+    animation-play-state: paused !important;
+    transition: none !important;
+  }
+}
+
+/* Optimize scroll performance with strategic will-change */
+.sticky,
+.fixed,
+header[class*="sticky"],
+header[class*="fixed"] {
+  will-change: transform;
+  transform: translateZ(0); /* Force GPU acceleration */
+  backface-visibility: hidden;
+}
+
+/* Prevent scroll bounce on iOS while maintaining overscroll */
+body {
+  overscroll-behavior-y: contain;
+  -webkit-overflow-scrolling: touch;
+}
+
+/* Optimize scrollable containers */
+.overflow-y-auto,
+.overflow-scroll,
+[role="dialog"] {
+  -webkit-overflow-scrolling: touch;
+  overscroll-behavior: contain;
+  scroll-behavior: smooth;
+}
+
+/* Optimize section rendering with CSS containment */
+section {
+  contain: layout style;
+  content-visibility: auto; /* Lazy render off-screen content */
+}
+
+/* High-priority sections should render immediately */
+section[id="sobre-nos"],
+section:first-of-type {
+  content-visibility: visible;
+}
+
+/* Optimize images for scroll performance */
+img {
+  content-visibility: auto;
+  contain: layout;
+  transform: translateZ(0);
+}
+
+/* Debounce scroll event performance */
+@media screen and (max-width: 768px) {
+  * {
+    /* Remove expensive transforms during scroll */
+    -webkit-transform: translate3d(0, 0, 0);
+    transform: translate3d(0, 0, 0);
+  }
+
+  /* Optimize animations for mobile */
+  @keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+  }
+
+  /* Smooth fade-in for lazy-loaded content */
+  [loading="lazy"] {
+    animation: fadeIn 0.3s ease-in;
+  }
+}
+
+/* Intersection Observer optimization hint */
+[data-observe] {
+  content-visibility: auto;
+  contain-intrinsic-size: 500px; /* Estimated size */
+}
+
+/* ========================================
+   6. IMAGE OPTIMIZATION FOR MOBILE (ENHANCED)
+   ======================================== */
+
+/* Base image optimization for all screens */
+img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+  image-rendering: -webkit-optimize-contrast;
+  image-rendering: crisp-edges;
+}
+
+@media screen and (max-width: 768px) {
+  /* Prevent layout shift with aspect ratio boxes */
+  img {
+    height: auto;
+    max-width: 100%;
+    display: block;
+    object-fit: cover;
+    will-change: transform;
+  }
+
+  /* Critical images load immediately */
+  section img[loading="eager"],
+  img[fetchpriority="high"] {
+    content-visibility: visible;
+    contain: none;
+  }
+
+  /* Lazy-loaded images fade in smoothly */
+  img[loading="lazy"] {
+    opacity: 0;
+    transition: opacity 0.4s ease-in;
+  }
+
+  img[loading="lazy"].loaded,
+  img[loading="lazy"]:not([src=""]) {
+    opacity: 1;
+  }
+
+  /* Better aspect ratio handling with modern CSS */
+  .aspect-video {
+    aspect-ratio: 16 / 9;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .aspect-square {
+    aspect-ratio: 1 / 1;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .aspect-portrait {
+    aspect-ratio: 3 / 4;
+    position: relative;
+    overflow: hidden;
+  }
+
+  /* Professional image aspect ratio */
+  .aspect-4-3 {
+    aspect-ratio: 4 / 3;
+    position: relative;
+    overflow: hidden;
+  }
+
+  /* Responsive image containers with loading state */
+  .image-container {
+    position: relative;
+    overflow: hidden;
+    border-radius: 0.75rem;
+    background: linear-gradient(90deg, #f0f0f0 25%, #e0e0e0 50%, #f0f0f0 75%);
+    background-size: 200% 100%;
+    animation: shimmer 1.5s infinite;
+  }
+
+  @keyframes shimmer {
+    0% { background-position: 200% 0; }
+    100% { background-position: -200% 0; }
+  }
+
+  .image-container.loaded {
+    background: none;
+    animation: none;
+  }
+
+  .image-container img {
+    object-fit: cover;
+    width: 100%;
+    height: 100%;
+    transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1),
+                opacity 0.3s ease;
+  }
+
+  /* Hover effects only on non-touch devices */
+  @media (hover: hover) and (pointer: fine) {
+    .image-container:hover img {
+      transform: scale(1.05);
+    }
+  }
+
+  /* Team/profile images optimization */
+  img[alt*="Dr."],
+  img[src*="jl_pai"],
+  img[src*="jl_filho"] {
+    object-position: center 30%;
+    border-radius: 0.75rem;
+  }
+
+  /* Hero/background images */
+  section[aria-label*="Introdução"] img,
+  img[role="presentation"] {
+    object-fit: cover;
+    object-position: center;
+    width: 100%;
+    height: 100%;
+    filter: brightness(0.95);
+  }
+
+  /* Optimize image quality for retina displays */
+  @media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) {
+    img {
+      image-rendering: -webkit-optimize-contrast;
+      image-rendering: crisp-edges;
+    }
+  }
+
+  /* Reduce image size on very small screens */
+  @media screen and (max-width: 375px) {
+    img[loading="lazy"] {
+      content-visibility: auto;
+      contain-intrinsic-size: 300px;
+    }
+  }
+}
+
+/* ========================================
+   7. TOUCH TARGET OPTIMIZATION
+   ======================================== */
+
+@media (hover: none) and (pointer: coarse) {
+  /* Ensure all interactive elements meet 44px minimum */
+  a,
+  button,
+  input,
+  textarea,
+  select,
+  [role="button"],
+  [tabindex="0"] {
+    min-height: 44px;
+    min-width: 44px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  /* Add more padding for better touch targets */
+  button,
+  .button,
+  a.button {
+    padding: 12px 24px;
+  }
+
+  /* Increase spacing between clickable elements */
+  nav a + a,
+  button + button {
+    margin-top: 8px;
+  }
+}
+
+/* ========================================
+   8. VIEWPORT SAFE AREAS (iOS notch support)
+   ======================================== */
+
+@supports (padding: max(0px)) {
+  body {
+    padding-left: max(0px, env(safe-area-inset-left));
+    padding-right: max(0px, env(safe-area-inset-right));
+  }
+
+  header {
+    padding-left: max(1rem, env(safe-area-inset-left));
+    padding-right: max(1rem, env(safe-area-inset-right));
+    padding-top: max(0px, env(safe-area-inset-top));
+  }
+
+  footer {
+    padding-left: max(1rem, env(safe-area-inset-left));
+    padding-right: max(1rem, env(safe-area-inset-right));
+    padding-bottom: max(1rem, env(safe-area-inset-bottom));
+  }
+}
+
+/* ========================================
+   9. MOBILE-SPECIFIC UTILITIES
+   ======================================== */
+
+/* Hide elements on mobile */
+@media screen and (max-width: 768px) {
+  .hide-mobile {
+    display: none !important;
+  }
+}
+
+/* Show only on mobile */
+.show-mobile {
+  display: none;
+}
+
+@media screen and (max-width: 768px) {
+  .show-mobile {
+    display: block;
+  }
+}
+
+/* Mobile-optimized card layout */
+@media screen and (max-width: 768px) {
+  .card,
+  article {
+    margin-bottom: 1rem;
+  }
+
+  .grid {
+    gap: 1rem;
+  }
+}
+
+/* ========================================
+   10. PULL-TO-REFRESH INDICATION
+   ======================================== */
+
+.pull-to-refresh {
+  position: fixed;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%) translateY(-100%);
+  padding: 8px 16px;
+  background: rgba(185, 28, 28, 0.9);
+  color: white;
+  border-radius: 0 0 8px 8px;
+  font-size: 14px;
+  font-weight: 600;
+  transition: transform 0.3s ease;
+  z-index: 9999;
+  pointer-events: none;
+}
+
+.pull-to-refresh.active {
+  transform: translateX(-50%) translateY(0);
+}
+
+/* ========================================
+   11. MOBILE FORM OPTIMIZATION
+   ======================================== */
+
+@media screen and (max-width: 768px) {
+  /* Optimize form inputs for mobile */
+  input,
+  textarea,
+  select {
+    font-size: 16px !important; /* Prevent zoom on iOS */
+    border-radius: 8px;
+  }
+
+  /* Stack form labels and inputs */
+  form label {
+    display: block;
+    margin-bottom: 0.5rem;
+  }
+
+  /* Full-width buttons on mobile */
+  form button[type="submit"] {
+    width: 100%;
+  }
+
+  /* Optimize textarea for mobile */
+  textarea {
+    min-height: 120px;
+    resize: vertical;
+  }
+}
+
+/* ========================================
+   12. MOBILE MODAL OPTIMIZATION
+   ======================================== */
+
+@media screen and (max-width: 768px) {
+  [role="dialog"] {
+    max-height: 90vh;
+    margin: 5vh auto;
+  }
+
+  [role="dialog"] > div {
+    max-height: 90vh;
+    overflow-y: auto;
+  }
+
+  /* Full-screen modal on very small screens */
+  @media screen and (max-width: 480px) {
+    [role="dialog"] {
+      width: 100%;
+      height: 100%;
+      max-height: 100vh;
+      margin: 0;
+      border-radius: 0;
+    }
+  }
+}
+
+/* ========================================
+   13. LANDSCAPE ORIENTATION OPTIMIZATION
+   ======================================== */
+
+@media screen and (max-width: 768px) and (orientation: landscape) {
+  /* Reduce padding in landscape mode for more content */
+  .py-16 {
+    padding-top: 2rem;
+    padding-bottom: 2rem;
+  }
+
+  .py-24 {
+    padding-top: 3rem;
+    padding-bottom: 3rem;
+  }
+
+  /* Adjust header height */
+  header {
+    padding-top: 0.5rem;
+    padding-bottom: 0.5rem;
+  }
+
+  /* Compact mobile nav in landscape */
+  .mobile-nav a {
+    padding-top: 0.5rem;
+    padding-bottom: 0.5rem;
+    min-height: 40px;
+  }
+}
+
+/* ========================================
+   14. ACCESSIBILITY ENHANCEMENTS FOR TOUCH
+   ======================================== */
+
+@media (hover: none) and (pointer: coarse) {
+  /* Larger focus indicators for touch devices */
+  *:focus-visible {
+    outline-width: 4px;
+    outline-offset: 3px;
+  }
+
+  /* Better visual feedback for active states */
+  button:active,
+  a:active,
+  [role="button"]:active {
+    transform: scale(0.97);
+    transition: transform 0.1s ease;
+  }
+
+  /* Prevent text selection on interactive elements */
+  button,
+  a,
+  [role="button"] {
+    -webkit-tap-highlight-color: transparent;
+    -webkit-touch-callout: none;
+    user-select: none;
+  }
+
+  /* Allow text selection for readable content */
+  p,
+  li,
+  article,
+  h1, h2, h3, h4, h5, h6 {
+    user-select: text;
+    -webkit-user-select: text;
+  }
+}
+
+/* ========================================
+   15. PERFORMANCE OPTIMIZATIONS
+   ======================================== */
+
+/* Reduce motion for better performance on low-end devices */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+/* Enable GPU acceleration for animations */
+.animate-spin,
+.transition-all,
+.transition-transform {
+  transform: translateZ(0);
+  backface-visibility: hidden;
+  perspective: 1000px;
+}
+
+/* Optimize font loading */
+@media screen and (max-width: 768px) {
+  /* Use system fonts for better performance on mobile */
+  body {
+    font-display: swap;
+  }
+}
+
+/* ========================================
+   16. DARK MODE SUPPORT (for system preference)
+   ======================================== */
+
+@media (prefers-color-scheme: dark) {
+  /* These styles are optional and can be implemented later
+     Currently keeping light theme for consistency */
+}
+
+/* ========================================
+   17. ADDITIONAL RESPONSIVE BREAKPOINT FIXES
+   ======================================== */
+
+/* Tablet Portrait (768px - 1024px) */
+@media screen and (min-width: 768px) and (max-width: 1024px) {
+  /* Optimize grid layouts for tablets */
+  .grid-cols-1.sm\\:grid-cols-2.lg\\:grid-cols-3 {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  /* Better spacing for tablet */
+  .max-w-7xl {
+    padding-left: 2rem;
+    padding-right: 2rem;
+  }
+
+  /* Optimize header for tablets */
+  header .flex {
+    gap: 1rem;
+  }
+
+  /* Form optimization for tablets */
+  form {
+    max-width: 600px;
+  }
+}
+
+/* Small tablets and large phones in landscape */
+@media screen and (min-width: 568px) and (max-width: 767px) and (orientation: landscape) {
+  /* Compact vertical spacing */
+  .py-16 {
+    padding-top: 2.5rem;
+    padding-bottom: 2.5rem;
+  }
+
+  .py-24 {
+    padding-top: 3.5rem;
+    padding-bottom: 3.5rem;
+  }
+
+  /* Two-column layout for better space utilization */
+  section > .max-w-7xl > div {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2rem;
+  }
+}
+
+/* Foldable devices and narrow screens */
+@media screen and (max-width: 320px) {
+  /* Ultra compact layout */
+  html {
+    font-size: 14px;
+  }
+
+  .px-4 {
+    padding-left: 0.75rem;
+    padding-right: 0.75rem;
+  }
+
+  /* Stack cards vertically */
+  .grid {
+    grid-template-columns: 1fr !important;
+  }
+
+  /* Reduce button padding */
+  button,
+  .button {
+    padding: 10px 16px;
+    font-size: 0.875rem;
+  }
+}
+
+/* High-resolution displays (2x, 3x) */
+@media (-webkit-min-device-pixel-ratio: 2),
+       (min-resolution: 192dpi) {
+  /* Sharper borders and shadows */
+  * {
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  /* Optimize image quality */
+  img {
+    image-rendering: -webkit-optimize-contrast;
+  }
+}
+
+/* ========================================
+   18. DEVICE-SPECIFIC OPTIMIZATIONS
+   ======================================== */
+
+/* iPhone X, XS, 11 Pro, 12 Mini, 13 Mini (375px) */
+@media screen and (min-width: 375px) and (max-width: 390px) {
+  body {
+    font-size: 16px;
+  }
+
+  .container {
+    padding-left: 1rem;
+    padding-right: 1rem;
+  }
+}
+
+/* iPhone XR, 11, 12, 12 Pro, 13, 13 Pro (390px-428px) */
+@media screen and (min-width: 390px) and (max-width: 428px) {
+  body {
+    font-size: 16px;
+  }
+
+  h1 {
+    font-size: 2.25rem;
+  }
+
+  h2 {
+    font-size: 1.875rem;
+  }
+}
+
+/* iPad Mini, iPad Air */
+@media screen and (min-width: 768px) and (max-width: 820px) {
+  /* Tablet-optimized layouts */
+  .grid-cols-1.md\\:grid-cols-2 {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  /* Better navigation spacing */
+  nav a {
+    padding: 0.5rem 1rem;
+    font-size: 0.9375rem;
+  }
+}
+
+/* iPad Pro 11" and 12.9" */
+@media screen and (min-width: 1024px) and (max-width: 1366px) {
+  /* Desktop-like experience on large tablets */
+  .max-w-7xl {
+    max-width: 90%;
+  }
+
+  /* Three-column layouts work well */
+  .lg\\:grid-cols-3 {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+}
+
+/* ========================================
+   19. PRINT OPTIMIZATION
+   ======================================== */
+
+@media print {
+  /* Hide navigation and interactive elements */
+  header,
+  nav,
+  button,
+  .hamburger-button,
+  .mobile-nav,
+  #mobile-menu-button,
+  footer,
+  form {
+    display: none !important;
+  }
+
+  /* Optimize for print */
+  body {
+    font-size: 12pt;
+    line-height: 1.5;
+    color: #000;
+    background: #fff;
+  }
+
+  /* Better page breaks */
+  section,
+  article {
+    page-break-inside: avoid;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    page-break-after: avoid;
+  }
+
+  /* Show URLs for links */
+  a[href^="http"]:after {
+    content: " (" attr(href) ")";
+    font-size: 0.8em;
+  }
+
+  /* Optimize images */
+  img {
+    max-width: 100%;
+    page-break-inside: avoid;
+  }
+}
+
+/* ========================================
+   20. ACCESSIBILITY MEDIA QUERIES
+   ======================================== */
+
+/* High contrast mode */
+@media (prefers-contrast: high) {
+  /* Increase contrast */
+  body {
+    background: #000;
+    color: #fff;
+  }
+
+  a,
+  button {
+    border: 2px solid currentColor;
+  }
+
+  /* Stronger focus indicators */
+  *:focus-visible {
+    outline: 4px solid #ffff00;
+    outline-offset: 4px;
+  }
+}
+
+/* Increased contrast mode */
+@media (prefers-contrast: more) {
+  /* Enhanced visibility */
+  .text-gray-700 {
+    color: #000;
+  }
+
+  .text-gray-600 {
+    color: #333;
+  }
+
+  .border-gray-200 {
+    border-color: #666;
+  }
+}
+
+/* Inverted colors (dark mode preference) */
+@media (prefers-color-scheme: dark) {
+  /* Optional dark mode support */
+  /* body {
+    background-color: #1a1a1a;
+    color: #f0f0f0;
+  }
+
+  .bg-white {
+    background-color: #2a2a2a !important;
+  }
+
+  .text-gray-900 {
+    color: #f0f0f0 !important;
+  } */
+}
+
+/* Transparency reduction */
+@media (prefers-reduced-transparency: reduce) {
+  * {
+    backdrop-filter: none !important;
+    background-color: solid !important;
+  }
+
+  .bg-black\2f 50 {
+    background-color: rgba(0, 0, 0, 0.9) !important;
+  }
+}
+
+/* ========================================
+   END OF MOBILE OPTIMIZATION STYLES
+   ======================================== */
