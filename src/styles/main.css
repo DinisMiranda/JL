@@ -1,0 +1,14 @@
+/**
+ * Entrada principal de CSS – Tailwind pré-compilado + estilos do projeto.
+ * Usar este ficheiro em vez do CDN do Tailwind para carregamento mais rápido.
+ */
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@import './accessibility.css';
+@import './mobile.css';
+@import './header.css';
+@import './footer.css';
+@import './carousels.css';
+@import './contact.css';

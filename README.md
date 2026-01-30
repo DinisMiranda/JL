@@ -51,6 +51,16 @@ Using yarn:
 yarn install
 ```
 
+### 2b. (Opcional) Site mais rápido
+
+Para que as mudanças de página sejam mais rápidas (sem compilar Tailwind no browser em cada carregamento), gera o CSS pré-compilado uma vez:
+
+```bash
+npm run build:css
+```
+
+Isto cria `public/site.css`. O site usa este ficheiro quando existe; se não existir, carrega o Tailwind por CDN (funciona mas mais lento). Executa de novo `npm run build:css` sempre que alterares classes Tailwind no HTML.
+
 ### 3. Environment Setup (if needed)
 
 Create a `.env` file in the root directory for any environment-specific variables:

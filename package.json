@@ -5,7 +5,8 @@
   "type": "module",
   "scripts": {
     "dev": "vite",
-    "build": "vite build",
+    "build:css": "npx tailwindcss -i ./src/styles/main.css -o ./public/site.css && cp ./public/site.css ./site.css",
+    "build": "npm run build:css && vite build",
     "preview": "vite preview",
     "server": "node server/index.js",
     "server:dev": "nodemon server/index.js",

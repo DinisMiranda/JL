@@ -1,8 +1,14 @@
 /** @type {import('tailwindcss').Config} */
 export default {
   content: [
+    './*.html',
     './index.html',
-    './src/**/*.{js,ts,jsx,tsx,html}',
+    './sobre.html',
+    './legado.html',
+    './contacto.html',
+    './leis-recentes.html',
+    './areas-pratica.html',
+    './src/**/*.{js,ts,jsx,tsx,html,css}',
   ],
   theme: {
     extend: {
