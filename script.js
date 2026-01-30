@@ -113,11 +113,31 @@ function initMobileMenu() {
   });
 }
 
-// Inicializar menu quando o DOM estiver pronto
+// Marcar link da página atual na navegação (multi-página)
+function initCurrentPageNav() {
+  const path = window.location.pathname;
+  const currentPage = path === '/' || path.endsWith('/index.html') ? 'index.html' : path.split('/').pop() || 'index.html';
+  const navSelector = '#main-nav a[href], #mobile-nav a[href]';
+  document.querySelectorAll(navSelector).forEach((link) => {
+    const href = link.getAttribute('href') || '';
+    const linkPage = href.startsWith('/') ? href.split('/').pop() : href;
+    if (linkPage === currentPage || (currentPage === 'index.html' && (linkPage === '' || linkPage === 'index.html'))) {
+      link.setAttribute('aria-current', 'page');
+    } else {
+      link.removeAttribute('aria-current');
+    }
+  });
+}
+
+// Inicializar menu e navegação quando o DOM estiver pronto
 if (document.readyState === 'loading') {
-  document.addEventListener('DOMContentLoaded', initMobileMenu);
+  document.addEventListener('DOMContentLoaded', () => {
+    initMobileMenu();
+    initCurrentPageNav();
+  });
 } else {
   initMobileMenu();
+  initCurrentPageNav();
 }
 
 // ========================================

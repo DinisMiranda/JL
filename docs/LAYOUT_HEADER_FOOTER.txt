@@ -1,0 +1,4 @@
+# Header e Footer partilhados - usar nas páginas internas
+# Links de navegação: index.html, sobre.html, legado.html, leis-recentes.html, contacto.html
+# Áreas de prática: integradas em sobre.html#areas-pratica
+# Redirects (não no menu): equipa.html → sobre.html, publicacoes.html → sobre.html, homenagens.html → legado.html, areas-pratica.html → sobre.html#areas-pratica

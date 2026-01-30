@@ -38,6 +38,14 @@ export default defineConfig({
     rollupOptions: {
       input: {
         main: resolve(__dirname, 'index.html'),
+        sobre: resolve(__dirname, 'sobre.html'),
+        legado: resolve(__dirname, 'legado.html'),
+        'areas-pratica': resolve(__dirname, 'areas-pratica.html'),
+        'leis-recentes': resolve(__dirname, 'leis-recentes.html'),
+        contacto: resolve(__dirname, 'contacto.html'),
+        equipa: resolve(__dirname, 'equipa.html'),
+        homenagens: resolve(__dirname, 'homenagens.html'),
+        publicacoes: resolve(__dirname, 'publicacoes.html'),
       },
       output: {
         // Manual chunk splitting for better caching

@@ -1,12 +1,17 @@
 :root {
-  --color-primary: #1a3a5f;
+  --color-primary: #B91C1C;
+  --color-primary-dark: #991b1b;
   --color-secondary: #c9a14a;
+  --color-secondary-light: #d4af6a;
   --color-dark: #1c1c1c;
-  --color-light: #f6f6f6;
-  --color-text: #333333;
+  --color-light: #fafafa;
+  --color-text: #374151;
   --font-heading: "Georgia", "Times New Roman", serif;
-  --font-body: "Helvetica Neue", Arial, sans-serif;
-  --max-width: 1100px;
+  --font-body: "Inter", "Helvetica Neue", Arial, sans-serif;
+  --max-width: 1200px;
+  --radius: 1rem;
+  --shadow: 0 4px 6px -1px rgba(185, 28, 28, 0.08), 0 2px 4px -2px rgba(185, 28, 28, 0.05);
+  --shadow-lg: 0 20px 25px -5px rgba(185, 28, 28, 0.08), 0 8px 10px -6px rgba(0, 0, 0, 0.05);
 }
 
 *,
@@ -112,7 +117,7 @@ img {
 }
 
 .hero {
-  background: linear-gradient(135deg, rgba(26, 58, 95, 0.9), rgba(14, 27, 46, 0.92)),
+  background: linear-gradient(135deg, rgba(185, 28, 28, 0.92), rgba(153, 27, 27, 0.95)),
     url("https://images.unsplash.com/photo-1520607162513-77705c0f0d4a?auto=format&fit=crop&w=1600&q=80")
       center/cover no-repeat;
   color: #ffffff;
@@ -195,10 +200,14 @@ ul {
 
 .card {
   background-color: #ffffff;
-  border: 1px solid rgba(26, 58, 95, 0.1);
-  border-radius: 12px;
+  border: 1px solid rgba(185, 28, 28, 0.08);
+  border-radius: var(--radius);
   padding: 1.5rem;
-  box-shadow: 0 10px 20px -12px rgba(26, 58, 95, 0.4);
+  box-shadow: var(--shadow);
+  transition: box-shadow 0.2s ease, transform 0.2s ease;
+}
+.card:hover {
+  box-shadow: var(--shadow-lg);
 }
 
 .card h3,
@@ -243,7 +252,7 @@ ul {
 
 .skills-list li {
   list-style: none;
-  background-color: rgba(26, 58, 95, 0.1);
+  background-color: rgba(185, 28, 28, 0.08);
   border-radius: 999px;
   padding: 0.4rem 0.9rem;
 }
@@ -285,10 +294,10 @@ ul {
   display: grid;
   gap: 1rem;
   background-color: #ffffff;
-  border-radius: 12px;
+  border-radius: var(--radius);
   padding: 2rem;
-  border: 1px solid rgba(26, 58, 95, 0.1);
-  box-shadow: 0 10px 20px -12px rgba(26, 58, 95, 0.4);
+  border: 1px solid rgba(185, 28, 28, 0.08);
+  box-shadow: var(--shadow);
 }
 
 .contact-form label {
@@ -308,7 +317,7 @@ ul {
 
 .contact-form input:focus,
 .contact-form textarea:focus {
-  outline: 2px solid rgba(26, 58, 95, 0.4);
+  outline: 2px solid rgba(185, 28, 28, 0.3);
   border-color: var(--color-primary);
 }
 

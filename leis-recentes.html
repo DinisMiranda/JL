@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="pt">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="theme-color" content="#B91C1C" />
+    <title>Leis Recentes | João Lobo Advogados</title>
+    <meta name="description" content="Novidades legislativas e publicações do Diário da República. Fique a par das leis e alterações mais recentes em Portugal." />
+    <link rel="canonical" href="https://joaoloboadvogados.pt/leis-recentes.html" />
+    <link rel="icon" href="images/icon.png" />
+    <link rel="preconnect" href="https://cdn.tailwindcss.com" crossorigin />
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+      tailwind.config = { theme: { extend: { colors: { primary: '#B91C1C', secondary: '#c9a14a' } } } }
+    </script>
+    <link rel="stylesheet" href="src/styles/accessibility.css" />
+    <link rel="stylesheet" href="src/styles/mobile.css" />
+    <link rel="stylesheet" href="src/styles/header.css" />
+  </head>
+  <body class="bg-white text-gray-800 font-sans antialiased">
+    <a href="#main-content" class="skip-to-content sr-only focus:not-sr-only focus:absolute focus:top-4 focus:left-4 focus:z-[100] focus:px-6 focus:py-3 focus:bg-secondary focus:text-white focus:rounded-lg">Saltar para o conteúdo</a>
+
+    <header class="site-header" role="banner">
+      <div class="site-header__inner">
+        <a href="index.html" class="site-header__logo">
+          <span class="site-header__logo-name">João Lobo Advogados</span>
+          <span class="site-header__tagline">Tradição e Excelência desde 1975</span>
+        </a>
+        <button id="mobile-menu-button" class="site-header__mobile-toggle hamburger-button" aria-label="Abrir menu" aria-expanded="false" aria-controls="mobile-nav">
+          <div class="hamburger-icon">
+            <span class="hamburger-line"></span><span class="hamburger-line"></span><span class="hamburger-line"></span>
+          </div>
+        </button>
+        <nav id="main-nav" class="site-header__nav" role="navigation" aria-label="Navegação principal">
+          <a href="index.html">Início</a>
+          <a href="sobre.html">Sobre Nós</a>
+          <a href="legado.html">Legado</a>
+          <a href="leis-recentes.html">Leis Recentes</a>
+          <a href="contacto.html">Contacto</a>
+        </nav>
+      </div>
+      <nav id="mobile-nav" class="site-header__mobile-nav mobile-nav is-closed" role="navigation" aria-label="Navegação móvel">
+        <div class="site-header__mobile-links">
+          <a href="index.html">Início</a>
+          <a href="sobre.html">Sobre Nós</a>
+          <a href="legado.html">Legado</a>
+          <a href="leis-recentes.html">Leis Recentes</a>
+          <a href="contacto.html">Contacto</a>
+        </div>
+      </nav>
+    </header>
+
+    <main id="main-content" role="main" tabindex="-1">
+      <section class="bg-gradient-to-br from-primary/90 to-primary text-white py-12 md:py-16 px-4">
+        <div class="max-w-7xl mx-auto">
+          <h1 class="text-3xl md:text-4xl lg:text-5xl font-serif font-bold">Leis Recentes</h1>
+          <p class="text-lg mt-2 text-white/90 max-w-3xl">
+            Novidades do Diário da República e legislação em destaque. Esta secção está preparada para integrar
+            uma API que mostrará automaticamente novas leis e alterações quando publicadas no Diário da República.
+          </p>
+        </div>
+      </section>
+
+      <section class="py-16 md:py-24 px-4 bg-white">
+        <div class="max-w-7xl mx-auto">
+          <!--
+            INTEGRAÇÃO API DIÁRIO DA REPÚBLICA:
+            O container #leis-list abaixo deve ser preenchido pela sua API.
+            Estrutura sugerida por item: { titulo, dataPublicacao, sumario, urlDr, tipo (Lei/Decreto-Lei/Portaria/etc) }
+            Pode usar leis-api.js para fetch e renderização, ou injetar HTML no servidor.
+          -->
+          <div id="leis-list" class="space-y-6">
+            <!-- Conteúdo estático até a API estar disponível. Quando a API estiver ativa, estes blocos podem ser substituídos ou omitidos. -->
+            <article class="bg-gradient-to-br from-white to-gray-50 p-6 md:p-8 rounded-2xl shadow-brand hover:shadow-brand-lg transition-all border border-gray-100 hover:border-primary/20" data-lei-id="placeholder-1">
+              <div class="flex flex-wrap items-center gap-2 mb-3">
+                <span class="text-xs font-semibold uppercase tracking-wide text-secondary bg-secondary/10 px-3 py-1 rounded-full">Destaque</span>
+                <time class="text-sm text-gray-500" datetime="2025-01-10">10 jan 2025</time>
+              </div>
+              <h2 class="text-xl md:text-2xl font-serif font-semibold text-primary mb-2">Reforma do Processo Civil (2025)</h2>
+              <p class="text-gray-700 leading-relaxed">
+                Principais alterações ao Código de Processo Civil, visando a simplificação e celeridade processual.
+              </p>
+              <a href="sobre.html" class="inline-block mt-4 text-primary font-semibold border-b-2 border-secondary pb-1 hover:text-secondary transition-colors">Ver análise →</a>
+            </article>
+            <article class="bg-gradient-to-br from-white to-gray-50 p-6 md:p-8 rounded-2xl shadow-brand hover:shadow-brand-lg transition-all border border-gray-100 hover:border-primary/20" data-lei-id="placeholder-2">
+              <div class="flex flex-wrap items-center gap-2 mb-3">
+                <span class="text-xs font-semibold uppercase tracking-wide text-primary bg-primary/10 px-3 py-1 rounded-full">Lei</span>
+                <time class="text-sm text-gray-500" datetime="2024-12-01">1 dez 2024</time>
+              </div>
+              <h2 class="text-xl md:text-2xl font-serif font-semibold text-primary mb-2">Alterações ao Código Civil (2024)</h2>
+              <p class="text-gray-700 leading-relaxed">
+                Resumo das principais alterações ao Código Civil com impacto nas relações jurídicas entre particulares.
+              </p>
+              <a href="https://dre.pt" target="_blank" rel="noopener noreferrer" class="inline-block mt-4 text-primary font-semibold border-b-2 border-secondary pb-1 hover:text-secondary transition-colors">Consultar no DRE →</a>
+            </article>
+            <article class="bg-gradient-to-br from-white to-gray-50 p-6 md:p-8 rounded-2xl shadow-brand hover:shadow-brand-lg transition-all border border-gray-100 hover:border-primary/20" data-lei-id="placeholder-3">
+              <div class="flex flex-wrap items-center gap-2 mb-3">
+                <span class="text-xs font-semibold uppercase tracking-wide text-primary bg-primary/10 px-3 py-1 rounded-full">Decreto-Lei</span>
+                <time class="text-sm text-gray-500" datetime="2024-11-15">15 nov 2024</time>
+              </div>
+              <h2 class="text-xl md:text-2xl font-serif font-semibold text-primary mb-2">Nova Lei do Arrendamento (2024)</h2>
+              <p class="text-gray-700 leading-relaxed">
+                Modificações no regime do arrendamento urbano, com implicações para senhorios e arrendatários.
+              </p>
+              <a href="https://dre.pt" target="_blank" rel="noopener noreferrer" class="inline-block mt-4 text-primary font-semibold border-b-2 border-secondary pb-1 hover:text-secondary transition-colors">Consultar no DRE →</a>
+            </article>
+            <article class="bg-gradient-to-br from-white to-gray-50 p-6 md:p-8 rounded-2xl shadow-brand hover:shadow-brand-lg transition-all border border-gray-100 hover:border-primary/20" data-lei-id="placeholder-4">
+              <div class="flex flex-wrap items-center gap-2 mb-3">
+                <span class="text-xs font-semibold uppercase tracking-wide text-primary bg-primary/10 px-3 py-1 rounded-full">Estatuto</span>
+                <time class="text-sm text-gray-500" datetime="2024-10-01">1 out 2024</time>
+              </div>
+              <h2 class="text-xl md:text-2xl font-serif font-semibold text-primary mb-2">Estatuto da Ordem dos Advogados (2024)</h2>
+              <p class="text-gray-700 leading-relaxed">
+                Alterações ao Estatuto da Ordem dos Advogados, incluindo regras sobre publicidade na advocacia.
+              </p>
+              <a href="https://dre.pt" target="_blank" rel="noopener noreferrer" class="inline-block mt-4 text-primary font-semibold border-b-2 border-secondary pb-1 hover:text-secondary transition-colors">Consultar no DRE →</a>
+            </article>
+          </div>
+
+          <p class="mt-10 text-center text-gray-500 text-sm">
+            Fonte: Diário da República Electrónico (DRE). Quando a API estiver ativa, os conteúdos serão atualizados automaticamente.
+          </p>
+        </div>
+      </section>
+    </main>
+
+    <footer role="contentinfo" class="bg-gray-900 text-white py-8 px-4">
+      <div class="max-w-7xl mx-auto text-center">
+        <p class="mb-2">© 2025 João Lobo Advogados. Todos os direitos reservados.</p>
+        <p class="text-gray-400 text-sm">A informação contida neste site é meramente informativa e não constitui aconselhamento jurídico.</p>
+      </div>
+    </footer>
+    <script src="script.js"></script>
+  </body>
+</html>

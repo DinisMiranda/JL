@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="pt">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+    <meta name="theme-color" content="#B91C1C" />
+    <title>Contacto | João Lobo Advogados</title>
+    <meta name="description" content="Contacte o escritório João Lobo Advogados. Localização em Braga, telefone, email e formulário de contacto." />
+    <link rel="canonical" href="https://joaoloboadvogados.pt/contacto.html" />
+    <link rel="icon" href="images/icon.png" />
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+    <script>tailwind.config = { theme: { extend: { colors: { primary: '#B91C1C', secondary: '#c9a14a' } } } }</script>
+    <link rel="stylesheet" href="src/styles/accessibility.css" />
+    <link rel="stylesheet" href="src/styles/mobile.css" />
+    <link rel="stylesheet" href="src/styles/header.css" />
+  </head>
+  <body class="bg-white text-gray-800 font-sans antialiased">
+    <a href="#main-content" class="skip-to-content sr-only focus:not-sr-only focus:absolute focus:top-4 focus:left-4 focus:z-[100] focus:px-6 focus:py-3 focus:bg-secondary focus:text-white focus:rounded-lg">Saltar para o conteúdo</a>
+    <header class="site-header" role="banner">
+      <div class="site-header__inner">
+        <a href="index.html" class="site-header__logo">
+          <span class="site-header__logo-name">João Lobo Advogados</span>
+          <span class="site-header__tagline">Tradição e Excelência desde 1975</span>
+        </a>
+        <button id="mobile-menu-button" class="site-header__mobile-toggle hamburger-button" aria-label="Abrir menu" aria-expanded="false" aria-controls="mobile-nav">
+          <div class="hamburger-icon"><span class="hamburger-line"></span><span class="hamburger-line"></span><span class="hamburger-line"></span></div>
+        </button>
+        <nav id="main-nav" class="site-header__nav" role="navigation" aria-label="Navegação principal">
+          <a href="index.html">Início</a>
+          <a href="sobre.html">Sobre Nós</a>
+          <a href="legado.html">Legado</a>
+          <a href="leis-recentes.html">Leis Recentes</a>
+          <a href="contacto.html">Contacto</a>
+        </nav>
+      </div>
+      <nav id="mobile-nav" class="site-header__mobile-nav mobile-nav is-closed" role="navigation" aria-label="Navegação móvel">
+        <div class="site-header__mobile-links">
+          <a href="index.html">Início</a>
+          <a href="sobre.html">Sobre Nós</a>
+          <a href="legado.html">Legado</a>
+          <a href="leis-recentes.html">Leis Recentes</a>
+          <a href="contacto.html">Contacto</a>
+        </div>
+      </nav>
+    </header>
+    <main id="main-content" role="main" tabindex="-1">
+      <section class="bg-gradient-to-br from-primary/90 to-primary text-white py-12 md:py-16 px-4">
+        <div class="max-w-7xl mx-auto">
+          <h1 class="text-3xl md:text-4xl lg:text-5xl font-serif font-bold">Contacte-nos</h1>
+          <p class="text-lg mt-2 text-white/90">Estamos ao seu dispor</p>
+        </div>
+      </section>
+      <section class="py-16 md:py-24 px-4 bg-gray-50">
+        <div class="max-w-7xl mx-auto">
+          <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 md:gap-12">
+            <div>
+              <h2 class="text-3xl md:text-4xl font-serif font-bold text-gray-900 mb-8">Contacto</h2>
+              <address class="not-italic">
+                <ul class="space-y-4">
+                  <li class="flex items-center gap-4">
+                    <strong class="text-gray-900 w-[120px] flex-shrink-0">Localização:</strong>
+                    <a href="https://share.google/HmW6ii9wWLrkelc5t" target="_blank" rel="noopener noreferrer" class="text-primary hover:text-secondary font-semibold transition-colors min-h-[44px] flex items-center" aria-label="Ver localização no Google Maps">Rua Justino Cruz, Braga, Portugal</a>
+                  </li>
+                  <li class="flex items-center gap-4">
+                    <strong class="text-gray-900 w-[120px] flex-shrink-0">Telefone:</strong>
+                    <a href="tel:+351915964547" class="text-primary hover:text-secondary font-semibold transition-colors min-h-[44px] flex items-center" aria-label="Ligar para +351 915 964 547">+351 915 964 547</a>
+                  </li>
+                  <li class="flex items-center gap-4">
+                    <strong class="text-gray-900 w-[120px] flex-shrink-0">Email:</strong>
+                    <a href="mailto:joaojlobo@hotmail.com" class="text-primary hover:text-secondary font-semibold transition-colors break-all min-h-[44px] flex items-center" aria-label="Enviar email">joaojlobo@hotmail.com</a>
+                  </li>
+                </ul>
+              </address>
+            </div>
+            <div>
+              <form id="contact-form" class="bg-white p-6 md:p-8 rounded-2xl shadow-brand space-y-4" aria-labelledby="form-heading" novalidate>
+                <h3 id="form-heading" class="text-2xl font-serif font-semibold text-gray-900 mb-6">Envie-nos uma mensagem</h3>
+                <div id="form-message" class="hidden p-4 rounded-lg mb-4" role="alert" aria-live="polite"></div>
+                <div>
+                  <label for="nome" class="text-gray-700 font-semibold mb-2 block">Nome <span class="text-primary" aria-label="obrigatório">*</span></label>
+                  <input type="text" id="nome" name="nome" required aria-required="true" aria-describedby="nome-error" aria-invalid="false" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent min-h-[44px]" />
+                  <span id="nome-error" class="text-red-600 text-sm mt-1 hidden" role="alert"></span>
+                </div>
+                <div>
+                  <label for="email" class="text-gray-700 font-semibold mb-2 block">Email <span class="text-primary" aria-label="obrigatório">*</span></label>
+                  <input type="email" id="email" name="email" required aria-required="true" aria-describedby="email-error" aria-invalid="false" autocomplete="email" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent min-h-[44px]" />
+                  <span id="email-error" class="text-red-600 text-sm mt-1 hidden" role="alert"></span>
+                </div>
+                <div>
+                  <label for="assunto" class="text-gray-700 font-semibold mb-2 block">Assunto <span class="text-primary" aria-label="obrigatório">*</span></label>
+                  <input type="text" id="assunto" name="assunto" required aria-required="true" aria-describedby="assunto-error" aria-invalid="false" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent min-h-[44px]" />
+                  <span id="assunto-error" class="text-red-600 text-sm mt-1 hidden" role="alert"></span>
+                </div>
+                <div>
+                  <label for="mensagem" class="text-gray-700 font-semibold mb-2 flex justify-between items-center">
+                    <span>Mensagem <span class="text-primary" aria-label="obrigatório">*</span></span>
+                    <span id="mensagem-counter" class="text-sm text-gray-500 font-normal" aria-live="polite"><span id="mensagem-current">0</span>/<span id="mensagem-max">1000</span></span>
+                  </label>
+                  <textarea id="mensagem" name="mensagem" rows="5" maxlength="1000" required aria-required="true" aria-describedby="mensagem-error mensagem-counter" aria-invalid="false" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent resize-none"></textarea>
+                  <span id="mensagem-error" class="text-red-600 text-sm mt-1 hidden" role="alert"></span>
+                </div>
+                <div class="hidden" aria-hidden="true">
+                  <label for="website">Website</label>
+                  <input type="text" id="website" name="website" tabindex="-1" autocomplete="off" />
+                </div>
+                <button type="submit" id="submit-btn" class="w-full bg-secondary hover:bg-secondary/90 text-white font-semibold py-3 px-6 rounded-lg transition-all shadow-md hover:shadow-lg focus:outline-none focus:ring-4 focus:ring-secondary/50 min-h-[44px] flex items-center justify-center gap-2" aria-label="Enviar formulário de contacto">
+                  <span id="submit-text">Enviar</span>
+                  <svg id="submit-spinner" class="hidden animate-spin h-5 w-5 text-white" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" aria-hidden="true">
+                    <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
+                    <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
+                  </svg>
+                </button>
+                <p class="text-xs text-gray-500 text-center mt-2">Protegido contra spam. Máximo 3 envios por 15 minutos.</p>
+              </form>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+    <footer role="contentinfo" class="bg-gray-900 text-white py-8 px-4">
+      <div class="max-w-7xl mx-auto text-center">
+        <p class="mb-2">© 2025 João Lobo Advogados. Todos os direitos reservados.</p>
+        <p class="text-gray-400 text-sm">A informação contida neste site é meramente informativa e não constitui aconselhamento jurídico.</p>
+      </div>
+    </footer>
+    <script src="script.js"></script>
+  </body>
+</html>

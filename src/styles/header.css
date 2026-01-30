@@ -1,0 +1,197 @@
+/**
+ * Site header – fundo vermelho, tipografia e links refinados
+ */
+
+.site-header {
+  background: #B91C1C;
+  color: #fff;
+  position: sticky;
+  top: 0;
+  z-index: 50;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.15);
+}
+
+.site-header__inner {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  padding: 0.875rem 1rem;
+  max-width: 80rem;
+  margin: 0 auto;
+}
+
+@media (min-width: 768px) {
+  .site-header__inner {
+    padding: 0.875rem 1.5rem;
+  }
+}
+
+.site-header__logo {
+  text-decoration: none;
+  display: inline-flex;
+  flex-direction: column;
+  gap: 0.125rem;
+}
+
+.site-header__logo-name {
+  font-size: 1.125rem;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  color: #fff;
+  line-height: 1.2;
+  text-transform: uppercase;
+}
+
+@media (min-width: 768px) {
+  .site-header__logo-name {
+    font-size: 1.25rem;
+  }
+}
+
+.site-header__logo:hover .site-header__logo-name {
+  color: #fff;
+  opacity: 0.95;
+}
+
+.site-header__tagline {
+  font-size: 0.7rem;
+  color: rgba(255, 255, 255, 0.85);
+  font-weight: 500;
+  letter-spacing: 0.02em;
+}
+
+@media (min-width: 768px) {
+  .site-header__tagline {
+    font-size: 0.75rem;
+  }
+}
+
+.site-header__nav {
+  display: none;
+}
+
+@media (min-width: 768px) {
+  .site-header__nav {
+    display: flex;
+    align-items: center;
+    gap: 0.125rem;
+    flex-wrap: wrap;
+  }
+}
+
+/* Links: tamanho e tipografia mais legíveis, sem pills */
+.site-header__nav a {
+  padding: 0.5rem 0.875rem;
+  font-size: 0.9375rem;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+  color: rgba(255, 255, 255, 0.92);
+  border-radius: 0.25rem;
+  transition: color 0.2s ease, background 0.2s ease;
+}
+
+.site-header__nav a:hover {
+  color: #fff;
+  background: rgba(255, 255, 255, 0.12);
+}
+
+.site-header__nav a:focus-visible {
+  outline: 2px solid #c9a14a;
+  outline-offset: 2px;
+  color: #fff;
+}
+
+.site-header__mobile-toggle {
+  margin-left: auto;
+  padding: 0.5rem;
+  min-width: 44px;
+  min-height: 44px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #fff;
+  background: transparent;
+  border: none;
+  border-radius: 0.375rem;
+  cursor: pointer;
+  transition: background 0.15s ease, opacity 0.15s ease;
+}
+
+@media (min-width: 768px) {
+  .site-header__mobile-toggle {
+    display: none;
+  }
+}
+
+.site-header__mobile-toggle:hover {
+  background: rgba(255, 255, 255, 0.15);
+}
+
+.site-header__mobile-toggle .hamburger-icon {
+  color: inherit;
+}
+
+.site-header__mobile-nav {
+  width: 100%;
+  display: block;
+  padding-bottom: 1rem;
+}
+
+@media (min-width: 768px) {
+  .site-header__mobile-nav {
+    display: none;
+  }
+}
+
+.site-header__mobile-nav.is-closed {
+  display: none;
+}
+
+@media (min-width: 768px) {
+  .site-header__mobile-nav.is-closed {
+    display: none;
+  }
+}
+
+.site-header__mobile-nav .site-header__mobile-links {
+  display: flex;
+  flex-direction: column;
+  gap: 0.125rem;
+  padding-top: 0.5rem;
+  border-top: 1px solid rgba(255, 255, 255, 0.2);
+  margin-top: 0.5rem;
+}
+
+.site-header__mobile-nav a {
+  display: flex;
+  align-items: center;
+  min-height: 44px;
+  padding: 0 1rem;
+  font-size: 1rem;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+  color: rgba(255, 255, 255, 0.95);
+  border-radius: 0.25rem;
+  transition: background 0.15s ease, color 0.15s ease;
+}
+
+.site-header__mobile-nav a:hover {
+  background: rgba(255, 255, 255, 0.12);
+  color: #fff;
+}
+
+/* Garantir que o nav no header vermelho use branco (override de mobile.css se necessário) */
+.site-header #main-nav a,
+.site-header #main-nav a:hover,
+.site-header #main-nav a:focus,
+.site-header #main-nav a:active {
+  color: rgba(255, 255, 255, 0.92) !important;
+  background-color: transparent !important;
+}
+
+.site-header #main-nav a:hover {
+  color: #fff !important;
+  background-color: rgba(255, 255, 255, 0.12) !important;
+}
