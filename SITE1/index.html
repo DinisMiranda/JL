@@ -107,6 +107,7 @@
     <!-- Mobile Optimization Styles -->
     <link rel="stylesheet" href="src/styles/mobile.css?v=4" />
     <link rel="stylesheet" href="src/styles/mobile-menu.css?v=5" />
+    <link rel="stylesheet" href="src/styles/splash.css?v=2" />
 
     <!-- Structured Data (JSON-LD) -->
     <script type="application/ld+json">
@@ -287,6 +288,29 @@
     </script>
   </head>
   <body class="bg-white text-gray-800 font-sans antialiased">
+    <!-- Splash / preloader -->
+    <div id="splash" class="splash splash--in" aria-hidden="true">
+      <svg class="splash__logo" viewBox="0 0 312 266" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+        <g fill="currentColor">
+          <rect class="s-top" x="0" y="0" width="312" height="28"></rect>
+          <rect class="s-pillar-l" x="0" y="0" width="31" height="213"></rect>
+          <rect class="s-pillar-r" x="281" y="0" width="31" height="213"></rect>
+          <polygon class="s-slope-l" points="30,186 136,186 136,198 121,212 30,212"></polygon>
+          <polygon class="s-slope-r" points="174,186 281,186 281,212 190,212 174,198"></polygon>
+          <polygon class="s-j" points="63,49 137,49 137,186 103,186 103,76 63,76"></polygon>
+          <rect class="s-l" x="174" y="49" width="34" height="137"></rect>
+          <polygon class="s-arrow" points="132,241 155.5,229 179,241"></polygon>
+          <rect class="s-bottom" x="32" y="241" width="248" height="25"></rect>
+        </g>
+      </svg>
+      <div class="splash__rule"></div>
+      <div class="splash__caption">
+        <span class="splash__caption-name">JOÃO LOBO</span>
+        <span class="splash__caption-sub">ADVOGADOS · DESDE 1975</span>
+      </div>
+    </div>
+
+    <div id="site-page" class="site-page">
     <div id="site-scroll-root">
     <!-- Skip to Content Link -->
     <a href="#main-content" class="skip-to-content sr-only focus:not-sr-only focus:absolute focus:top-4 focus:left-4 focus:z-[100] focus:px-6 focus:py-3 focus:bg-secondary focus:text-white focus:rounded-lg focus:shadow-lg focus:outline-none focus:ring-4 focus:ring-secondary/50">
@@ -901,8 +925,9 @@
         </nav>
       </div>
     </div>
+    </div>
 
     <!-- JavaScript -->
-    <script src="script.js?v=3"></script>
+    <script src="script.js?v=4"></script>
   </body>
 </html>

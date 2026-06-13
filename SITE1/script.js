@@ -1,4 +1,38 @@
 // ========================================
+// Splash / preloader (abertura do site)
+// ========================================
+(function initSplash() {
+  const splash = document.getElementById('splash');
+  const page = document.getElementById('site-page');
+  const SPLASH_DISPLAY_MS = 1550;
+  const SPLASH_EXIT_MS = 720;
+
+  if (!splash || !page) return;
+
+  function finishSplash() {
+    splash.style.display = 'none';
+    splash.setAttribute('aria-hidden', 'true');
+    document.documentElement.classList.remove('splash-active');
+  }
+
+  if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+    finishSplash();
+    page.classList.add('site-page--visible');
+    page.style.opacity = '1';
+    return;
+  }
+
+  document.documentElement.classList.add('splash-active');
+  page.classList.add('site-page--visible');
+
+  window.setTimeout(() => {
+    splash.classList.remove('splash--in');
+    splash.classList.add('splash--out');
+    window.setTimeout(finishSplash, SPLASH_EXIT_MS + 30);
+  }, SPLASH_DISPLAY_MS);
+})();
+
+// ========================================
 // ACCESSIBILITY: Keyboard Navigation Detection
 // ========================================
 let isUsingKeyboard = false;
