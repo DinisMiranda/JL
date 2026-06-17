@@ -1,0 +1,159 @@
+/* ========================================
+   MOBILE FULLSCREEN MENU (standalone)
+   Animação controlada por JS (Web Animations API)
+   ======================================== */
+
+.menu-open-btn {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  z-index: 51;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 44px;
+  height: 44px;
+  padding: 0;
+  border: 0;
+  border-radius: 0.375rem;
+  background: transparent;
+  color: #fff;
+  cursor: pointer;
+  -webkit-tap-highlight-color: transparent;
+  touch-action: manipulation;
+}
+
+.menu-open-btn:focus-visible {
+  outline: 2px solid rgba(255, 255, 255, 0.7);
+  outline-offset: 2px;
+}
+
+.menu-open-btn__icon {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  width: 22px;
+  height: 16px;
+}
+
+.menu-open-btn__icon span {
+  display: block;
+  height: 2px;
+  width: 100%;
+  background: currentColor;
+  border-radius: 1px;
+}
+
+html.menu-is-open .menu-open-btn {
+  visibility: hidden;
+  pointer-events: none;
+}
+
+.mobile-menu {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  height: 100dvh;
+  z-index: 99999;
+  visibility: hidden;
+  pointer-events: none;
+}
+
+.mobile-menu.is-open {
+  visibility: visible;
+  pointer-events: auto;
+}
+
+/* Não herdar transform global de mobile.css — menu fixed precisa de html/body sem transform */
+html,
+body,
+.mobile-menu,
+.mobile-menu * {
+  -webkit-transform: none;
+  transform: none;
+}
+
+.mobile-menu__inner {
+  position: absolute;
+  inset: 0;
+  background: #991b1b;
+  display: flex;
+  flex-direction: column;
+  padding: 5.5rem 1.75rem 2rem;
+  overflow-y: auto;
+  -webkit-overflow-scrolling: touch;
+  transform: translateY(-100%);
+  will-change: transform;
+}
+
+.mobile-menu__close {
+  position: absolute;
+  top: 1.125rem;
+  right: 1.125rem;
+  width: 44px;
+  height: 44px;
+  padding: 0;
+  border: 0;
+  border-radius: 0.375rem;
+  background: transparent;
+  color: #fff;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  -webkit-tap-highlight-color: transparent;
+  touch-action: manipulation;
+}
+
+.mobile-menu__close:focus-visible {
+  outline: 2px solid rgba(201, 161, 74, 0.7);
+  outline-offset: 2px;
+}
+
+.mobile-menu__close svg {
+  width: 28px;
+  height: 28px;
+}
+
+.mobile-menu__nav {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  max-width: 28rem;
+  margin: auto 0;
+  align-self: center;
+}
+
+.mobile-menu__nav a {
+  font-family: Georgia, 'Times New Roman', serif;
+  font-size: 1.75rem;
+  line-height: 1.3;
+  color: rgba(255, 255, 255, 0.95);
+  text-decoration: none;
+  padding: 1rem 0;
+  border-bottom: 1px solid rgba(201, 161, 74, 0.22);
+}
+
+.mobile-menu__nav a:hover,
+.mobile-menu__nav a:focus-visible {
+  color: #c9a14a;
+}
+
+html.menu-is-open {
+  overflow: hidden;
+  overscroll-behavior: none;
+}
+
+html.menu-is-open body {
+  overflow: hidden;
+  overscroll-behavior: none;
+}
+
+@media (min-width: 768px) {
+  .menu-open-btn,
+  .mobile-menu {
+    display: none !important;
+  }
+}
