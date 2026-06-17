@@ -1,0 +1,144 @@
+/* ========================================
+   SPLASH / PRELOADER (abertura do site)
+   ======================================== */
+
+:root {
+  --splash-primary: #B91C1C;
+  --splash-primary-dark: #991b1b;
+  --splash-secondary: #c9a14a;
+  --splash-on-primary: #ffffff;
+}
+
+html.splash-active,
+html.splash-active body {
+  overflow: hidden;
+}
+
+.splash {
+  position: fixed;
+  inset: 0;
+  z-index: 100000;
+  background: linear-gradient(135deg, var(--splash-primary) 0%, var(--splash-primary-dark) 100%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 32px;
+  pointer-events: none;
+}
+
+.splash,
+.splash * {
+  /* Não herdar transform/animation global de mobile.css */
+  -webkit-transform: none;
+  transform: none;
+  animation-play-state: running !important;
+}
+
+.splash--in {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.splash--out {
+  animation: splashExit 0.72s cubic-bezier(0.76, 0, 0.24, 1) forwards;
+}
+
+@keyframes splashExit {
+  0% { opacity: 1; transform: translateY(0); }
+  100% { opacity: 0; transform: translateY(-8px); }
+}
+
+.splash__logo {
+  width: 96px;
+  height: auto;
+  color: var(--splash-on-primary);
+  overflow: visible;
+}
+
+.splash__logo rect,
+.splash__logo polygon {
+  opacity: 0;
+  transform-origin: center;
+}
+
+.splash--in .s-top { animation: splashPieceIn 0.55s cubic-bezier(0.22, 1, 0.36, 1) 0.05s forwards; }
+.splash--in .s-pillar-l { animation: splashPieceIn 0.55s cubic-bezier(0.22, 1, 0.36, 1) 0.12s forwards; }
+.splash--in .s-pillar-r { animation: splashPieceIn 0.55s cubic-bezier(0.22, 1, 0.36, 1) 0.18s forwards; }
+.splash--in .s-slope-l { animation: splashPieceIn 0.55s cubic-bezier(0.22, 1, 0.36, 1) 0.24s forwards; }
+.splash--in .s-slope-r { animation: splashPieceIn 0.55s cubic-bezier(0.22, 1, 0.36, 1) 0.28s forwards; }
+.splash--in .s-j { animation: splashPieceIn 0.55s cubic-bezier(0.22, 1, 0.36, 1) 0.34s forwards; }
+.splash--in .s-l { animation: splashPieceIn 0.55s cubic-bezier(0.22, 1, 0.36, 1) 0.38s forwards; }
+.splash--in .s-arrow { animation: splashPieceIn 0.55s cubic-bezier(0.22, 1, 0.36, 1) 0.44s forwards; }
+.splash--in .s-bottom { animation: splashPieceIn 0.55s cubic-bezier(0.22, 1, 0.36, 1) 0.48s forwards; }
+
+@keyframes splashPieceIn {
+  from { opacity: 0; transform: translateY(6px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.splash__rule {
+  width: 0;
+  height: 1px;
+  background: rgba(201, 161, 74, 0.45);
+  animation: splashRuleExpand 0.6s cubic-bezier(0.22, 1, 0.36, 1) 0.6s forwards;
+}
+
+@keyframes splashRuleExpand {
+  from { width: 0; opacity: 0; }
+  to { width: 96px; opacity: 1; }
+}
+
+.splash__caption {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 6px;
+  opacity: 0;
+  animation: splashCaptionIn 0.5s cubic-bezier(0.22, 1, 0.36, 1) 0.75s forwards;
+}
+
+@keyframes splashCaptionIn {
+  from { opacity: 0; transform: translateY(5px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.splash__caption-name {
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: 15px;
+  font-weight: 400;
+  letter-spacing: 0.18em;
+  color: var(--splash-on-primary);
+}
+
+.splash__caption-sub {
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 9px;
+  letter-spacing: 0.28em;
+  text-transform: uppercase;
+  color: var(--splash-secondary);
+}
+
+.site-page {
+  opacity: 0;
+}
+
+.site-page--visible {
+  animation: sitePageIn 0.6s ease 1.8s forwards;
+}
+
+@keyframes sitePageIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .splash {
+    display: none !important;
+  }
+
+  .site-page {
+    opacity: 1 !important;
+    animation: none !important;
+  }
+}

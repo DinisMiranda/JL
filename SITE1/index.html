@@ -1,0 +1,965 @@
+<!DOCTYPE html>
+<html lang="pt">
+  <head>
+    <!-- Basic Meta Tags -->
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+
+    <!-- iOS Specific Meta Tags (Enhanced) -->
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+    <meta name="apple-mobile-web-app-title" content="JL Advogados" />
+    <meta name="format-detection" content="telephone=yes" />
+    <meta name="format-detection" content="address=yes" />
+    <link rel="apple-touch-startup-image" href="images/icon.png" />
+
+    <!-- iOS Status Bar Appearance -->
+    <meta name="apple-mobile-web-app-status-bar-style" content="default" />
+
+    <!-- iOS Smart App Banner (optional) -->
+    <!-- <meta name="apple-itunes-app" content="app-id=myAppStoreID"> -->
+
+    <!-- Android Specific Meta Tags (Enhanced) -->
+    <meta name="mobile-web-app-capable" content="yes" />
+    <meta name="theme-color" content="#B91C1C" />
+    <meta name="theme-color" media="(prefers-color-scheme: light)" content="#B91C1C" />
+    <meta name="theme-color" media="(prefers-color-scheme: dark)" content="#991b1b" />
+
+    <!-- Android Chrome Toolbar Color -->
+    <meta name="msapplication-navbutton-color" content="#B91C1C" />
+    <meta name="msapplication-TileColor" content="#B91C1C" />
+    <meta name="msapplication-TileImage" content="images/icon.png" />
+
+    <!-- PWA Manifest -->
+    <link rel="manifest" href="/manifest.json" />
+
+    <!-- Touch Icons for different devices -->
+    <link rel="apple-touch-icon" sizes="180x180" href="images/icon.png" />
+    <link rel="icon" type="image/png" sizes="32x32" href="images/icon.png" />
+    <link rel="icon" type="image/png" sizes="16x16" href="images/icon.png" />
+
+    <!-- SEO Meta Tags -->
+    <title>João Lobo Advogados | Escritório de Advocacia em Braga - Tradição e Excelência desde 1975</title>
+    <meta name="description" content="João Lobo Advogados - Escritório de advocacia em Braga com mais de 50 anos de experiência. Especialistas em Direito Civil, Comercial, Penal, Internacional, Família e Imobiliário. Tradição e excelência jurídica desde 1975." />
+    <meta name="keywords" content="advogado Braga, escritório advocacia Braga, João Lobo Advogados, direito civil, direito comercial, direito penal, direito família, direito imobiliário, advogado Vila Verde, serviços jurídicos Portugal" />
+    <meta name="author" content="João Lobo Advogados" />
+    <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" />
+    <link rel="canonical" href="https://joaoloboadvogados.pt/" />
+
+    <!-- Open Graph / Facebook Meta Tags -->
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://joaoloboadvogados.pt/" />
+    <meta property="og:site_name" content="João Lobo Advogados" />
+    <meta property="og:title" content="João Lobo Advogados | Escritório de Advocacia em Braga" />
+    <meta property="og:description" content="Escritório de advocacia em Braga com mais de 50 anos de experiência. Especialistas em Direito Civil, Comercial, Penal, Internacional, Família e Imobiliário." />
+    <meta property="og:image" content="https://joaoloboadvogados.pt/images/jl_pai.jpg" />
+    <meta property="og:image:alt" content="João Lobo Advogados - Escritório de Advocacia" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:locale" content="pt_PT" />
+
+    <!-- Twitter Card Meta Tags -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:url" content="https://joaoloboadvogados.pt/" />
+    <meta name="twitter:title" content="João Lobo Advogados | Escritório de Advocacia em Braga" />
+    <meta name="twitter:description" content="Escritório de advocacia em Braga com mais de 50 anos de experiência. Tradição e excelência jurídica desde 1975." />
+    <meta name="twitter:image" content="https://joaoloboadvogados.pt/images/jl_pai.jpg" />
+    <meta name="twitter:image:alt" content="João Lobo Advogados - Escritório de Advocacia" />
+
+    <!-- Geo Tags -->
+    <meta name="geo.region" content="PT-03" />
+    <meta name="geo.placename" content="Braga" />
+    <meta name="geo.position" content="41.5454;-8.4265" />
+    <meta name="ICBM" content="41.5454, -8.4265" />
+
+    <!-- Language -->
+    <meta http-equiv="content-language" content="pt-PT" />
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/x-icon" href="images/icon.png" />
+
+    <!-- Preload Critical Resources -->
+    <link rel="preconnect" href="https://cdn.tailwindcss.com" crossorigin />
+    <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin />
+    <link rel="dns-prefetch" href="https://cdn.tailwindcss.com" />
+    <link rel="dns-prefetch" href="https://cdn.jsdelivr.net" />
+
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            colors: {
+              primary: '#B91C1C',
+              secondary: '#c9a14a',
+            }
+          }
+        }
+      }
+    </script>
+
+    <!-- Accessibility Styles -->
+    <link rel="stylesheet" href="src/styles/accessibility.css" />
+
+    <!-- Mobile Optimization Styles -->
+    <link rel="stylesheet" href="src/styles/mobile.css?v=4" />
+    <link rel="stylesheet" href="src/styles/mobile-menu.css?v=5" />
+    <link rel="stylesheet" href="src/styles/splash.css?v=2" />
+
+    <!-- Structured Data (JSON-LD) -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@graph": [
+        {
+          "@type": "LegalService",
+          "@id": "https://joaoloboadvogados.pt/#organization",
+          "name": "João Lobo Advogados",
+          "description": "Escritório de advocacia em Braga com mais de 50 anos de experiência em diversas áreas do direito",
+          "url": "https://joaoloboadvogados.pt/",
+          "logo": "https://joaoloboadvogados.pt/images/icon.png",
+          "image": "https://joaoloboadvogados.pt/images/jl_pai.jpg",
+          "foundingDate": "1975",
+          "slogan": "Tradição e Excelência Jurídica desde 1975",
+          "priceRange": "€€",
+          "address": {
+            "@type": "PostalAddress",
+            "streetAddress": "Rua Justino Cruz",
+            "addressLocality": "Braga",
+            "addressRegion": "Braga",
+            "postalCode": "4700",
+            "addressCountry": "PT"
+          },
+          "geo": {
+            "@type": "GeoCoordinates",
+            "latitude": "41.5454",
+            "longitude": "-8.4265"
+          },
+          "telephone": "+351915964547",
+          "email": "joaojlobo@hotmail.com",
+          "areaServed": {
+            "@type": "Country",
+            "name": "Portugal"
+          },
+          "knowsAbout": [
+            "Direito Civil",
+            "Direito Comercial",
+            "Direito Penal",
+            "Direito Internacional",
+            "Direito da Família",
+            "Direito Imobiliário"
+          ],
+          "hasOfferCatalog": {
+            "@type": "OfferCatalog",
+            "name": "Serviços Jurídicos",
+            "itemListElement": [
+              {
+                "@type": "Offer",
+                "itemOffered": {
+                  "@type": "Service",
+                  "name": "Direito Civil",
+                  "description": "Assessoria jurídica em questões de direito civil, incluindo contratos, responsabilidade civil e direitos reais"
+                }
+              },
+              {
+                "@type": "Offer",
+                "itemOffered": {
+                  "@type": "Service",
+                  "name": "Direito Comercial",
+                  "description": "Aconselhamento jurídico para empresas, incluindo constituição de sociedades, contratos comerciais e direito societário"
+                }
+              },
+              {
+                "@type": "Offer",
+                "itemOffered": {
+                  "@type": "Service",
+                  "name": "Direito Penal",
+                  "description": "Representação e defesa em processos criminais, com uma abordagem rigorosa e ética"
+                }
+              },
+              {
+                "@type": "Offer",
+                "itemOffered": {
+                  "@type": "Service",
+                  "name": "Direito Internacional",
+                  "description": "Assessoria em questões de direito internacional e da União Europeia, incluindo contratos internacionais"
+                }
+              },
+              {
+                "@type": "Offer",
+                "itemOffered": {
+                  "@type": "Service",
+                  "name": "Direito da Família",
+                  "description": "Aconselhamento em questões familiares, incluindo divórcios, regulação do poder parental e partilhas"
+                }
+              },
+              {
+                "@type": "Offer",
+                "itemOffered": {
+                  "@type": "Service",
+                  "name": "Direito Imobiliário",
+                  "description": "Assessoria em transações imobiliárias, arrendamentos e questões de propriedade"
+                }
+              }
+            ]
+          }
+        },
+        {
+          "@type": "Person",
+          "@id": "https://joaoloboadvogados.pt/#joao-lobo",
+          "name": "João Lobo",
+          "jobTitle": "Advogado",
+          "worksFor": {
+            "@id": "https://joaoloboadvogados.pt/#organization"
+          },
+          "image": "https://joaoloboadvogados.pt/images/jl_filho.jpg",
+          "telephone": "+351915964547",
+          "email": "joaojlobo@hotmail.com",
+          "alumniOf": [
+            {
+              "@type": "EducationalOrganization",
+              "name": "Universidade do Minho"
+            }
+          ],
+          "hasOccupation": {
+            "@type": "Occupation",
+            "name": "Advogado",
+            "occupationalCategory": "Legal Services",
+            "skills": [
+              "Direito Civil",
+              "Direito Comercial",
+              "Direito da Família",
+              "Direito Fiscal",
+              "Direito Internacional"
+            ]
+          }
+        },
+        {
+          "@type": "WebSite",
+          "@id": "https://joaoloboadvogados.pt/#website",
+          "url": "https://joaoloboadvogados.pt/",
+          "name": "João Lobo Advogados",
+          "description": "Website oficial do escritório de advocacia João Lobo Advogados",
+          "publisher": {
+            "@id": "https://joaoloboadvogados.pt/#organization"
+          },
+          "inLanguage": "pt-PT"
+        },
+        {
+          "@type": "BreadcrumbList",
+          "itemListElement": [
+            {
+              "@type": "ListItem",
+              "position": 1,
+              "name": "Início",
+              "item": "https://joaoloboadvogados.pt/"
+            },
+            {
+              "@type": "ListItem",
+              "position": 2,
+              "name": "Sobre Nós",
+              "item": "https://joaoloboadvogados.pt/#sobre-nos"
+            },
+            {
+              "@type": "ListItem",
+              "position": 3,
+              "name": "Áreas de Prática",
+              "item": "https://joaoloboadvogados.pt/#areas-pratica"
+            },
+            {
+              "@type": "ListItem",
+              "position": 4,
+              "name": "Equipa",
+              "item": "https://joaoloboadvogados.pt/#equipa"
+            },
+            {
+              "@type": "ListItem",
+              "position": 5,
+              "name": "Contacto",
+              "item": "https://joaoloboadvogados.pt/#contacto"
+            }
+          ]
+        }
+      ]
+    }
+    </script>
+  </head>
+  <body class="bg-white text-gray-800 font-sans antialiased">
+    <!-- Splash / preloader -->
+    <div id="splash" class="splash splash--in" aria-hidden="true">
+      <svg class="splash__logo" viewBox="0 0 312 266" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+        <g fill="currentColor">
+          <rect class="s-top" x="0" y="0" width="312" height="28"></rect>
+          <rect class="s-pillar-l" x="0" y="0" width="31" height="213"></rect>
+          <rect class="s-pillar-r" x="281" y="0" width="31" height="213"></rect>
+          <polygon class="s-slope-l" points="30,186 136,186 136,198 121,212 30,212"></polygon>
+          <polygon class="s-slope-r" points="174,186 281,186 281,212 190,212 174,198"></polygon>
+          <polygon class="s-j" points="63,49 137,49 137,186 103,186 103,76 63,76"></polygon>
+          <rect class="s-l" x="174" y="49" width="34" height="137"></rect>
+          <polygon class="s-arrow" points="132,241 155.5,229 179,241"></polygon>
+          <rect class="s-bottom" x="32" y="241" width="248" height="25"></rect>
+        </g>
+      </svg>
+      <div class="splash__rule"></div>
+      <div class="splash__caption">
+        <span class="splash__caption-name">JOÃO LOBO</span>
+        <span class="splash__caption-sub">ADVOGADOS · DESDE 1975</span>
+      </div>
+    </div>
+
+    <div id="site-page" class="site-page">
+    <div id="site-scroll-root">
+    <!-- Skip to Content Link -->
+    <a href="#main-content" class="skip-to-content sr-only focus:not-sr-only focus:absolute focus:top-4 focus:left-4 focus:z-[100] focus:px-6 focus:py-3 focus:bg-secondary focus:text-white focus:rounded-lg focus:shadow-lg focus:outline-none focus:ring-4 focus:ring-secondary/50">
+      Saltar para o conteúdo principal
+    </a>
+
+    <!-- Header -->
+    <header role="banner" class="bg-primary text-white sticky top-0 z-50 shadow-lg relative">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative">
+        <button
+          type="button"
+          id="menu-open-btn"
+          class="menu-open-btn md:hidden"
+          aria-label="Abrir menu de navegação"
+          aria-expanded="false"
+          aria-controls="mobile-menu"
+        >
+          <span class="menu-open-btn__icon" aria-hidden="true">
+            <span></span>
+            <span></span>
+            <span></span>
+          </span>
+        </button>
+
+        <div class="flex flex-col md:flex-row md:items-center md:justify-between py-4">
+          <div class="mb-4 md:mb-0">
+            <div class="text-xl md:text-2xl font-bold uppercase tracking-wide">João Lobo Advogados</div>
+            <p class="text-sm md:text-base text-gray-300 mt-1">Tradição e Excelência Jurídica desde 1975</p>
+          </div>
+
+          <!-- Navigation -->
+          <nav id="main-nav" role="navigation" aria-label="Navegação principal" class="hidden md:flex md:items-center md:space-x-1">
+            <a href="#sobre-nos" class="px-4 py-2 rounded-full text-sm md:text-base">Sobre Nós</a>
+            <a href="#areas-pratica" class="px-4 py-2 rounded-full text-sm md:text-base">Áreas de Prática</a>
+            <a href="#equipa" class="px-4 py-2 rounded-full text-sm md:text-base">Equipa</a>
+            <a href="#homenagens" class="px-4 py-2 rounded-full text-sm md:text-base">Homenagens</a>
+            <a href="#publicacoes" class="px-4 py-2 rounded-full text-sm md:text-base">Publicações</a>
+            <a href="#legislacao" class="px-4 py-2 rounded-full text-sm md:text-base">Legislação</a>
+            <a href="#contacto" class="px-4 py-2 rounded-full text-sm md:text-base">Contacto</a>
+          </nav>
+        </div>
+      </div>
+    </header>
+
+    <main id="main-content" role="main" tabindex="-1">
+      <!-- Hero Section -->
+      <section aria-label="Introdução" class="relative bg-gradient-to-br from-primary via-primary/90 to-primary/80 text-white py-12 md:py-16 px-4 overflow-hidden">
+        <img src="images/fundo2.png" alt="" role="presentation" loading="eager" class="absolute top-0 left-1/2 -translate-x-1/2 w-[120%] h-full object-cover z-0 opacity-40" />
+        <div class="absolute inset-0 bg-black/10 z-1"></div>
+        <div class="relative max-w-4xl mx-auto text-center min-h-[200px] md:min-h-[250px] flex items-center justify-center z-10">
+          <div class="relative">
+            <h1 class="text-4xl md:text-5xl lg:text-6xl font-serif font-bold mb-6">
+              Assessoria jurídica de excelência
+            </h1>
+            <p class="text-xl md:text-2xl lg:text-3xl text-gray-100">
+              Mais de 50 anos de experiência ao serviço da justiça
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <!-- Sobre Nós -->
+      <section id="sobre-nos" class="py-16 md:py-24 px-4 bg-white">
+        <div class="max-w-7xl mx-auto">
+          <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 md:gap-12">
+            <div class="space-y-6">
+              <h2 class="text-3xl md:text-4xl font-serif font-bold text-gray-900 mb-4">Sobre o Escritório</h2>
+              <h3 class="text-2xl md:text-3xl font-serif font-semibold text-primary">História e Tradição</h3>
+              <p class="text-gray-700 leading-relaxed">
+                O escritório João Lobo Advogados tem as suas raízes na tradição jurídica iniciada pelo
+                Dr. João Manuel Lobo de Araújo, advogado de renome, político e escritor, natural de Santa
+                Maria de Mós, Vila Verde.
+              </p>
+              <p class="text-gray-700 leading-relaxed">
+                Com mais de cinco décadas de história, o nosso escritório mantém-se fiel aos valores de
+                excelência, integridade e dedicação que sempre caracterizaram a prática jurídica do seu
+                fundador.
+              </p>
+              <p class="text-gray-700 leading-relaxed">
+                Hoje, sob a liderança de João Lobo, continuamos o legado de excelência jurídica, combinando
+                a tradição com uma visão moderna e atualizada do direito.
+              </p>
+            </div>
+            <div id="legado" class="space-y-6 bg-gradient-to-br from-gray-50 to-white p-6 md:p-8 rounded-2xl shadow-lg border-l-4 border-secondary">
+              <img
+                src="images/jl_pai.jpg"
+                alt="Dr. João Manuel Lobo de Araújo - Fundador do escritório de advocacia (1951-2021)"
+                loading="lazy"
+                width="800"
+                height="600"
+                class="w-full h-72 md:h-80 object-cover object-[center_30%] rounded-xl shadow-md border border-white/60"
+              />
+              <h3 class="text-2xl md:text-3xl font-serif font-semibold text-primary">O Legado do Dr. João Manuel Lobo de Araújo</h3>
+              <p class="font-semibold text-gray-800">Advogado, Político e Escritor (1951-2021)</p>
+              <p class="text-gray-700 leading-relaxed">
+                Licenciado em Direito pela Universidade de Coimbra em 1974 e Mestre em Estudos Europeus pela
+                Universidade do Minho em 1989, o Dr. João Lobo destacou-se como uma figura ímpar no panorama
+                jurídico e cultural português.
+              </p>
+              <p class="text-gray-700 leading-relaxed">
+                Foi professor nas Universidades do Minho, Fernando Pessoa e na Universidade Católica, além de
+                ter desempenhado importantes cargos políticos, incluindo a presidência da Mesa da Assembleia
+                Municipal de Vila Verde durante 17 anos e o cargo de deputado à Assembleia da República.
+              </p>
+              <p class="text-gray-700 leading-relaxed">
+                Autor de diversas obras jurídicas e literárias, deixou um legado intelectual que continua a
+                inspirar gerações de juristas e cidadãos.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Principais Obras -->
+      <section aria-labelledby="principais-obras-heading" class="py-16 md:py-24 px-4 bg-gray-50">
+        <div class="max-w-7xl mx-auto">
+          <h2 id="principais-obras-heading" class="text-3xl md:text-4xl font-serif font-bold text-gray-900 mb-8 text-center">Principais Obras</h2>
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-8">
+            <article class="bg-white p-6 md:p-8 rounded-xl shadow-lg hover:shadow-xl transition-shadow duration-300 border-t-4 border-primary">
+              <h3 class="text-2xl font-serif font-semibold text-primary mb-4">Obras Jurídicas</h3>
+              <ul class="space-y-3 text-gray-700">
+                <li class="flex items-start">
+                  <span class="text-secondary mr-2">•</span>
+                  <span>"Concorrência e política de defesa dos consumidores no âmbito C.E.E."</span>
+                </li>
+                <li class="flex items-start">
+                  <span class="text-secondary mr-2">•</span>
+                  <span>"Gestão empresarial e responsabilidade objectiva do produtor" (1991)</span>
+                </li>
+                <li class="flex items-start">
+                  <span class="text-secondary mr-2">•</span>
+                  <span>"A harmonização das ordens jurídicas estaduais com o Direito Comunitário" (1991)</span>
+                </li>
+                <li class="flex items-start">
+                  <span class="text-secondary mr-2">•</span>
+                  <span>"O Direito de Informação dos Consumidores e Usuários no Direito Comunitário"</span>
+                </li>
+              </ul>
+            </article>
+            <article class="bg-white p-6 md:p-8 rounded-xl shadow-lg hover:shadow-xl transition-shadow duration-300 border-t-4 border-secondary">
+              <h3 class="text-2xl font-serif font-semibold text-primary mb-4">Obras Literárias</h3>
+              <ul class="space-y-3 text-gray-700">
+                <li class="flex items-start">
+                  <span class="text-secondary mr-2">•</span>
+                  <span>"A Praga" (romance, 1985)</span>
+                </li>
+                <li class="flex items-start">
+                  <span class="text-secondary mr-2">•</span>
+                  <span>"O Paredão dos Lacraus" (evocações, 1986)</span>
+                </li>
+                <li class="flex items-start">
+                  <span class="text-secondary mr-2">•</span>
+                  <span>"Sol no Eirado" (contos, 1991)</span>
+                </li>
+                <li class="flex items-start">
+                  <span class="text-secondary mr-2">•</span>
+                  <span>"O Livro de Elisa" (obra recente)</span>
+                </li>
+              </ul>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <!-- Áreas de Prática -->
+      <section id="areas-pratica" class="py-16 md:py-24 px-4 bg-white">
+        <div class="max-w-7xl mx-auto">
+          <h2 class="text-3xl md:text-4xl lg:text-5xl font-serif font-bold text-gray-900 mb-12 text-center">Áreas de Prática</h2>
+          <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
+            <article class="bg-gradient-to-br from-white to-gray-50 p-6 md:p-8 rounded-xl shadow-md hover:shadow-xl transition-all duration-300 border border-gray-200 hover:border-primary/50 transform hover:-translate-y-1">
+              <h3 class="text-xl md:text-2xl font-serif font-semibold text-primary mb-3">Direito Civil</h3>
+              <p class="text-gray-700 leading-relaxed">Assessoria jurídica em questões de direito civil, incluindo contratos, responsabilidade civil e direitos reais.</p>
+            </article>
+            <article class="bg-gradient-to-br from-white to-gray-50 p-6 md:p-8 rounded-xl shadow-md hover:shadow-xl transition-all duration-300 border border-gray-200 hover:border-primary/50 transform hover:-translate-y-1">
+              <h3 class="text-xl md:text-2xl font-serif font-semibold text-primary mb-3">Direito Comercial</h3>
+              <p class="text-gray-700 leading-relaxed">Aconselhamento jurídico para empresas, incluindo constituição de sociedades, contratos comerciais e direito societário.</p>
+            </article>
+            <article class="bg-gradient-to-br from-white to-gray-50 p-6 md:p-8 rounded-xl shadow-md hover:shadow-xl transition-all duration-300 border border-gray-200 hover:border-primary/50 transform hover:-translate-y-1">
+              <h3 class="text-xl md:text-2xl font-serif font-semibold text-primary mb-3">Direito Penal</h3>
+              <p class="text-gray-700 leading-relaxed">Representação e defesa em processos criminais, com uma abordagem rigorosa e ética.</p>
+            </article>
+            <article class="bg-gradient-to-br from-white to-gray-50 p-6 md:p-8 rounded-xl shadow-md hover:shadow-xl transition-all duration-300 border border-gray-200 hover:border-primary/50 transform hover:-translate-y-1">
+              <h3 class="text-xl md:text-2xl font-serif font-semibold text-primary mb-3">Direito Internacional</h3>
+              <p class="text-gray-700 leading-relaxed">Assessoria em questões de direito internacional e da União Europeia, incluindo contratos internacionais.</p>
+            </article>
+            <article class="bg-gradient-to-br from-white to-gray-50 p-6 md:p-8 rounded-xl shadow-md hover:shadow-xl transition-all duration-300 border border-gray-200 hover:border-primary/50 transform hover:-translate-y-1">
+              <h3 class="text-xl md:text-2xl font-serif font-semibold text-primary mb-3">Direito da Família</h3>
+              <p class="text-gray-700 leading-relaxed">Aconselhamento em questões familiares, incluindo divórcios, regulação do poder parental e partilhas.</p>
+            </article>
+            <article class="bg-gradient-to-br from-white to-gray-50 p-6 md:p-8 rounded-xl shadow-md hover:shadow-xl transition-all duration-300 border border-gray-200 hover:border-primary/50 transform hover:-translate-y-1">
+              <h3 class="text-xl md:text-2xl font-serif font-semibold text-primary mb-3">Direito Imobiliário</h3>
+              <p class="text-gray-700 leading-relaxed">Assessoria em transações imobiliárias, arrendamentos e questões de propriedade.</p>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <!-- Equipa -->
+      <section id="equipa" class="py-16 md:py-24 px-4 bg-gray-50">
+        <div class="max-w-7xl mx-auto">
+          <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 md:gap-12">
+            <div>
+              <h2 class="text-3xl md:text-4xl font-serif font-bold text-gray-900 mb-8">Responsável</h2>
+              <article class="bg-white p-6 md:p-8 rounded-xl shadow-lg border-l-4 border-secondary space-y-4 mt-12 md:mt-16">
+                <img
+                  src="images/jl_filho.jpg"
+                  alt="Dr. João Lobo - Advogado responsável pelo escritório João Lobo Advogados"
+                  loading="lazy"
+                  width="800"
+                  height="600"
+                  class="w-full h-64 object-cover object-[center_30%] rounded-xl shadow-md border border-gray-100"
+                />
+                <h3 class="text-2xl md:text-3xl font-serif font-semibold text-primary mb-2">Dr. João Lobo</h3>
+                <p class="font-semibold text-gray-700 mb-4">Advogado</p>
+                <p class="text-gray-700 leading-relaxed">
+                  Continuando o legado familiar, o Dr. João Lobo lidera o escritório com o mesmo compromisso
+                  de excelência e integridade que caracterizou o trabalho do seu pai.
+                </p>
+              </article>
+            </div>
+            <div>
+              <h3 class="text-2xl md:text-3xl font-serif font-semibold text-gray-900 mb-6">Curriculum Vitae</h3>
+              <div class="space-y-8">
+                <div>
+                  <h4 class="text-xl font-serif font-semibold text-primary mb-4">Experiência Profissional</h4>
+                  <ul class="space-y-4">
+                    <li class="bg-white p-4 rounded-lg shadow-md border-l-4 border-secondary">
+                      <strong class="block text-gray-900 mb-1">Advogado</strong>
+                      <span class="text-gray-600 text-sm">João Lobo Advogados</span><br />
+                      <span class="text-gray-600 text-sm">Agosto de 2023 - Presente (Tempo integral)</span>
+                      <p class="text-gray-700 mt-2 text-sm">Prática jurídica em diversas áreas do direito, com foco em Direito Civil, Comercial e da Família.</p>
+                    </li>
+                    <li class="bg-white p-4 rounded-lg shadow-md border-l-4 border-secondary">
+                      <strong class="block text-gray-900 mb-1">Estágio</strong>
+                      <span class="text-gray-600 text-sm">João Lobo</span><br />
+                      <span class="text-gray-600 text-sm">2018 - Dezembro de 2021</span>
+                    </li>
+                    <li class="bg-white p-4 rounded-lg shadow-md border-l-4 border-secondary">
+                      <strong class="block text-gray-900 mb-1">Estágio</strong>
+                      <span class="text-gray-600 text-sm">Parlamento Europeu</span><br />
+                      <span class="text-gray-600 text-sm">Outubro de 2017 - Abril de 2018 (7 meses)</span><br />
+                      <span class="text-gray-600 text-sm">Bruxelas e Região, Bélgica</span>
+                    </li>
+                    <li class="bg-white p-4 rounded-lg shadow-md border-l-4 border-secondary">
+                      <strong class="block text-gray-900 mb-1">EF Education First Ambassador</strong>
+                      <span class="text-gray-600 text-sm">EF Education First</span><br />
+                      <span class="text-gray-600 text-sm">Março de 2016 - Dezembro de 2017 (1 ano e 10 meses)</span><br />
+                      <span class="text-gray-600 text-sm">Braga</span>
+                    </li>
+                    <li class="bg-white p-4 rounded-lg shadow-md border-l-4 border-secondary">
+                      <strong class="block text-gray-900 mb-1">Advogado Estagiário</strong>
+                      <span class="text-gray-600 text-sm">SFC Advogados</span><br />
+                      <span class="text-gray-600 text-sm">Dezembro de 2016 - Outubro de 2017 (11 meses)</span><br />
+                      <span class="text-gray-600 text-sm">Braga</span>
+                    </li>
+                    <li class="bg-white p-4 rounded-lg shadow-md border-l-4 border-secondary">
+                      <strong class="block text-gray-900 mb-1">Direito Fiscal · Advogado Estagiário</strong>
+                      <span class="text-gray-600 text-sm">Pedro Ferreira Gomes</span><br />
+                      <span class="text-gray-600 text-sm">Agosto de 2016 - Outubro de 2017 (1 ano e 3 meses)</span><br />
+                      <span class="text-gray-600 text-sm">Braga</span>
+                    </li>
+                    <li class="bg-white p-4 rounded-lg shadow-md border-l-4 border-secondary">
+                      <strong class="block text-gray-900 mb-1">Elemento da equipa de Relações Externas</strong>
+                      <span class="text-gray-600 text-sm">ESN</span><br />
+                      <span class="text-gray-600 text-sm">Abril de 2016 - Abril de 2017 (1 ano e 1 mês)</span><br />
+                      <span class="text-gray-600 text-sm">External Relations, President</span>
+                    </li>
+                    <li class="bg-white p-4 rounded-lg shadow-md border-l-4 border-secondary">
+                      <strong class="block text-gray-900 mb-1">Students Law Association AEDUM</strong>
+                      <span class="text-gray-600 text-sm">Março de 2016 - Fevereiro de 2017 (1 ano)</span>
+                    </li>
+                    <li class="bg-white p-4 rounded-lg shadow-md border-l-4 border-secondary">
+                      <strong class="block text-gray-900 mb-1">Internship</strong>
+                      <span class="text-gray-600 text-sm">Pedro Gomes, advogado</span><br />
+                      <span class="text-gray-600 text-sm">Outubro de 2015 - Fevereiro de 2016 (5 meses)</span><br />
+                      <span class="text-gray-600 text-sm">Braga</span>
+                    </li>
+                  </ul>
+                </div>
+                <div>
+                  <h4 class="text-xl font-serif font-semibold text-primary mb-4">Competências</h4>
+                  <div class="flex flex-wrap gap-3">
+                    <span class="bg-primary/10 text-primary px-4 py-2 rounded-full text-sm font-semibold">Direito Civil</span>
+                    <span class="bg-primary/10 text-primary px-4 py-2 rounded-full text-sm font-semibold">Direito Comercial</span>
+                    <span class="bg-primary/10 text-primary px-4 py-2 rounded-full text-sm font-semibold">Direito da Família</span>
+                    <span class="bg-primary/10 text-primary px-4 py-2 rounded-full text-sm font-semibold">Direito Fiscal</span>
+                    <span class="bg-primary/10 text-primary px-4 py-2 rounded-full text-sm font-semibold">Direito Internacional</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Homenagens -->
+      <section id="homenagens" class="py-16 md:py-24 px-4 bg-white">
+        <div class="max-w-7xl mx-auto">
+          <h2 class="text-3xl md:text-4xl lg:text-5xl font-serif font-bold text-gray-900 mb-12 text-center">Homenagens ao Dr. João Manuel Lobo de Araújo</h2>
+          <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
+            <article class="bg-gradient-to-br from-gray-50 to-white p-6 md:p-8 rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 border-t-4 border-primary">
+              <h3 class="text-xl md:text-2xl font-serif font-semibold text-primary mb-3">Luto Municipal</h3>
+              <p class="font-semibold text-gray-800 mb-2">Câmara Municipal de Vila Verde</p>
+              <p class="text-gray-600 text-sm mb-4"><time datetime="2021-12">Dezembro de 2021</time></p>
+              <p class="text-gray-700 leading-relaxed">
+                O Município de Vila Verde decretou três dias de luto municipal em homenagem ao Dr. João Lobo,
+                reconhecendo o seu extraordinário contributo para o concelho e para a comunidade.
+              </p>
+            </article>
+            <article class="bg-gradient-to-br from-gray-50 to-white p-6 md:p-8 rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 border-t-4 border-secondary">
+              <h3 class="text-xl md:text-2xl font-serif font-semibold text-primary mb-3">Homenagem Póstuma</h3>
+              <p class="font-semibold text-gray-800 mb-2">Assembleia Municipal de Vila Verde</p>
+              <p class="text-gray-600 text-sm mb-4"><time datetime="2022-01">Janeiro de 2022</time></p>
+              <p class="text-gray-700 leading-relaxed">
+                A Assembleia Municipal de Vila Verde realizou uma sessão solene em memória do Dr. João Lobo,
+                que presidiu a este órgão durante 17 anos, destacando o seu papel fundamental na vida política local.
+              </p>
+            </article>
+            <article class="bg-gradient-to-br from-gray-50 to-white p-6 md:p-8 rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 border-t-4 border-primary md:col-span-2 lg:col-span-1">
+              <h3 class="text-xl md:text-2xl font-serif font-semibold text-primary mb-3">Reconhecimento Literário</h3>
+              <p class="font-semibold text-gray-800 mb-2">Biblioteca Municipal de Vila Verde</p>
+              <p class="text-gray-600 text-sm mb-4"><time datetime="2022-03">Março de 2022</time></p>
+              <p class="text-gray-700 leading-relaxed">
+                A Biblioteca Municipal criou um espaço dedicado à obra literária do Dr. João Lobo, reunindo os seus
+                livros e manuscritos, permitindo que as gerações futuras conheçam o seu legado intelectual.
+              </p>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <!-- Publicações -->
+      <section id="publicacoes" class="py-16 md:py-24 px-4 bg-gray-50">
+        <div class="max-w-7xl mx-auto">
+          <h2 class="text-3xl md:text-4xl font-serif font-bold text-gray-900 mb-8">Publicações</h2>
+
+          <!-- Cartões (visíveis no desktop; no mobile escondem-se ao abrir artigo) -->
+          <div id="publications-cards" class="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-12">
+            <div>
+              <article class="bg-white p-6 md:p-8 rounded-xl shadow-lg">
+                <h3 class="text-xl md:text-2xl font-serif font-semibold text-primary mb-3">Breve contributo para o aperfeiçoamento da social-democracia</h3>
+                <p class="text-gray-600 italic mb-4">Por João Lobo</p>
+                <blockquote class="border-l-4 border-secondary pl-4 italic text-primary mb-4 text-lg">
+                  "Todos os dias ao acordar, duas coisas me deixam maravilhado, o céu estrelado acima de mim e a lei moral dentro de mim"- KANT.
+                </blockquote>
+                <p class="text-gray-700 leading-relaxed mb-3">
+                  "Também eu, me apercebo de uma realidade que está acima de mim, e outra que está 'abaixo' de mim. Sou eu, quem,
+                  todos dias, ao acordar de manhã cedo, decido qual das duas deve prevalecer: o mundo das coisas concretas, ou o mundo
+                  da razão ética e moral no intercâmbio das existências.
+                </p>
+                <p class="text-gray-700 leading-relaxed mb-4">
+                  Essa escolha pertence a todos nós que a fazemos diariamente. Essa realidade, íntima, unipessoal, incindível e
+                  intransmissível, repercute a pessoa que somos. A realidade que se mostra visível, o mundo concreto, e a realidade que
+                  está acima de nós, a realidade dos valores, a realidade não escrita, congénita, um dado natural, possível de apreensão
+                  e de explicitação e de realização na ordem concreta. Sendo um dado imediato de natureza espiritual apreensível por qualquer
+                  um não são muitos os que a conseguem 'observar' e a ela se vincular. Aqueles que a conseguem 'ver', rezam as lendas,
+                  tornam-se 'imortais'..."
+                </p>
+                <button
+                  onclick="openArticle('artigo1')"
+                  class="inline-block text-primary font-semibold border-b-2 border-secondary pb-1 hover:text-secondary focus:text-secondary focus:outline-none focus:ring-2 focus:ring-primary/50 rounded transition-colors duration-200 cursor-pointer min-h-[44px] px-2"
+                  aria-label="Ler artigo completo: Breve contributo para o aperfeiçoamento da social-democracia"
+                  type="button"
+                >
+                  Ler artigo completo
+                </button>
+              </article>
+            </div>
+            <div>
+              <article class="bg-white p-6 md:p-8 rounded-xl shadow-lg">
+                <h3 class="text-xl md:text-2xl font-serif font-semibold text-primary mb-3">Ao meu Dr. Carlos Pires</h3>
+                <p class="text-gray-600 italic mb-4">Por João Lobo</p>
+                <p class="text-gray-700 leading-relaxed mb-3">
+                  Ingressei recentemente na Ordem dos Advogados e não podia deixar de fazer uma reflexão sobre o meu antigo e eterno
+                  Patrono, Dr. Carlos Pires, que o próprio destino me fez.
+                </p>
+                <p class="text-gray-700 leading-relaxed mb-4">
+                  Lembro-me, após o falecimento do meu pai, João Lobo, advogado de profissão, que o mundo se tornou e o escritório
+                  necessitava de uma pessoa urgente de me dar apoio...
+                </p>
+                <button
+                  onclick="openArticle('artigo2')"
+                  class="inline-block text-primary font-semibold border-b-2 border-secondary pb-1 hover:text-secondary focus:text-secondary focus:outline-none focus:ring-2 focus:ring-primary/50 rounded transition-colors duration-200 cursor-pointer min-h-[44px] px-2"
+                  aria-label="Ler artigo completo: Ao meu Dr. Carlos Pires"
+                  type="button"
+                >
+                  Ler artigo completo
+                </button>
+              </article>
+            </div>
+          </div>
+
+          <!-- Vista in-page do artigo (só mobile: substitui os cartões, sem modal) -->
+          <div id="publications-full-article" class="hidden" aria-hidden="true">
+            <article class="bg-white p-6 md:p-8 rounded-xl shadow-lg">
+              <h2 id="article-full-title" class="text-2xl md:text-3xl font-serif font-semibold text-primary mb-3">Artigo</h2>
+              <p id="article-full-author" class="text-gray-600 italic mb-6"></p>
+              <div id="article-content-mobile" class="text-gray-700 leading-relaxed prose prose-gray max-w-none"></div>
+              <div class="mt-8 pt-4 border-t border-gray-200">
+                <button type="button" onclick="closeArticle()" class="bg-secondary hover:bg-secondary/90 text-white font-semibold py-2 px-6 rounded-lg min-h-[44px] focus:outline-none focus:ring-4 focus:ring-secondary/50" aria-label="Voltar às publicações">Voltar às Publicações</button>
+              </div>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <!-- Legislação -->
+      <section id="legislacao" class="py-16 md:py-24 px-4 bg-white">
+        <div class="max-w-7xl mx-auto">
+          <h2 class="text-3xl md:text-4xl lg:text-5xl font-serif font-bold text-gray-900 mb-12 text-center">Legislação Recente</h2>
+          <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 md:gap-8">
+            <article class="bg-gradient-to-br from-white to-gray-50 p-6 md:p-8 rounded-xl shadow-md hover:shadow-xl transition-all duration-300 border border-gray-200 hover:border-primary/50 transform hover:-translate-y-1">
+              <h3 class="text-lg md:text-xl font-serif font-semibold text-primary mb-3">Alterações ao Código Civil (2024)</h3>
+              <p class="text-gray-700 leading-relaxed text-sm md:text-base">Resumo das principais alterações ao Código Civil introduzidas em 2024, com impacto nas relações jurídicas entre particulares.</p>
+            </article>
+            <article class="bg-gradient-to-br from-white to-gray-50 p-6 md:p-8 rounded-xl shadow-md hover:shadow-xl transition-all duration-300 border border-gray-200 hover:border-primary/50 transform hover:-translate-y-1">
+              <h3 class="text-lg md:text-xl font-serif font-semibold text-primary mb-3">Nova Lei do Arrendamento (2024)</h3>
+              <p class="text-gray-700 leading-relaxed text-sm md:text-base">Análise das modificações introduzidas no regime do arrendamento urbano, com implicações para senhorios e arrendatários.</p>
+            </article>
+            <article class="bg-gradient-to-br from-white to-gray-50 p-6 md:p-8 rounded-xl shadow-md hover:shadow-xl transition-all duration-300 border border-gray-200 hover:border-primary/50 transform hover:-translate-y-1">
+              <h3 class="text-lg md:text-xl font-serif font-semibold text-primary mb-3">Reforma do Processo Civil (2025)</h3>
+              <p class="text-gray-700 leading-relaxed text-sm md:text-base">Principais alterações ao Código de Processo Civil, visando a simplificação e celeridade processual.</p>
+            </article>
+            <article class="bg-gradient-to-br from-white to-gray-50 p-6 md:p-8 rounded-xl shadow-md hover:shadow-xl transition-all duration-300 border border-gray-200 hover:border-primary/50 transform hover:-translate-y-1">
+              <h3 class="text-lg md:text-xl font-serif font-semibold text-primary mb-3">Estatuto da Ordem dos Advogados (2024)</h3>
+              <p class="text-gray-700 leading-relaxed text-sm md:text-base">Alterações ao Estatuto da Ordem dos Advogados, incluindo as novas regras sobre publicidade na advocacia.</p>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <!-- Contacto -->
+      <section id="contacto" aria-labelledby="contacto-heading">
+        <div class="bg-gradient-to-br from-primary via-primary/90 to-primary/80 text-white py-16 md:py-24 px-4">
+          <div class="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-[1.2fr_1fr] gap-12 lg:gap-20 items-center">
+            <div>
+              <p class="text-secondary text-xs font-semibold tracking-[0.22em] uppercase mb-6">Contacto</p>
+              <h2 id="contacto-heading" class="font-serif leading-[1.05] tracking-tight text-white">
+                <span class="block text-3xl md:text-4xl lg:text-5xl font-bold">Falamos?</span>
+                <span class="block text-3xl md:text-4xl lg:text-5xl font-bold">Cada caso</span>
+                <span class="block text-3xl md:text-4xl lg:text-5xl font-bold">começa por uma</span>
+                <span class="block mt-2 md:mt-3 text-5xl md:text-6xl lg:text-7xl font-normal italic text-secondary">conversa.</span>
+              </h2>
+            </div>
+            <address class="not-italic grid gap-8 text-white/95">
+              <div>
+                <p class="text-secondary text-[10px] font-semibold tracking-[0.22em] uppercase mb-3">Endereço</p>
+                <a
+                  href="https://share.google/HmW6ii9wWLrkelc5t"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  class="font-serif text-lg md:text-xl leading-relaxed hover:text-secondary focus:text-secondary focus:outline-none focus:ring-2 focus:ring-secondary/50 rounded transition-colors duration-200"
+                  aria-label="Ver localização no Google Maps (abre em nova janela)"
+                >
+                  Rua Justino Cruz<br />
+                  Braga, Portugal
+                </a>
+              </div>
+              <div>
+                <p class="text-secondary text-[10px] font-semibold tracking-[0.22em] uppercase mb-3">Telefone · Email</p>
+                <a
+                  href="tel:+351915964547"
+                  class="font-serif text-lg md:text-xl block hover:text-secondary focus:text-secondary focus:outline-none focus:ring-2 focus:ring-secondary/50 rounded transition-colors duration-200 min-h-[44px] flex items-center"
+                  aria-label="Ligar para +351 915 964 547"
+                >
+                  +351 915 964 547
+                </a>
+                <a
+                  href="mailto:joaojlobo@hotmail.com"
+                  class="font-serif text-lg md:text-xl block hover:text-secondary focus:text-secondary focus:outline-none focus:ring-2 focus:ring-secondary/50 rounded transition-colors duration-200 break-all min-h-[44px] flex items-center"
+                  aria-label="Enviar email para joaojlobo@hotmail.com"
+                >
+                  joaojlobo@hotmail.com
+                </a>
+              </div>
+              <a
+                href="#contacto-form"
+                class="inline-flex items-center gap-3 self-start text-secondary text-xs font-semibold tracking-[0.14em] uppercase border-b border-secondary pb-1.5 hover:text-white hover:border-white focus:text-white focus:border-white focus:outline-none transition-colors duration-200 min-h-[44px]"
+              >
+                Marcar consulta
+                <span aria-hidden="true">→</span>
+              </a>
+            </address>
+          </div>
+        </div>
+
+        <div id="contacto-form" class="py-16 md:py-24 px-4 bg-gray-50">
+          <div class="max-w-2xl mx-auto">
+              <form id="contact-form" class="bg-white p-6 md:p-8 rounded-xl shadow-lg space-y-4" aria-labelledby="form-heading" novalidate>
+                <h3 id="form-heading" class="text-2xl font-serif font-semibold text-gray-900 mb-6">Envie-nos uma mensagem</h3>
+                <div id="form-message" class="hidden p-4 rounded-lg mb-4" role="alert" aria-live="polite"></div>
+                <div class="block">
+                  <label for="nome" class="text-gray-700 font-semibold mb-2 block">
+                    Nome <span class="text-primary" aria-label="campo obrigatório">*</span>
+                  </label>
+                  <input
+                    type="text"
+                    id="nome"
+                    name="nome"
+                    required
+                    aria-required="true"
+                    aria-describedby="nome-error"
+                    aria-invalid="false"
+                    class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent transition-all duration-200 min-h-[44px]"
+                  />
+                  <span id="nome-error" class="text-red-600 text-sm mt-1 hidden" role="alert"></span>
+                </div>
+                <div class="block">
+                  <label for="email" class="text-gray-700 font-semibold mb-2 block">
+                    Email <span class="text-primary" aria-label="campo obrigatório">*</span>
+                  </label>
+                  <input
+                    type="email"
+                    id="email"
+                    name="email"
+                    required
+                    aria-required="true"
+                    aria-describedby="email-error"
+                    aria-invalid="false"
+                    autocomplete="email"
+                    class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent transition-all duration-200 min-h-[44px]"
+                  />
+                  <span id="email-error" class="text-red-600 text-sm mt-1 hidden" role="alert"></span>
+                </div>
+                <div class="block">
+                  <label for="assunto" class="text-gray-700 font-semibold mb-2 block">
+                    Assunto <span class="text-primary" aria-label="campo obrigatório">*</span>
+                  </label>
+                  <input
+                    type="text"
+                    id="assunto"
+                    name="assunto"
+                    required
+                    aria-required="true"
+                    aria-describedby="assunto-error"
+                    aria-invalid="false"
+                    class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent transition-all duration-200 min-h-[44px]"
+                  />
+                  <span id="assunto-error" class="text-red-600 text-sm mt-1 hidden" role="alert"></span>
+                </div>
+                <div class="block">
+                  <label for="mensagem" class="text-gray-700 font-semibold mb-2 flex justify-between items-center">
+                    <span>Mensagem <span class="text-primary" aria-label="campo obrigatório">*</span></span>
+                    <span id="mensagem-counter" class="text-sm text-gray-500 font-normal" aria-live="polite">
+                      <span id="mensagem-current">0</span>/<span id="mensagem-max">1000</span>
+                    </span>
+                  </label>
+                  <textarea
+                    id="mensagem"
+                    name="mensagem"
+                    rows="5"
+                    maxlength="1000"
+                    required
+                    aria-required="true"
+                    aria-describedby="mensagem-error mensagem-counter"
+                    aria-invalid="false"
+                    class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent transition-all duration-200 resize-none"
+                  ></textarea>
+                  <span id="mensagem-error" class="text-red-600 text-sm mt-1 hidden" role="alert"></span>
+                </div>
+
+                <!-- Honeypot field (hidden from users, visible to bots) -->
+                <div class="hidden" aria-hidden="true">
+                  <label for="website">Website</label>
+                  <input type="text" id="website" name="website" tabindex="-1" autocomplete="off" />
+                </div>
+
+                <button
+                  type="submit"
+                  id="submit-btn"
+                  class="w-full bg-secondary hover:bg-secondary/90 focus:bg-secondary/90 disabled:bg-gray-400 disabled:cursor-not-allowed text-white font-semibold py-3 px-6 rounded-lg transition-all duration-200 transform hover:-translate-y-0.5 focus:-translate-y-0.5 shadow-md hover:shadow-lg focus:shadow-lg focus:outline-none focus:ring-4 focus:ring-secondary/50 min-h-[44px] flex items-center justify-center gap-2"
+                  aria-label="Enviar formulário de contacto"
+                >
+                  <span id="submit-text">Enviar</span>
+                  <svg id="submit-spinner" class="hidden animate-spin h-5 w-5 text-white" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" aria-hidden="true">
+                    <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
+                    <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
+                  </svg>
+                </button>
+
+                <!-- Rate limit info -->
+                <p class="text-xs text-gray-500 text-center mt-2">
+                  Protegido contra spam. Máximo 3 envios por 15 minutos.
+                </p>
+              </form>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <!-- Modal do artigo: abre por cima da página -->
+    <div
+      id="article-modal"
+      class="hidden fixed inset-0 z-[100] flex items-start justify-center bg-black/50 pt-4 pb-4 px-4 overflow-y-auto"
+      role="dialog"
+      aria-modal="true"
+      aria-labelledby="article-modal-title"
+      aria-hidden="true"
+      onclick="if (event.target === this) closeArticle();"
+    >
+      <div class="article-modal-card bg-white rounded-xl shadow-2xl max-w-4xl w-full max-h-[calc(100vh-2rem)] flex flex-col my-auto" onclick="event.stopPropagation()">
+        <div class="flex-shrink-0 flex items-center justify-between gap-3 border-b border-gray-200 px-4 py-3">
+          <h2 id="article-modal-title" class="text-lg md:text-2xl font-serif font-bold text-primary truncate pr-2">Artigo</h2>
+          <button
+            type="button"
+            onclick="closeArticle()"
+            class="article-modal-close flex-shrink-0 text-gray-500 hover:text-gray-700 focus:text-gray-700 text-3xl leading-none w-11 h-11 flex items-center justify-center rounded focus:outline-none focus:ring-2 focus:ring-primary"
+            aria-label="Fechar artigo"
+          >
+            &times;
+          </button>
+        </div>
+        <div class="flex-1 min-h-0 overflow-y-auto p-4 md:p-6 text-gray-700 leading-relaxed">
+          <div id="article-content"></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Footer -->
+    <footer role="contentinfo" class="bg-gray-900 text-white py-8 px-4">
+      <div class="max-w-7xl mx-auto text-center">
+        <p class="mb-2">© 2025 João Lobo Advogados. Todos os direitos reservados.</p>
+        <p class="text-gray-400 text-sm">A informação contida neste site é meramente informativa e não constitui aconselhamento jurídico.</p>
+      </div>
+    </footer>
+    </div>
+
+    <!-- Menu mobile fullscreen -->
+    <div id="mobile-menu" class="mobile-menu" aria-hidden="true" inert>
+      <div class="mobile-menu__inner">
+        <button type="button" id="menu-close-btn" class="mobile-menu__close" aria-label="Fechar menu de navegação">
+          <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
+            <path d="M6 6l12 12M18 6L6 18" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+          </svg>
+        </button>
+        <nav class="mobile-menu__nav" aria-label="Navegação principal móvel">
+          <a href="#sobre-nos">Sobre Nós</a>
+          <a href="#areas-pratica">Áreas de Prática</a>
+          <a href="#equipa">Equipa</a>
+          <a href="#homenagens">Homenagens</a>
+          <a href="#publicacoes">Publicações</a>
+          <a href="#legislacao">Legislação</a>
+          <a href="#contacto">Contacto</a>
+        </nav>
+      </div>
+    </div>
+    </div>
+
+    <!-- JavaScript -->
+    <script src="script.js?v=4"></script>
+  </body>
+</html>
